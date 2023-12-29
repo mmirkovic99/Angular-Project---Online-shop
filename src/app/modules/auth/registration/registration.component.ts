@@ -6,10 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { UserInterface } from 'src/app/models/user.interface';
+import { AppStateInterface } from 'src/app/models/appState.interface';
 import { AuthorizationService } from 'src/app/services/authorization.service';
-import { UserService } from 'src/app/services/user.service';
+import * as UserAction from '../../../store/actions/UserActions';
 
 @Component({
   selector: 'app-registration',
@@ -17,22 +18,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
-  id!: number;
   registrationForm!: FormGroup;
-
-  subscriptions: Subscription[];
+  registrationSubscriptions: Subscription | undefined;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthorizationService,
-    private userService: UserService,
-    private router: Router
-  ) {
-    this.subscriptions = [];
-  }
+    private router: Router,
+    private store: Store<AppStateInterface>
+  ) {}
 
   ngOnInit(): void {
-    this.setId();
     this.buildForm();
   }
 
@@ -44,18 +40,22 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     return this.registrationForm.get(name) as FormControl;
   }
 
-  registration() {
-    const data = Object.assign({ id: this.id }, this.registrationForm.value);
-    delete data.confirmPassword;
-    this.subscriptions.push(
-      this.authService.registration(data).subscribe(() => {
-        this.router.navigate(['']);
-      })
+  registration(): void {
+    const newUser = Object.assign(
+      { favorites: [], orders: [] },
+      this.registrationForm.value
     );
+    delete newUser.confirmPassword;
+    this.registrationSubscriptions = this.authService
+      .registration(newUser)
+      .subscribe(() => {
+        this.store.dispatch(UserAction.addUser({ user: newUser }));
+        this.router.navigate(['']);
+      });
   }
 
-  private buildForm() {
-    this.registrationForm = this.fb.group({
+  private buildForm(): void {
+    this.registrationForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -73,16 +73,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     });
   }
 
-  private setId() {
-    // TO DO: Implement this in a better way
-    this.subscriptions.push(
-      this.userService
-        .getAllUsers()
-        .subscribe((users: UserInterface[]) => (this.id = users.length + 1))
-    );
-  }
-
-  private unsubscribe() {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  private unsubscribe(): void {
+    this.registrationSubscriptions?.unsubscribe();
   }
 }

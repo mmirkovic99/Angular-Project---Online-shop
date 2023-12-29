@@ -19,7 +19,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["40"],
+              "sizes": [
+                "40"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -36,7 +38,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["44.5"],
+              "sizes": [
+                "44.5"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -59,7 +63,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["45"],
+              "sizes": [
+                "45"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-1.jpg",
@@ -82,7 +88,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["44.5"],
+              "sizes": [
+                "44.5"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -105,7 +113,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["45"],
+              "sizes": [
+                "45"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -128,7 +138,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["45"],
+              "sizes": [
+                "45"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -151,7 +163,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["40"],
+              "sizes": [
+                "40"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -173,7 +187,16 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+          "sizes": [
+            40,
+            41,
+            41.5,
+            42,
+            43,
+            44.5,
+            45.5,
+            46
+          ],
           "price": 150,
           "images": [
             "../../../../assets/nike-black-white-orange-1.jpg",
@@ -185,12 +208,14 @@
       ]
     },
     {
-      "id": 2,
-      "name": "Stefan",
-      "surname": "Savic",
-      "email": "stefansavic@gmail.com",
-      "username": "ssavic",
-      "password": "Miki31071999!"
+      "favorites": [],
+      "orders": [],
+      "name": "Nenad",
+      "surname": "Mirkovic",
+      "email": "nenad.mirkovic@gmail.com",
+      "username": "nenadmirkovic",
+      "password": "Miki31-81000!",
+      "id": 2
     }
   ],
   "products": [
@@ -202,7 +227,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
+      "sizes": [
+        40.5,
+        41,
+        42,
+        43,
+        43.5,
+        44,
+        44.5,
+        45
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-1.jpg",
@@ -219,7 +253,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+      "sizes": [
+        40,
+        41,
+        41.5,
+        42,
+        43,
+        44.5,
+        45.5,
+        46
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-orange-1.jpg",
@@ -236,7 +279,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
+      "sizes": [
+        39,
+        40.5,
+        41,
+        42.5,
+        43,
+        44.5,
+        45,
+        46.5
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-blue-1.jpg",
@@ -253,7 +305,16 @@
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
+      "sizes": [
+        39,
+        40.5,
+        41,
+        42.5,
+        43,
+        44.5,
+        45,
+        46.5
+      ],
       "price": 110,
       "images": [
         "../../../../assets/nike-black-white-blue-1.jpg",
