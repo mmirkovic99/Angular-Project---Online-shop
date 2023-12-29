@@ -16,7 +16,6 @@ import { AppStateInterface } from 'src/app/models/appState.interface';
 import { Observable, Subscription } from 'rxjs';
 import { userFavoritesSelector } from 'src/app/store/selectors/userStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -32,45 +31,34 @@ export class ProductComponent implements OnInit, OnDestroy {
   favorites!: Array<ProductInterface>;
   showError = false;
 
-  private routeSubscription!: Subscription;
-  private productServiceSubscription!: Subscription;
-  private userIdSubscription!: Subscription;
+  private subscriptions: Subscription[];
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
     private store: Store<AppStateInterface>
-  ) {}
+  ) {
+    this.subscriptions = [];
+  }
 
   ngOnInit(): void {
-    this.routeSubscription = this.route.params
-      .pipe(
-        switchMap((params) => {
-          return this.productService.getProductById(params['id']);
-        })
-      )
-      .subscribe((productArray) => {
-        [this.product] = productArray;
-        this.selectedImage = this.product.images[0];
-        this.productServiceSubscription = this.loadAllProducts();
-      });
-    this.setUserId();
+    this.subscriptions.push(this.getProductIdFromURL(), this.setUserId());
   }
 
   ngOnDestroy(): void {
     this.unsubscribe();
   }
 
-  selectImage(index: number) {
+  selectImage(index: number): void {
     this.selectedImage = this.product.images[index];
   }
 
-  navigateProduct(id: number) {
+  navigateProduct(id: number): void {
     this.router.navigate([`product/${id}`]);
   }
 
-  addToCart() {
+  addToCart(): void {
     if (!this.size) {
       this.showError = true;
       return;
@@ -85,7 +73,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.size = event.target.value;
   }
 
-  addToFavorites() {
+  addToFavorites(): void {
     this.store.dispatch(
       UserAction.updateUserFavoriteList({
         id: 1,
@@ -94,8 +82,22 @@ export class ProductComponent implements OnInit, OnDestroy {
     );
   }
 
-  private setUserId() {
-    this.userIdSubscription = this.store
+  private getProductIdFromURL(): Subscription {
+    return this.route.params
+      .pipe(
+        switchMap((params) => {
+          return this.productService.getProductById(params['id']);
+        })
+      )
+      .subscribe((productArray) => {
+        [this.product] = productArray;
+        this.selectedImage = this.product.images[0];
+        this.subscriptions.push(this.loadAllProducts());
+      });
+  }
+
+  private setUserId(): Subscription {
+    return this.store
       .pipe(select(userFavoritesSelector))
       .subscribe((favorites) => console.log((this.favorites = favorites)));
   }
@@ -106,9 +108,7 @@ export class ProductComponent implements OnInit, OnDestroy {
       .subscribe((data) => (this.allProducts = data));
   }
 
-  private unsubscribe() {
-    this.routeSubscription.unsubscribe();
-    this.userIdSubscription.unsubscribe();
-    this.productServiceSubscription.unsubscribe();
+  private unsubscribe(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
