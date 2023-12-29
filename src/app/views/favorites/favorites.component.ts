@@ -20,8 +20,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   userId!: number;
   favorites!: Array<ProductInterface>;
 
-  private userIdSubscription!: Subscription;
-  private favoritesSubscription!: Subscription;
+  subscriptions: Subscription[] = [];
 
   constructor(private store: Store<AppStateInterface>, private router: Router) {
     this.setUserId();
@@ -50,23 +49,24 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   private setUserId() {
-    this.userIdSubscription = this.store
-      .pipe(select(userIdSelector))
-      .subscribe((id: number) => {
+    this.subscriptions.push(
+      this.store.pipe(select(userIdSelector)).subscribe((id: number) => {
         this.userId = id;
-      });
+      })
+    );
   }
 
   private setFavoritesSelector() {
-    this.favoritesSubscription = this.store
-      .pipe(select(userFavoritesSelector))
-      .subscribe(
-        (favorites: ProductInterface[]) => (this.favorites = favorites)
-      );
+    this.subscriptions.push(
+      this.store
+        .pipe(select(userFavoritesSelector))
+        .subscribe(
+          (favorites: ProductInterface[]) => (this.favorites = favorites)
+        )
+    );
   }
 
   private unsubscribe() {
-    this.userIdSubscription.unsubscribe();
-    this.favoritesSubscription.unsubscribe();
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
