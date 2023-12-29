@@ -14,7 +14,6 @@ import {
 } from 'src/app/store/selectors/userStateSelectors';
 import { OrderInterface } from 'src/app/models/order.interface';
 import { Router } from '@angular/router';
-import { appStateSelect } from 'src/app/store/selectors/appStateSelectors';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -28,16 +27,15 @@ export class CartComponent implements OnInit, OnDestroy {
   userId!: number;
   totalPrica: number = 0;
 
-  private userIdSubscription!: Subscription;
-  private productsSubscription!: Subscription;
-  private ordersSubscription!: Subscription;
-  private totalPriceSubscription!: Subscription;
+  private subscriptions: Subscription[] = [];
 
   constructor(private store: Store<AppStateInterface>, private router: Router) {
-    this.setUserId();
-    this.setOrders();
-    this.setProducts();
-    this.setTotalPrice();
+    this.subscriptions.push(
+      this.setUserId(),
+      this.setOrders(),
+      this.setProducts(),
+      this.setTotalPrice()
+    );
   }
 
   ngOnInit(): void {}
@@ -70,43 +68,39 @@ export class CartComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setUserId() {
-    this.userIdSubscription = this.store
-      .pipe(select(userIdSelector))
-      .subscribe((id: number) => {
-        this.userId = id;
+  private setUserId(): Subscription {
+    return this.store.pipe(select(userIdSelector)).subscribe((id: number) => {
+      this.userId = id;
+    });
+  }
+
+  private setOrders(): Subscription {
+    return this.store
+      .pipe(select(userOrdersSelector))
+      .subscribe((orders: OrderInterface[]) => {
+        this.orders = orders;
       });
   }
 
-  private setOrders() {
-    this,
-      (this.ordersSubscription = this.store
-        .pipe(select(userOrdersSelector))
-        .subscribe((orders: OrderInterface[]) => {
-          this.orders = orders;
-        }));
-  }
-
-  private setProducts() {
-    this.productsSubscription = this.store
+  private setProducts(): Subscription {
+    return this.store
       .pipe(select(productsSelector))
       .subscribe((products: any[]) => {
         this.products = products.map((product) => product);
       });
   }
 
-  private setTotalPrice() {
-    this.totalPriceSubscription = this.store
+  private setTotalPrice(): Subscription {
+    return this.store
       .pipe(select(productsTotalPriceSelector))
       .subscribe((price: number) => {
         this.totalPrica = price;
       });
   }
 
-  private unsubscribe() {
-    this.userIdSubscription.unsubscribe();
-    this.productsSubscription.unsubscribe();
-    this.ordersSubscription.unsubscribe();
-    this.totalPriceSubscription.unsubscribe();
+  private unsubscribe(): void {
+    this.subscriptions.forEach((subscription: Subscription) =>
+      subscription.unsubscribe()
+    );
   }
 }
