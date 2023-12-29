@@ -25,11 +25,16 @@ export class CartComponent implements OnInit, OnDestroy {
   orders!: OrderInterface[];
   products!: ProductInterface[];
   userId!: number;
-  totalPrica: number = 0;
+  totalPrica: number;
 
-  private subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[];
 
   constructor(private store: Store<AppStateInterface>, private router: Router) {
+    this.totalPrica = 0;
+    this.subscriptions = [];
+  }
+
+  ngOnInit(): void {
     this.subscriptions.push(
       this.setUserId(),
       this.setOrders(),
@@ -37,8 +42,6 @@ export class CartComponent implements OnInit, OnDestroy {
       this.setTotalPrice()
     );
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.unsubscribe();
