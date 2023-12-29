@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
 
   login() {
     // TO DO: Implement this in a better way
+
     this.loginSubscription = this.authService
       .login()
       .subscribe((data: UserInterface[]) => {

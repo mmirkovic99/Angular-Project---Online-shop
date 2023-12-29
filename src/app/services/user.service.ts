@@ -4,14 +4,13 @@ import { Observable } from 'rxjs';
 import { ProductInterface } from '../models/product.interface';
 import { OrderInterface } from '../models/order.interface';
 import { UserInterface } from '../models/user.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-
-  private apiUrl = 'http://localhost:3000';
 
   updateUserData(
     id: number,
@@ -20,7 +19,7 @@ export class UserService {
     username: string,
     email: string
   ): Observable<UserInterface> {
-    return this.http.patch<any>(`${this.apiUrl}/users/${id}`, {
+    return this.http.patch<UserInterface>(`${environment.apiUrl}/users/${id}`, {
       name,
       surname,
       username,
@@ -32,17 +31,21 @@ export class UserService {
     id: number,
     favorites: Array<ProductInterface>
   ): Observable<UserInterface> {
-    return this.http.patch<any>(`${this.apiUrl}/users/${id}`, { favorites });
+    return this.http.patch<UserInterface>(`${environment.apiUrl}/users/${id}`, {
+      favorites,
+    });
   }
 
   orderProducts(
     id: number,
     orders: Array<OrderInterface>
   ): Observable<UserInterface> {
-    return this.http.patch<any>(`${this.apiUrl}/users/${id}`, { orders });
+    return this.http.patch<UserInterface>(`${environment.apiUrl}/users/${id}`, {
+      orders,
+    });
   }
 
   getAllUsers(): Observable<UserInterface[]> {
-    return this.http.get<any>(`${this.apiUrl}/users`);
+    return this.http.get<UserInterface[]>(`${environment.apiUrl}/users`);
   }
 }

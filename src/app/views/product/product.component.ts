@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { switchMap } from 'rxjs/operators';
@@ -13,8 +6,11 @@ import { ProductService } from 'src/app/services/product.service';
 import * as UserAction from '../../store/actions/UserActions';
 import * as CartAction from '../../store/actions/CartActions';
 import { AppStateInterface } from 'src/app/models/appState.interface';
-import { Observable, Subscription } from 'rxjs';
-import { userFavoritesSelector } from 'src/app/store/selectors/userStateSelectors';
+import { Subscription } from 'rxjs';
+import {
+  userFavoritesSelector,
+  userIdSelector,
+} from 'src/app/store/selectors/userStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
 
 @Component({
@@ -25,9 +21,9 @@ import { ProductInterface } from 'src/app/models/product.interface';
 export class ProductComponent implements OnInit, OnDestroy {
   product!: ProductInterface;
   selectedImage: string = '';
-  allProducts: any;
-  cart$!: Observable<any[]>;
+  allProducts!: Array<ProductInterface>;
   size: number | undefined;
+  userId!: number;
   favorites!: Array<ProductInterface>;
   showError = false;
 
@@ -43,7 +39,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.getProductIdFromURL(), this.setUserId());
+    this.subscriptions.push(
+      this.getProductIdFromURL(),
+      this.setFavorites(),
+      this.setUserId()
+    );
   }
 
   ngOnDestroy(): void {
@@ -74,9 +74,10 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToFavorites(): void {
+    if (this.userId === 0) this.router.navigate(['/auth/login']);
     this.store.dispatch(
       UserAction.updateUserFavoriteList({
-        id: 1,
+        id: this.userId,
         favorites: [...this.favorites, this.product],
       })
     );
@@ -89,23 +90,31 @@ export class ProductComponent implements OnInit, OnDestroy {
           return this.productService.getProductById(params['id']);
         })
       )
-      .subscribe((productArray) => {
-        [this.product] = productArray;
+      .subscribe((product: ProductInterface[]) => {
+        [this.product] = product;
         this.selectedImage = this.product.images[0];
-        this.subscriptions.push(this.loadAllProducts());
+        this.subscriptions.push(this.loadSimilarProducts());
       });
+  }
+
+  private setFavorites(): Subscription {
+    return this.store
+      .pipe(select(userFavoritesSelector))
+      .subscribe((favorites) => (this.favorites = favorites));
   }
 
   private setUserId(): Subscription {
     return this.store
-      .pipe(select(userFavoritesSelector))
-      .subscribe((favorites) => console.log((this.favorites = favorites)));
+      .pipe(select(userIdSelector))
+      .subscribe((id) => (this.userId = id));
   }
 
-  private loadAllProducts(): Subscription {
+  private loadSimilarProducts(): Subscription {
     return this.productService
       .getProductByTitle(this.product.title)
-      .subscribe((data) => (this.allProducts = data));
+      .subscribe(
+        (products: Array<ProductInterface>) => (this.allProducts = products)
+      );
   }
 
   private unsubscribe(): void {
