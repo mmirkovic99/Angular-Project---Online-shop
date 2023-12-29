@@ -1,0 +1,28 @@
+.cart-btn {
+  position: relative;
+  cursor: pointer;
+
+  &__icon {
+    transition: opacity 0.5s ease;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__number {
+    display: block;
+    background-color: #a52b2b;
+    color: white;
+    font-size: 0.8rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+  }
+}

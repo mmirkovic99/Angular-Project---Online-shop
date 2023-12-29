@@ -1,0 +1,11 @@
+<div class="product-carousel-wrapper" #slider>
+  <button (click)="slideLeft()">LEFT</button>
+  <button>RIGHT</button>
+  <div class="product-carousel">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      #cards
+    ></app-product-card>
+  </div>
+</div>

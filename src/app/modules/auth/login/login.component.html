@@ -1,0 +1,59 @@
+<div class="login-container">
+  <div class="login-container__left">
+    <img
+      src="../../../../assets/login.jpg"
+      class="login-container__left__image"
+      alt=""
+    />
+    <div class="login-container__left__wrapper"></div>
+  </div>
+  <div class="login-container__right">
+    <div class="login-container__right__title-container">
+      <div class="heading-1 login-container__right__title-container__title">
+        Welcome to Trendo
+      </div>
+      <p
+        class="label label--regular login-container__right__title-container__text"
+      >
+        Sign into your accout
+      </p>
+    </div>
+    <form class="login-container__form" [formGroup]="loginForm">
+      <custom-input
+        [error]="
+          !getControl('username').valid &&
+          (getControl('username').dirty || getControl('username').touched)
+        "
+        label="Username"
+        type="text"
+        [control]="getControl('username')"
+      ></custom-input>
+
+      <custom-input
+        [error]="
+          !getControl('password').valid &&
+          (getControl('password').dirty || getControl('password').touched)
+        "
+        label="Password"
+        type="password"
+        [control]="getControl('password')"
+      ></custom-input>
+    </form>
+    <custom-button
+      [disabled]="!loginForm.valid"
+      buttonText="Login"
+      [buttonClass]="'btn--black btn--big'"
+      (onClick)="login()"
+    ></custom-button>
+    <div class="login-container__right__other">
+      <span class="login-container__right__other__horizontal-line"></span>
+      <p class="label label--regular login-container__right__other__text">or</p>
+      <span class="login-container__right__other__horizontal-line"></span>
+    </div>
+    <custom-button
+      buttonText="Create account"
+      [buttonClass]="'btn--grey btn--big'"
+      (onClick)="navigateRegistration()"
+    ></custom-button>
+  </div>
+</div>

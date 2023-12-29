@@ -1,0 +1,50 @@
+.product {
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: fit-content;
+  transition: all 0.5s ease;
+
+  &__img-container {
+    background-color: #f6f6f6;
+
+    &__img {
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+  }
+
+  &__data {
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  &__container {
+    color: rgb(174, 174, 174);
+    display: flex;
+    font-size: 1.6rem;
+
+    &__type {
+      margin-right: 0.5rem;
+    }
+
+    &__color {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__price {
+    padding-top: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  &:hover > &__img-container > * {
+    transform: scale(0.8);
+  }
+}

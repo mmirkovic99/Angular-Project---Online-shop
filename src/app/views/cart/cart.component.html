@@ -1,0 +1,146 @@
+<div class="cart">
+  <div class="cart__empty" *ngIf="products.length === 0">
+    <svg
+      height="40px"
+      viewBox="0 0 24 24"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      fill="#000000"
+      class="cart__empty__icon"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <title>Close-Circle</title>
+        <g
+          id="Page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+        >
+          <g id="Close-Circle">
+            <rect
+              id="Rectangle"
+              fill-rule="nonzero"
+              x="0"
+              y="0"
+              width="24"
+              height="24"
+            ></rect>
+            <circle
+              id="Oval"
+              stroke="#a10c0c"
+              stroke-width="2"
+              stroke-linecap="round"
+              cx="12"
+              cy="12"
+              r="9"
+            ></circle>
+            <line
+              x1="14.1213"
+              y1="9.87866"
+              x2="9.8787"
+              y2="14.1213"
+              id="Path"
+              stroke="#a10c0c"
+              stroke-width="2"
+              stroke-linecap="round"
+            ></line>
+            <line
+              x1="9.87866"
+              y1="9.87866"
+              x2="14.1213"
+              y2="14.1213"
+              id="Path"
+              stroke="#a10c0c"
+              stroke-width="2"
+              stroke-linecap="round"
+            ></line>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div class="cart__empty__text">
+      Your cart is empty. Explore our products and start adding items!
+    </div>
+  </div>
+  <div class="cart__content" *ngIf="products.length !== 0">
+    <div class="cart__content__title">
+      My cart
+      <span class="cart__content__title__number">({{ products.length }})</span>
+    </div>
+    <div class="cart__content__wrapper">
+      <div
+        *ngFor="let product of products; let i = index"
+        class="cart__content__product"
+      >
+        <img
+          [src]="product.images[0]"
+          alt="First image"
+          class="cart__content__product__image"
+        />
+        <div class="cart__content__product__data">
+          <div class="cart__content__product__data__company">
+            <img
+              [src]="product.companyLogo"
+              alt="Company Logo"
+              class="cart__content__product__data__company__logo"
+            />
+            <div class="cart__content__product__data__company__name">
+              {{ product.companyName }}
+            </div>
+          </div>
+          <div class="cart__content__product__data__header">
+            <div class="cart__content__product__data__id">
+              #{{ product.id }}
+            </div>
+            <h1 class="cart__content__product__data__title">
+              {{ product.title }}
+            </h1>
+          </div>
+          <ng-container [ngSwitch]="product.type">
+            <p class="cart__content__product__data__type" *ngSwitchCase="'0'">
+              • Men's Shoes
+            </p>
+            <p class="cart__content__product__data__type" *ngSwitchCase="'1'">
+              • Women's shoes
+            </p>
+            <p class="cart__content__product__data__type" *ngSwitchDefault>
+              • Kid's shoes
+            </p>
+          </ng-container>
+          <p class="cart__content__product__data__size">
+            • {{ product.sizes[0] }} size
+          </p>
+          <button
+            class="cart__content__product__data__delete"
+            (click)="removeFromCart(i)"
+          >
+            Remove
+          </button>
+          <div class="cart__content__product__data__price">$150</div>
+        </div>
+      </div>
+    </div>
+    <div class="cart__content__price-container">
+      <div class="cart__content__price-container__text">
+        <p class="cart__content__price-container__text__total">Total</p>
+        <div class="cart__content__price-container__text__price">
+          {{ totalPrica | currency }}
+        </div>
+      </div>
+      <button
+        class="cart__content__price-container__order-btn"
+        (click)="order()"
+      >
+        Order
+      </button>
+    </div>
+  </div>
+</div>

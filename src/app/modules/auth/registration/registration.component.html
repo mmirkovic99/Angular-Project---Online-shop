@@ -1,0 +1,90 @@
+<div class="registration-container">
+  <div class="registration-container__left">
+    <img
+      src="../../../../assets/registration.jpg"
+      class="registration-container__left__image"
+      alt=""
+    />
+    <div class="registration-container__left__wrapper"></div>
+    <a href="/auth/login" class="registration-container__left__text"
+      >Already have an account? Login</a
+    >
+  </div>
+  <div class="registration-container__right">
+    <div class="registration-container__right__title-container">
+      <div
+        class="heading-1 registration-container__right__title-container__title"
+      >
+        Welcome to Trendo
+      </div>
+      <p
+        class="label label--regular registration-container__right__title-container__text"
+      >
+        Create your account
+      </p>
+    </div>
+    <form class="registration-container__form">
+      <custom-input
+        label="Name"
+        type="text"
+        [control]="getControl('name')"
+        [error]="
+          !getControl('name').valid &&
+          (getControl('name').dirty || getControl('name').touched)
+        "
+      ></custom-input>
+      <custom-input
+        label="Surname"
+        type="text"
+        [control]="getControl('surname')"
+        [error]="
+          !getControl('surname').valid &&
+          (getControl('surname').dirty || getControl('surname').touched)
+        "
+      ></custom-input>
+      <custom-input
+        label="Email"
+        type="text"
+        [control]="getControl('email')"
+        [error]="
+          !getControl('email').valid &&
+          (getControl('email').dirty || getControl('email').touched)
+        "
+      ></custom-input>
+      <custom-input
+        label="Username"
+        type="text"
+        [control]="getControl('username')"
+        [error]="
+          !getControl('username').valid &&
+          (getControl('username').dirty || getControl('username').touched)
+        "
+      ></custom-input>
+      <custom-input
+        label="Password"
+        type="password"
+        [control]="getControl('password')"
+        [error]="
+          !getControl('password').valid &&
+          (getControl('password').dirty || getControl('password').touched)
+        "
+      ></custom-input>
+      <custom-input
+        label="Confirm password"
+        type="password"
+        [control]="getControl('confirmPassword')"
+        [error]="
+          !getControl('confirmPassword').valid &&
+          (getControl('confirmPassword').dirty ||
+            getControl('confirmPassword').touched)
+        "
+      ></custom-input>
+    </form>
+    <custom-button
+      [disabled]="!registrationForm.valid"
+      buttonText="Create account"
+      [buttonClass]="'btn--black btn--big'"
+      (onClick)="registration()"
+    ></custom-button>
+  </div>
+</div>

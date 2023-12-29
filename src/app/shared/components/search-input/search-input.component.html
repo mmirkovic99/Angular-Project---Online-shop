@@ -1,0 +1,25 @@
+<div class="search-input">
+  <form [formGroup]="searchForm" class="search-input__form">
+    <input
+      type="text"
+      formControlName="searchTerm"
+      class="search-input__form__input"
+      placeholder="Search..."
+    />
+  </form>
+  <div class="search-input__results" *ngIf="searchResults">
+    <div
+      *ngFor="let product of searchResults; let i = index"
+      class="search-input__result"
+      (click)="showProductPage(product.id)"
+    >
+      <img [src]="product.images[0]" class="search-input__result__img" />
+      <div class="search-input__result__data">
+        <div class="search-input__result__data__title">{{ product.title }}</div>
+        <div class="search-input__result__data__price">
+          {{ product.price | currency }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

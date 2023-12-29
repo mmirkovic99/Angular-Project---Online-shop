@@ -1,0 +1,20 @@
+<div class="page-not-found-container">
+  <img
+    src="../../../assets/error-404.png"
+    alt="Error 404 - Page not found"
+    class="page-not-found-container__img"
+  />
+  <div class="page-not-found-container__content">
+    <h1 class="heading-1 page-not-found-container__content__title">
+      I've bad news for you...
+    </h1>
+    <p class="label label--regular page-not-found-container__content__text">
+      We can't find the page you're looking for.
+    </p>
+    <custom-button
+      buttonText="Go back home"
+      [buttonClass]="'btn--blue'"
+      (onClick)="navigateHome()"
+    ></custom-button>
+  </div>
+</div>

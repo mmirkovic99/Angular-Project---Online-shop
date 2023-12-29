@@ -1,0 +1,172 @@
+.cart {
+  position: relative;
+  top: 12rem;
+  height: calc(100vh - 12rem);
+  display: flex;
+  justify-content: center;
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    background-color: rgb(249, 194, 194);
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    height: fit-content;
+    margin-top: 3rem;
+
+    &__text {
+      margin-left: 1rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #a10c0c;
+    }
+  }
+
+  &__content {
+    width: 75rem;
+
+    &__title {
+      padding: 2rem 2rem 0 2rem;
+      font-size: 3rem;
+      font-weight: 600;
+      &__number {
+        color: #a10c0c;
+      }
+    }
+
+    &__price-container {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__text {
+        display: flex;
+        font-size: 2rem;
+        font-weight: 500;
+
+        &__total {
+          opacity: 0.4;
+        }
+
+        &__price {
+          margin-left: 1rem;
+        }
+      }
+
+      &__order-btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 0.8rem;
+        padding: 1rem 0;
+        width: 20rem;
+        font-size: 1.6rem;
+        background-color: rgb(33, 33, 33);
+        color: white;
+        transition: opacity 0.5s ease;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &__wrapper {
+      padding: 2rem;
+      max-height: 45.5rem;
+      overflow-y: scroll;
+
+      & > *:not(:first-child) {
+        margin-top: 2rem;
+      }
+    }
+
+    &__product {
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      position: relative;
+      width: 100%;
+      border-radius: 0.8rem;
+      display: flex;
+      align-items: center;
+
+      &__image {
+        height: 20rem;
+        width: 20rem;
+        object-fit: cover;
+        border-radius: 0.8rem;
+      }
+
+      &__data {
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        &__company {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          &__logo {
+            height: 3rem;
+          }
+
+          &__name {
+            margin-left: 1rem;
+            font-size: 1.6rem;
+          }
+        }
+
+        &__header {
+          display: flex;
+        }
+
+        &__title {
+          font-size: 2rem;
+        }
+
+        &__type,
+        &__size {
+          font-size: 1.4rem;
+          opacity: 0.5;
+        }
+
+        &__id {
+          color: #a10c0c;
+          margin-right: 0.5rem;
+          font-size: 2rem;
+          font-weight: 500;
+        }
+
+        &__delete {
+          cursor: pointer;
+          margin-top: 1rem;
+          border: none;
+          border-radius: 0.8rem;
+          padding: 1rem 3rem;
+          font-weight: 600;
+          color: white;
+          background-color: #a10c0c;
+          transition: all 0.5s ease;
+
+          &:hover {
+            background-color: #710808;
+          }
+        }
+
+        &__price {
+          position: absolute;
+          background-color: black;
+          color: white;
+          border-radius: 0.8rem;
+          border-bottom-right-radius: 0;
+          right: 0;
+          top: 0;
+          font-size: 2.4rem;
+          padding: 1rem 2rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="profile">
+  <div class="heading-1">My Profile</div>
+  <form class="profile__form">
+    <custom-input
+      label="Name"
+      type="text"
+      [control]="getControl('name')"
+    ></custom-input>
+    <custom-input
+      label="Surname"
+      type="text"
+      [control]="getControl('surname')"
+    ></custom-input>
+    <custom-input
+      label="Email"
+      type="text"
+      [control]="getControl('email')"
+    ></custom-input>
+    <custom-input
+      label="Username"
+      type="text"
+      [control]="getControl('username')"
+    ></custom-input>
+  </form>
+  <custom-button
+    buttonText="Update"
+    [buttonClass]="'btn--black btn--big'"
+    (onClick)="updateData()"
+  ></custom-button>
+</div>

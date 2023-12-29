@@ -1,0 +1,19 @@
+<div class="product" (click)="navigateProduct(product.id)">
+  <div class="product__img-container">
+    <img
+      [src]="product.images[0]"
+      alt="Nike"
+      height="600px"
+      width="600px"
+      class="product__img-container__img"
+    />
+  </div>
+
+  <div class="product__data">
+    <div class="product__title">{{ product.title }}</div>
+    <div class="product__container">
+      <div class="product__container__type">Men's Shoes</div>
+    </div>
+    <div class="product__price">{{ product.price | currency }}</div>
+  </div>
+</div>

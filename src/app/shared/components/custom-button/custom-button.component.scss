@@ -1,0 +1,46 @@
+.btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 3rem;
+  border-radius: 0.8rem;
+
+  &--white {
+    background-color: white;
+    transition: all 0.5s ease;
+
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &--black {
+    background-color: black;
+    color: white;
+    transition: all 0.5s ease;
+
+    border: 1px solid black;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+
+  &--blue {
+    background-color: rgb(77, 133, 170);
+    color: white;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background-color: rgb(22, 61, 157);
+    }
+  }
+
+  &--big {
+    width: 32rem;
+  }
+}

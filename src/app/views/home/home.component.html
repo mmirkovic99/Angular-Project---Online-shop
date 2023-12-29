@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<main>
+  <!-- <section class="popular-products">
+    <app-product-carousel [products]="productList"></app-product-carousel>
+  </section> -->
+  <input
+    type="radio"
+    name="sort"
+    id="rb_men"
+    value="all"
+    (change)="selectSize($event)"
+  /><label for="rb_all">All</label>
+  <input
+    type="radio"
+    name="sort"
+    id="rb_men"
+    value="men"
+    (change)="selectSize($event)"
+  /><label for="rb_men">Men</label>
+  <input
+    type="radio"
+    name="sort"
+    id="rb_women"
+    value="women"
+    (change)="selectSize($event)"
+  /><label for="rb_women">Women</label>
+  <input
+    type="radio"
+    name="sort"
+    id="rb_kids"
+    value="kids"
+    (change)="selectSize($event)"
+  /><label for="rb_kids">Kids</label>
+  <app-product-card
+    *ngFor="let product of productList"
+    [product]="product"
+    #cards
+  ></app-product-card>
+  <button>Sort</button>
+</main>

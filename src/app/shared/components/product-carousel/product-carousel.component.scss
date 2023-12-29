@@ -1,0 +1,9 @@
+.product-carousel-wrapper {
+  overflow-x: hidden;
+  width: calc(100vw - 10rem);
+}
+
+.product-carousel {
+  display: flex;
+  transition: all 0.5s ease;
+}
