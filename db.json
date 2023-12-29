@@ -206,6 +206,14 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "name": "Stefan",
+      "surname": "Savic",
+      "email": "stefansavic@gmail.com",
+      "username": "ssavic",
+      "password": "Miki31071999!"
     }
   ],
   "products": [

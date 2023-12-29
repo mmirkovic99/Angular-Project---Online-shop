@@ -20,15 +20,16 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   id!: number;
   registrationForm!: FormGroup;
 
-  registrationSubscription!: Subscription;
-  idSubscription!: Subscription;
+  subscriptions: Subscription[];
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthorizationService,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    this.subscriptions = [];
+  }
 
   ngOnInit(): void {
     this.setId();
@@ -46,11 +47,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   registration() {
     const data = Object.assign({ id: this.id }, this.registrationForm.value);
     delete data.confirmPassword;
-    this.registrationSubscription = this.authService
-      .registration(data)
-      .subscribe(() => {
+    this.subscriptions.push(
+      this.authService.registration(data).subscribe(() => {
         this.router.navigate(['']);
-      });
+      })
+    );
   }
 
   private buildForm() {
@@ -74,13 +75,14 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   private setId() {
     // TO DO: Implement this in a better way
-    this.idSubscription = this.userService
-      .getAllUsers()
-      .subscribe((users: UserInterface[]) => (this.id = users.length + 1));
+    this.subscriptions.push(
+      this.userService
+        .getAllUsers()
+        .subscribe((users: UserInterface[]) => (this.id = users.length + 1))
+    );
   }
 
   private unsubscribe() {
-    this.registrationSubscription?.unsubscribe();
-    this.idSubscription.unsubscribe();
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
