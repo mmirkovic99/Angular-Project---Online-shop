@@ -3,13 +3,20 @@
   flex-shrink: 0;
   margin: 1rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  width: fit-content;
+  width: 40rem;
   transition: all 0.5s ease;
 
   &__img-container {
+    width: inherit;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #f6f6f6;
 
     &__img {
+      width: inherit;
+      height: inherit;
       object-fit: cover;
       transition: all 0.5s ease;
     }

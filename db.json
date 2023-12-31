@@ -19,9 +19,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "40"
-              ],
+              "sizes": ["40"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -38,9 +36,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "44.5"
-              ],
+              "sizes": ["44.5"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -63,9 +59,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "45"
-              ],
+              "sizes": ["45"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-1.jpg",
@@ -88,9 +82,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "44.5"
-              ],
+              "sizes": ["44.5"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -113,9 +105,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "45"
-              ],
+              "sizes": ["45"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -138,9 +128,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "45"
-              ],
+              "sizes": ["45"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-blue-1.jpg",
@@ -163,9 +151,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "40"
-              ],
+              "sizes": ["40"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -187,16 +173,7 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [
-            40,
-            41,
-            41.5,
-            42,
-            43,
-            44.5,
-            45.5,
-            46
-          ],
+          "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
           "price": 150,
           "images": [
             "../../../../assets/nike-black-white-orange-1.jpg",
@@ -227,16 +204,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40.5,
-        41,
-        42,
-        43,
-        43.5,
-        44,
-        44.5,
-        45
-      ],
+      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-1.jpg",
@@ -253,16 +221,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40,
-        41,
-        41.5,
-        42,
-        43,
-        44.5,
-        45.5,
-        46
-      ],
+      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-orange-1.jpg",
@@ -279,16 +238,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40.5,
-        41,
-        42.5,
-        43,
-        44.5,
-        45,
-        46.5
-      ],
+      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-blue-1.jpg",
@@ -301,21 +251,182 @@
       "id": 4,
       "companyLogo": "../../../../assets/nike-logo.png",
       "companyName": "Nike",
-      "title": "Nike Air Force 1 07",
+      "title": "Nike Air Force 1 '07",
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40.5,
-        41,
-        42.5,
-        43,
-        44.5,
-        45,
-        46.5
-      ],
-      "price": 110,
+      "sizes": [36, 36.5, 37, 37.5, 38, 38.5, 39, 40],
+      "price": 115,
+      "images": [
+        "../../../../assets/nike-air-force-1-07-1.jpg",
+        "../../../../assets/nike-air-force-1-07-2.jpg",
+        "../../../../assets/nike-air-force-1-07-3.jpg",
+        "../../../../assets/nike-air-force-1-07-4.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "companyLogo": "../../../../assets/nike-logo.png",
+      "companyName": "Nike",
+      "title": "Nike Air Max 90",
+      "type": 0,
+      "tag": "Popular",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 130,
+      "images": [
+        "../../../../assets/Nike-Air-Max-90-dark-blue-1.jpg",
+        "../../../../assets/Nike-Air-Max-90-dark-blue-2.jpg",
+        "../../../../assets/Nike-Air-Max-90-dark-blue-3.jpg",
+        "../../../../assets/Nike-Air-Max-90-dark-blue-4.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas 4DFWD 2",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-4DFWD-2-black-1.jpg",
+        "../../../../assets/adidas-4DFWD-2-black-2.jpg",
+        "../../../../assets/adidas-4DFWD-2-black-3.jpg",
+        "../../../../assets/adidas-4DFWD-2-black-4.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas 4DFWD 2",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-4DFWD-2-lightblue-white-1.jpg",
+        "../../../../assets/adidas-4DFWD-2-lightblue-white-2.jpg",
+        "../../../../assets/adidas-4DFWD-2-lightblue-white-3.jpg",
+        "../../../../assets/adidas-4DFWD-2-lightblue-white-4.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas 4DFWD 2",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-4DFWD-2-orange-white-1.jpg",
+        "../../../../assets/adidas-4DFWD-2-orange-white-2.jpg",
+        "../../../../assets/adidas-4DFWD-2-orange-white-3.jpg",
+        "../../../../assets/adidas-4DFWD-2-orange-white-4.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas AVRYN",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-AVRYN-black-1.jpg",
+        "../../../../assets/adidas-AVRYN-black-2.jpg",
+        "../../../../assets/adidas-AVRYN-black-3.jpg",
+        "../../../../assets/adidas-AVRYN-black-4.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas AVRYN",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-AVRYN-green-1.jpg",
+        "../../../../assets/adidas-AVRYN-green-2.jpg",
+        "../../../../assets/adidas-AVRYN-green-3.jpg",
+        "../../../../assets/adidas-AVRYN-green-4.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas Supernova Rise",
+      "type": 1,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-supernova-rise-1.jpg",
+        "../../../../assets/adidas-supernova-rise-2.jpg",
+        "../../../../assets/adidas-supernova-rise-3.jpg",
+        "../../../../assets/adidas-supernova-rise-4.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas Terrex Soulstride",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-terrex-soulstride-1.jpg",
+        "../../../../assets/adidas-terrex-soulstride-2.jpg",
+        "../../../../assets/adidas-terrex-soulstride-3.jpg",
+        "../../../../assets/adidas-terrex-soulstride-4.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas Ultraboost Light",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
+      "images": [
+        "../../../../assets/adidas-ultraboost-light-1.jpg",
+        "../../../../assets/adidas-ultraboost-light-2.jpg",
+        "../../../../assets/adidas-ultraboost-light-3.jpg",
+        "../../../../assets/adidas-ultraboost-light-4.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "companyLogo": "../../../../assets/adidas-logo.png",
+      "companyName": "Adidas",
+      "title": "Adidas Ultraboost Light",
+      "type": 0,
+      "tag": "New",
+      "rating": 4,
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "price": 160,
       "images": [
         "../../../../assets/nike-black-white-blue-1.jpg",
         "../../../../assets/nike-black-white-blue-2.jpg",

@@ -1,10 +1,10 @@
 <app-header></app-header>
 
 <main>
-  <!-- <section class="popular-products">
+  <section class="popular-products">
     <app-product-carousel [products]="productList"></app-product-carousel>
-  </section> -->
-  <input
+  </section>
+  <!-- <input
     type="radio"
     name="sort"
     id="rb_men"
@@ -32,10 +32,12 @@
     value="kids"
     (change)="selectSize($event)"
   /><label for="rb_kids">Kids</label>
-  <app-product-card
-    *ngFor="let product of productList"
-    [product]="product"
-    #cards
-  ></app-product-card>
-  <button>Sort</button>
+  <div class="home__all-products">
+    <app-product-card
+      *ngFor="let product of productList"
+      [product]="product"
+      #cards
+    ></app-product-card>
+  </div>
+  <button>Sort</button> -->
 </main>
