@@ -19,7 +19,6 @@ export class ProductCarouselComponent implements OnInit {
   private counter: number = 0;
   @Input() products!: any[];
   @ViewChild('slider', { static: false }) slider!: ElementRef;
-  @ViewChild('left', { static: false }) left!: ElementRef;
   @ViewChildren(ProductCardComponent) cards!: QueryList<ProductCardComponent>;
 
   disabledButtons: boolean[] = [false, true];
