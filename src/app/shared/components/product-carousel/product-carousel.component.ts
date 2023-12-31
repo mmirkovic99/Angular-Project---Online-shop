@@ -16,7 +16,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 })
 export class ProductCarouselComponent implements OnInit {
   private cardWidth!: number;
-  counter: number = 0;
+  private counter: number = 0;
   @Input() products!: any[];
   @ViewChild('slider', { static: false }) slider!: ElementRef;
   @ViewChild('left', { static: false }) left!: ElementRef;
