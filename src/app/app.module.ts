@@ -19,6 +19,7 @@ import { CartComponent } from './views/cart/cart.component';
 import { UserEffects } from './store/effects/userEffects';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProfileComponent } from './views/profile/profile.component';
       autoPause: true,
     }),
     EffectsModule.forRoot([UserEffects]),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

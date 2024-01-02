@@ -1,5 +1,66 @@
 .popular-products {
   padding: 10rem;
-  display: flex;
-  position: relative;
+}
+
+.filter-box {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5.5rem 1rem 3rem;
+  }
+
+  & > *:last-child {
+    display: flex;
+  }
+
+  &__form {
+    padding: 3rem;
+    position: sticky;
+    top: 12rem;
+    left: 0;
+    height: calc(100vh - 12rem);
+    width: fit-content;
+
+    &__field {
+      width: 16rem;
+      margin: 0.5rem;
+
+      &__checkbox {
+        display: none;
+      }
+
+      &__label {
+        cursor: pointer;
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.177);
+
+        &--company {
+          justify-content: flex-start;
+        }
+
+        &__image {
+          height: 2rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      &__checkbox:checked + &__label {
+        border: 2px solid black;
+      }
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5rem;
+  }
 }

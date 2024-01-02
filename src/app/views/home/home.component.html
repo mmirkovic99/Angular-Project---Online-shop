@@ -2,42 +2,112 @@
 
 <main>
   <section class="popular-products">
-    <app-product-carousel [products]="productList"></app-product-carousel>
+    <app-product-carousel [products]="popularProducts"></app-product-carousel>
   </section>
-  <!-- <input
-    type="radio"
-    name="sort"
-    id="rb_men"
-    value="all"
-    (change)="selectSize($event)"
-  /><label for="rb_all">All</label>
-  <input
-    type="radio"
-    name="sort"
-    id="rb_men"
-    value="men"
-    (change)="selectSize($event)"
-  /><label for="rb_men">Men</label>
-  <input
-    type="radio"
-    name="sort"
-    id="rb_women"
-    value="women"
-    (change)="selectSize($event)"
-  /><label for="rb_women">Women</label>
-  <input
-    type="radio"
-    name="sort"
-    id="rb_kids"
-    value="kids"
-    (change)="selectSize($event)"
-  /><label for="rb_kids">Kids</label>
-  <div class="home__all-products">
-    <app-product-card
-      *ngFor="let product of productList"
-      [product]="product"
-      #cards
-    ></app-product-card>
-  </div>
-  <button>Sort</button> -->
+  <section class="filter-box">
+    <div class="filter-box__header">
+      <h1 class="heading-1 heading-1--bold" *ngIf="productList">
+        Products({{ productList.length }})
+      </h1>
+      <div class="filter-box__header__sorting">
+        <custom-select
+          [options]="sortingOptions"
+          [selectedOption]="selectedOption"
+          (optionSelected)="onSelectOption($event)"
+        ></custom-select>
+      </div>
+    </div>
+    <div class="filter-box__content">
+      <form class="filter-box__form" [formGroup]="filterForm">
+        <form class="filter-box__form__type" [formGroup]="getFormGroup('type')">
+          <h2 class="heading-2">Type</h2>
+          <div class="filter-box__form__field">
+            <input
+              type="checkbox"
+              class="filter-box__form__field__checkbox"
+              [formControl]="getFormControl(getFormGroup('type'), 'man')"
+              id="cb_man"
+            />
+            <label for="cb_man" class="filter-box__form__field__label"
+              >Man</label
+            >
+          </div>
+          <div class="filter-box__form__field">
+            <input
+              type="checkbox"
+              class="filter-box__form__field__checkbox"
+              [formControl]="getFormControl(getFormGroup('type'), 'women')"
+              id="cb_women"
+            />
+            <label for="cb_women" class="filter-box__form__field__label"
+              >Women</label
+            >
+          </div>
+          <div class="filter-box__form__field">
+            <input
+              type="checkbox"
+              class="filter-box__form__field__checkbox"
+              [formControl]="getFormControl(getFormGroup('type'), 'kid')"
+              id="cb_kid"
+            />
+            <label for="cb_kid" class="filter-box__form__field__label"
+              >Kid</label
+            >
+          </div>
+        </form>
+        <form
+          class="filter-box__form__comapnies"
+          [formGroup]="getFormGroup('company')"
+        >
+          <h2 class="heading-2">Company</h2>
+          <div class="filter-box__form__field">
+            <input
+              type="checkbox"
+              class="filter-box__form__field__checkbox"
+              [formControl]="getFormControl(getFormGroup('company'), 'nike')"
+              id="cb_nike"
+            />
+
+            <label
+              for="cb_nike"
+              class="filter-box__form__field__label filter-box__form__field__label--company"
+            >
+              <img
+                src="../../../assets/nike-logo.png"
+                alt="Nike Logo"
+                class="filter-box__form__field__label__image"
+              />
+              Nike
+            </label>
+          </div>
+          <div class="filter-box__form__field">
+            <input
+              type="checkbox"
+              class="filter-box__form__field__checkbox"
+              [formControl]="getFormControl(getFormGroup('company'), 'adidas')"
+              id="cb_adidas"
+            />
+            <label
+              for="cb_adidas"
+              class="filter-box__form__field__label filter-box__form__field__label--company"
+            >
+              <img
+                src="../../../assets/adidas-logo.png"
+                alt="Adidas Logo"
+                class="filter-box__form__field__label__image"
+              />
+              Adidas
+            </label>
+          </div>
+        </form>
+      </form>
+      <div class="filter-box__products">
+        <app-product-card
+          *ngFor="let product of productList"
+          [product]="product"
+          #cards
+        ></app-product-card>
+      </div>
+    </div>
+  </section>
 </main>

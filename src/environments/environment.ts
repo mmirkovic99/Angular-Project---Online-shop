@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
+  sortingOptions: ['The Highest Price', 'The Lowest Price', 'Name', 'Rating'],
 };
 
 /*

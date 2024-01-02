@@ -13,6 +13,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { CartButtonComponent } from './components/cart-button/cart-button.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { ProfileButtonComponent } from './components/profile-button/profile-button.component';
+import { CustomSelectComponent } from './components/custom-select/custom-select.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProfileButtonComponent } from './components/profile-button/profile-butt
     CartButtonComponent,
     FavoriteButtonComponent,
     ProfileButtonComponent,
+    CustomSelectComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -43,6 +45,7 @@ import { ProfileButtonComponent } from './components/profile-button/profile-butt
     CartButtonComponent,
     FavoriteButtonComponent,
     ProfileButtonComponent,
+    CustomSelectComponent,
   ],
 })
 export class SharedModule {}

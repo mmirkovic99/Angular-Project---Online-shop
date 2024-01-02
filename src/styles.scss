@@ -9,7 +9,10 @@
 html {
   font-family: "Poppins", sans-serif;
   font-size: 62.5%;
-  // overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
 }
 
 .heading-1 {
@@ -22,6 +25,10 @@ html {
   &__number {
     color: #a10c0c;
   }
+}
+
+.heading-2 {
+  font-size: 2rem;
 }
 
 .label {

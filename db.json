@@ -401,7 +401,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": 13,
       "companyLogo": "../../../../assets/adidas-logo.png",
       "companyName": "Adidas",
       "title": "Adidas Ultraboost Light",
@@ -416,23 +416,18 @@
         "../../../../assets/adidas-ultraboost-light-3.jpg",
         "../../../../assets/adidas-ultraboost-light-4.jpg"
       ]
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "Nike",
+      "imagePath": "../../../../assets/nike-logo.png"
     },
     {
-      "id": 13,
-      "companyLogo": "../../../../assets/adidas-logo.png",
-      "companyName": "Adidas",
-      "title": "Adidas Ultraboost Light",
-      "type": 0,
-      "tag": "New",
-      "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
-      "price": 160,
-      "images": [
-        "../../../../assets/nike-black-white-blue-1.jpg",
-        "../../../../assets/nike-black-white-blue-2.jpg",
-        "../../../../assets/nike-black-white-blue-3.jpg",
-        "../../../../assets/nike-black-white-blue-4.jpg"
-      ]
+      "id": 2,
+      "name": "Adidas",
+      "imagePath": "../../../../assets/adidas-logo.png"
     }
   ]
 }

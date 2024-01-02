@@ -50,8 +50,8 @@ export class SearchInputComponent implements OnInit, OnDestroy {
         map((data: any) => data.searchTerm.trim()),
         distinctUntilChanged((prev, curr) => prev === curr),
         debounceTime(1000),
-        switchMap((data: any) => {
-          return this.productService.searchProducts(data.searchTerm);
+        switchMap((title: string) => {
+          return this.productService.getProductByTitle(title);
         })
       )
       .subscribe((searchResults: ProductInterface[]) => {
