@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, from, of } from 'rxjs';
 import { ProductInterface } from '../models/product.interface';
-import { environment } from 'src/environments/environment';
 import { concatMap, mergeMap, reduce, toArray } from 'rxjs/operators';
+import { API_BASE_URL, API_ENDPOINTS } from '../constants/app.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +16,18 @@ export class ProductService {
     parameter: string | number
   ): Observable<ProductInterface[]> {
     const params = new HttpParams().set(parameterName, parameter);
-    return this.http.get<ProductInterface[]>(`${environment.apiUrl}/products`, {
-      params,
-    });
+    return this.http.get<ProductInterface[]>(
+      `${API_BASE_URL}${API_ENDPOINTS.PRODUCTS}`,
+      {
+        params,
+      }
+    );
   }
 
   getProducts(): Observable<ProductInterface[]> {
-    return this.http.get<ProductInterface[]>(`${environment.apiUrl}/products`);
+    return this.http.get<ProductInterface[]>(
+      `${API_BASE_URL}${API_ENDPOINTS.PRODUCTS}`
+    );
   }
 
   getProductById(id: number): Observable<ProductInterface[]> {

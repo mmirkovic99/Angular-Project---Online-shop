@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Mire",
+      "name": "Miroslav",
       "surname": "Mirkovic",
       "email": "miroslav.mirkovic@outlook.com",
       "username": "mmirkovic",
@@ -19,7 +19,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["40"],
+              "sizes": [
+                "40"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -29,29 +31,6 @@
               ]
             },
             {
-              "id": 3,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["44.5"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-blue-1.jpg",
-                "../../../../assets/nike-black-white-blue-2.jpg",
-                "../../../../assets/nike-black-white-blue-3.jpg",
-                "../../../../assets/nike-black-white-blue-4.jpg"
-              ]
-            }
-          ],
-          "totalPrice": 300
-        },
-        {
-          "id": 2,
-          "products": [
-            {
               "id": 1,
               "companyLogo": "../../../../assets/nike-logo.png",
               "companyName": "Nike",
@@ -59,7 +38,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["45"],
+              "sizes": [
+                "43.5"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-1.jpg",
@@ -69,79 +50,10 @@
               ]
             }
           ],
-          "totalPrice": 150
+          "totalPrice": 300
         },
         {
-          "id": 3,
-          "products": [
-            {
-              "id": 3,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["44.5"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-blue-1.jpg",
-                "../../../../assets/nike-black-white-blue-2.jpg",
-                "../../../../assets/nike-black-white-blue-3.jpg",
-                "../../../../assets/nike-black-white-blue-4.jpg"
-              ]
-            }
-          ],
-          "totalPrice": 150
-        },
-        {
-          "id": 4,
-          "products": [
-            {
-              "id": 3,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["45"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-blue-1.jpg",
-                "../../../../assets/nike-black-white-blue-2.jpg",
-                "../../../../assets/nike-black-white-blue-3.jpg",
-                "../../../../assets/nike-black-white-blue-4.jpg"
-              ]
-            }
-          ],
-          "totalPrice": 150
-        },
-        {
-          "id": 5,
-          "products": [
-            {
-              "id": 3,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["45"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-blue-1.jpg",
-                "../../../../assets/nike-black-white-blue-2.jpg",
-                "../../../../assets/nike-black-white-blue-3.jpg",
-                "../../../../assets/nike-black-white-blue-4.jpg"
-              ]
-            }
-          ],
-          "totalPrice": 150
-        },
-        {
-          "id": 6,
+          "id": 2,
           "products": [
             {
               "id": 2,
@@ -151,7 +63,9 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": ["40"],
+              "sizes": [
+                "40"
+              ],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -173,7 +87,16 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+          "sizes": [
+            40,
+            41,
+            41.5,
+            42,
+            43,
+            44.5,
+            45.5,
+            46
+          ],
           "price": 150,
           "images": [
             "../../../../assets/nike-black-white-orange-1.jpg",
@@ -204,7 +127,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
+      "sizes": [
+        40.5,
+        41,
+        42,
+        43,
+        43.5,
+        44,
+        44.5,
+        45
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-1.jpg",
@@ -221,7 +153,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+      "sizes": [
+        40,
+        41,
+        41.5,
+        42,
+        43,
+        44.5,
+        45.5,
+        46
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-orange-1.jpg",
@@ -238,7 +179,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
+      "sizes": [
+        39,
+        40.5,
+        41,
+        42.5,
+        43,
+        44.5,
+        45,
+        46.5
+      ],
       "price": 150,
       "images": [
         "../../../../assets/nike-black-white-blue-1.jpg",
@@ -255,7 +205,16 @@
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [36, 36.5, 37, 37.5, 38, 38.5, 39, 40],
+      "sizes": [
+        36,
+        36.5,
+        37,
+        37.5,
+        38,
+        38.5,
+        39,
+        40
+      ],
       "price": 115,
       "images": [
         "../../../../assets/nike-air-force-1-07-1.jpg",
@@ -272,7 +231,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 130,
       "images": [
         "../../../../assets/Nike-Air-Max-90-dark-blue-1.jpg",
@@ -289,7 +257,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-4DFWD-2-black-1.jpg",
@@ -306,7 +283,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-4DFWD-2-lightblue-white-1.jpg",
@@ -323,7 +309,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-4DFWD-2-orange-white-1.jpg",
@@ -340,7 +335,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-AVRYN-black-1.jpg",
@@ -357,7 +361,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-AVRYN-green-1.jpg",
@@ -374,7 +387,16 @@
       "type": 1,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-supernova-rise-1.jpg",
@@ -391,7 +413,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-terrex-soulstride-1.jpg",
@@ -408,7 +439,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "price": 160,
       "images": [
         "../../../../assets/adidas-ultraboost-light-1.jpg",
