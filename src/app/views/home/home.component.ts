@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Subscription, of } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CompanyInterface } from 'src/app/models/company.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
@@ -89,12 +89,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  private getAllCompanies() {
-    return this.companyService
-      .getCompanies()
-      .subscribe(
-        (companies: CompanyInterface[]) => (this.companies = companies)
-      );
+  private getAllCompanies(): Subscription {
+    return this.companyService.getCompanies().subscribe(
+      (companies: CompanyInterface[]) => (this.companies = companies),
+      (error) => console.error(error)
+    );
   }
 
   private trackChangesForFilterForm(form: FormGroup): Subscription {
@@ -140,15 +139,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
   }
 
-  private getSelectedCompanies(data: {
-    [key: string]: boolean;
-  }): Array<string> {
+  private getSelectedCompanies(data: { [key: string]: boolean }): string[] {
     return Object.keys(data)
       .filter((key) => data[key])
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1));
   }
 
-  private getSelectedTypes(data: { [key: string]: boolean }): Array<number> {
+  private getSelectedTypes(data: { [key: string]: boolean }): number[] {
     function convertType(type: string): Type {
       switch (type) {
         case 'man':
@@ -174,14 +171,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private getPopularProducts(): Subscription {
-    return this.productsService
-      .getProductByTag('Popular')
-      .subscribe(
-        (products: ProductInterface[]) => (this.popularProducts = products)
-      );
+    return this.productsService.getProductByTag('Popular').subscribe(
+      (products: ProductInterface[]) => (this.popularProducts = products),
+      (error) => console.error(error)
+    );
   }
 
-  private sortProducts(option: string, products: ProductInterface[]) {
+  private sortProducts(
+    option: string,
+    products: ProductInterface[]
+  ): ProductInterface[] {
     // This funciton is unnecessary ... :)
     const convertOption = (option: string): SortingOptions => {
       switch (option) {
@@ -214,7 +213,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     return products.slice().sort(sortFunction);
   }
 
-  private unsubscribe() {
+  private unsubscribe(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
