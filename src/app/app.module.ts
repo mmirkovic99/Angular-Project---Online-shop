@@ -13,7 +13,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
 import { reducer } from './store/reducer';
 import { CartComponent } from './views/cart/cart.component';
 import { UserEffects } from './store/effects/userEffects';

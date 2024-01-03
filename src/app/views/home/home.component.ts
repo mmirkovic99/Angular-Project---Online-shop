@@ -182,7 +182,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private sortProducts(option: string, products: ProductInterface[]) {
-    function convertOption(option: string): SortingOptions {
+    // This funciton is unnecessary ... :)
+    const convertOption = (option: string): SortingOptions => {
       switch (option) {
         case 'Name':
           return SortingOptions.NAME;
@@ -193,31 +194,24 @@ export class HomeComponent implements OnInit, OnDestroy {
         default:
           return SortingOptions.PRICEASC;
       }
-    }
-    const sortByName = (products: ProductInterface[]): ProductInterface[] =>
-      products.slice().sort((a, b) => a.title.localeCompare(b.title));
-
-    const sortByRating = (products: ProductInterface[]): ProductInterface[] =>
-      products.slice().sort((a, b) => b.rating - a.rating);
-
-    const sortByPriceDESC = (
-      products: ProductInterface[]
-    ): ProductInterface[] => products.slice().sort((a, b) => b.price - a.price);
-
-    const sortByPriceASC = (products: ProductInterface[]): ProductInterface[] =>
-      products.slice().sort((a, b) => a.price - b.price);
+    };
 
     const sortingOption: SortingOptions = convertOption(option);
-    switch (sortingOption) {
-      case SortingOptions.NAME:
-        return sortByName(products);
-      case SortingOptions.RATING:
-        return sortByRating(products);
-      case SortingOptions.PRICEASC:
-        return sortByPriceASC(products);
-      default:
-        return sortByPriceDESC(products);
-    }
+
+    const sortFunction = (a: ProductInterface, b: ProductInterface): number => {
+      switch (sortingOption) {
+        case SortingOptions.NAME:
+          return a.title.localeCompare(b.title);
+        case SortingOptions.RATING:
+          return b.rating - a.rating;
+        case SortingOptions.PRICEASC:
+          return a.price - b.price;
+        default:
+          return b.price - a.price;
+      }
+    };
+
+    return products.slice().sort(sortFunction);
   }
 
   private unsubscribe() {

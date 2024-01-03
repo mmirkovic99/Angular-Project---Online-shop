@@ -59,7 +59,7 @@
           class="filter-box__form__comapnies"
           [formGroup]="getFormGroup('company')"
         >
-          <h2 class="heading-2">Company</h2>
+          <h2 class="heading-2">Brand</h2>
           <div class="filter-box__form__field">
             <input
               type="checkbox"
@@ -101,19 +101,23 @@
           </div>
         </form>
       </form>
-      <div class="filter-box__products">
-        <app-product-card
-          *ngFor="
-            let product of productList
-              | paginate
-                : { itemsPerPage: itemsPerPage, currentPage: currentPage }
-          "
-          [product]="product"
-          #cards
-        ></app-product-card>
-        <pagination-controls
-          (pageChange)="currentPage = $event"
-        ></pagination-controls>
+      <div class="filter-box__wrapper">
+        <div class="filter-box__products">
+          <app-product-card
+            *ngFor="
+              let product of productList
+                | paginate
+                  : { itemsPerPage: itemsPerPage, currentPage: currentPage }
+            "
+            [product]="product"
+            #cards
+          ></app-product-card>
+        </div>
+        <div class="filter-box__pagination">
+          <pagination-controls
+            (pageChange)="currentPage = $event"
+          ></pagination-controls>
+        </div>
       </div>
     </div>
   </section>
