@@ -69,7 +69,10 @@ export class ProductService {
     );
   }
 
-  getFilteredProductsMix(companies: string[], types: number[]) {
+  getFilteredProductsMix(
+    companies: string[],
+    types: number[]
+  ): Observable<ProductInterface[]> {
     const observables: Observable<ProductInterface[]>[] = [
       this.getFilteredProducts('companyName', companies),
       this.getFilteredProducts('type', types),
