@@ -41,6 +41,10 @@ export class ProductService {
     return this.sendGetRequestWithParameter('companyName', companyName);
   }
 
+  getProductByTag(tag: string): Observable<ProductInterface[]> {
+    return this.sendGetRequestWithParameter('tag', tag);
+  }
+
   getFilteredProducts(
     paramName: string,
     values: string[] | number[]

@@ -20,6 +20,7 @@ import { UserEffects } from './store/effects/userEffects';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     }),
     EffectsModule.forRoot([UserEffects]),
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

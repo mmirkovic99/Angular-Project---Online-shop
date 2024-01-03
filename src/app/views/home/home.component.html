@@ -103,10 +103,17 @@
       </form>
       <div class="filter-box__products">
         <app-product-card
-          *ngFor="let product of productList"
+          *ngFor="
+            let product of productList
+              | paginate
+                : { itemsPerPage: itemsPerPage, currentPage: currentPage }
+          "
           [product]="product"
           #cards
         ></app-product-card>
+        <pagination-controls
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
       </div>
     </div>
   </section>

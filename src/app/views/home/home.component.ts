@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   popularProducts!: ProductInterface[];
   filterForm!: FormGroup;
 
+  currentPage: number = 0;
+  itemsPerPage: number = 12;
+
   private subscriptions: Subscription[];
 
   constructor(
@@ -49,6 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.filterForm = this.buildFilterForm();
     this.subscriptions.push(
       this.getAllCompanies(),
+      this.getPopularProducts(),
       this.getAllProducts(),
       this.trackChangesForFilterForm(this.filterForm)
     );
@@ -164,18 +168,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.productsService.getProducts().subscribe(
       (products: ProductInterface[]) => {
         this.productList = products;
-        this.popularProducts = this.getPopularProducts(this.productList);
       },
       (error) => console.error(error)
     );
   }
 
-  private getPopularProducts(
-    products: Array<ProductInterface>
-  ): Array<ProductInterface> {
-    return products.filter(
-      (product: ProductInterface) => product.tag === 'Popular'
-    );
+  private getPopularProducts(): Subscription {
+    return this.productsService
+      .getProductByTag('Popular')
+      .subscribe(
+        (products: ProductInterface[]) => (this.popularProducts = products)
+      );
   }
 
   private sortProducts(option: string, products: ProductInterface[]) {
