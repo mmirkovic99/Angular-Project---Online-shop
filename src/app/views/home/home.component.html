@@ -106,6 +106,7 @@
           <app-product-card
             *ngFor="
               let product of productList
+                | sort : selectedOption
                 | paginate
                   : { itemsPerPage: itemsPerPage, currentPage: currentPage }
             "

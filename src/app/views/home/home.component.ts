@@ -77,7 +77,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onSelectOption(option: string) {
     this.selectedOption = option;
-    this.productList = this.sortProducts(this.selectedOption, this.productList);
   }
 
   private buildFilterForm(): FormGroup {
@@ -161,10 +160,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (products: ProductInterface[]) => {
-          this.productList =
-            this.selectedOption === 'None'
-              ? products
-              : this.sortProducts(this.selectedOption, products);
+          this.productList = products;
         },
         (error) => console.error(error)
       );
@@ -206,42 +202,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       (products: ProductInterface[]) => (this.popularProducts = products),
       (error) => console.error(error)
     );
-  }
-
-  private sortProducts(
-    option: string,
-    products: ProductInterface[]
-  ): ProductInterface[] {
-    // This funciton is unnecessary ... :)
-    const convertOption = (option: string): SortingOptions => {
-      switch (option) {
-        case 'Name':
-          return SortingOptions.NAME;
-        case 'Rating':
-          return SortingOptions.RATING;
-        case 'The Highest Price':
-          return SortingOptions.PRICEDESC;
-        default:
-          return SortingOptions.PRICEASC;
-      }
-    };
-
-    const sortingOption: SortingOptions = convertOption(option);
-
-    const sortFunction = (a: ProductInterface, b: ProductInterface): number => {
-      switch (sortingOption) {
-        case SortingOptions.NAME:
-          return a.title.localeCompare(b.title);
-        case SortingOptions.RATING:
-          return b.rating - a.rating;
-        case SortingOptions.PRICEASC:
-          return a.price - b.price;
-        default:
-          return b.price - a.price;
-      }
-    };
-
-    return products.slice().sort(sortFunction);
   }
 
   private unsubscribe(): void {

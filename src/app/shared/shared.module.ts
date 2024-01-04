@@ -17,6 +17,7 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
 import { TagPipe } from '../pipes/tag.pipe';
 import { SalePipe } from '../pipes/sale.pipe';
 import { DiscountPipe } from '../pipes/discount.pipe';
+import { SortPipe } from '../pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DiscountPipe } from '../pipes/discount.pipe';
     TagPipe,
     SalePipe,
     DiscountPipe,
+    SortPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -55,6 +57,7 @@ import { DiscountPipe } from '../pipes/discount.pipe';
     TagPipe,
     SalePipe,
     DiscountPipe,
+    SortPipe,
   ],
 })
 export class SharedModule {}
