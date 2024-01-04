@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         distinctUntilChanged((prev, curr) => {
           return areFormsEqual(prev, curr);
         }),
-        mergeMap((filters) => {
+        switchMap((filters) => {
           const selectedCompanies: string[] = this.getSelectedCompanies(
             filters.company
           );
