@@ -16,6 +16,7 @@ import { ProfileButtonComponent } from './components/profile-button/profile-butt
 import { CustomSelectComponent } from './components/custom-select/custom-select.component';
 import { TagPipe } from '../pipes/tag.pipe';
 import { SalePipe } from '../pipes/sale.pipe';
+import { DiscountPipe } from '../pipes/discount.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SalePipe } from '../pipes/sale.pipe';
     CustomSelectComponent,
     TagPipe,
     SalePipe,
+    DiscountPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -52,6 +54,7 @@ import { SalePipe } from '../pipes/sale.pipe';
     CustomSelectComponent,
     TagPipe,
     SalePipe,
+    DiscountPipe,
   ],
 })
 export class SharedModule {}

@@ -23,6 +23,10 @@
     }
   }
 
+  &:hover > &__img-container > * {
+    transform: scale(0.8);
+  }
+
   &__data {
     padding: 2rem;
   }
@@ -66,19 +70,27 @@
     }
   }
 
-  &:hover > &__img-container > * {
-    transform: scale(0.8);
-  }
-
+  &__discount,
   &__tag {
     position: absolute;
     top: 1rem;
-    left: 2rem;
     padding: 1rem 2rem;
+    border-radius: 0.8rem;
+  }
+
+  &__discount {
+    right: 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: rgb(186, 41, 41);
+    color: white;
+  }
+
+  &__tag {
+    left: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.8rem;
 
     &__icon {
       margin-right: 1rem;

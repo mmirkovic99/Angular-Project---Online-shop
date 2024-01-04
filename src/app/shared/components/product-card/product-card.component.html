@@ -101,4 +101,7 @@
     <div class="product__price__old">{{ product.oldPrice | currency }}</div>
     <div class="product__price__new">{{ product.price | currency }}</div>
   </div>
+  <div class="product__discount">
+    {{ product.oldPrice | discount : product.price }}
+  </div>
 </ng-template>
