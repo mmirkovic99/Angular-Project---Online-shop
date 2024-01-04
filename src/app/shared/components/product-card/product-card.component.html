@@ -12,7 +12,9 @@
     <div class="product__container">
       <div class="product__container__type">Men's Shoes</div>
     </div>
-    <div class="product__price">{{ product.price | currency }}</div>
+    <ng-container
+      *ngIf="!(product.tag | sale); then normalPrice; else salePrice"
+    ></ng-container>
     <div class="product__tag" [ngClass]="product.tag | tagType">
       <ng-container [ngSwitch]="product.tag">
         <svg
@@ -87,3 +89,16 @@
     </div>
   </div>
 </div>
+
+<ng-template #normalPrice>
+  <div class="product__price">
+    {{ product.price | currency }}
+  </div>
+</ng-template>
+
+<ng-template #salePrice>
+  <div class="product__price">
+    <div class="product__price__old">{{ product.oldPrice | currency }}</div>
+    <div class="product__price__new">{{ product.price | currency }}</div>
+  </div>
+</ng-template>

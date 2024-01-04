@@ -50,6 +50,20 @@
     padding-top: 2rem;
     font-size: 2rem;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    &__old {
+      font-size: 1.2rem;
+      text-decoration: line-through;
+      opacity: 0.3;
+    }
+
+    &__new {
+      margin-left: 1rem;
+      color: rgb(11, 149, 103);
+      font-weight: 600;
+    }
   }
 
   &:hover > &__img-container > * {
