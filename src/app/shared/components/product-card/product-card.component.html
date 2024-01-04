@@ -1,10 +1,9 @@
-<div class="product" #productElement>
+<div class="product" (click)="navigateProduct(product.id)" #productElement>
   <div class="product__img-container">
     <img
       [src]="product.images[0]"
       alt="Nike"
       class="product__img-container__img"
-      (click)="navigateProduct(product.id)"
     />
   </div>
 
