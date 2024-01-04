@@ -14,6 +14,7 @@ import { CartButtonComponent } from './components/cart-button/cart-button.compon
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { ProfileButtonComponent } from './components/profile-button/profile-button.component';
 import { CustomSelectComponent } from './components/custom-select/custom-select.component';
+import { TagPipe } from '../pipes/tag.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
     FavoriteButtonComponent,
     ProfileButtonComponent,
     CustomSelectComponent,
+    TagPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -46,6 +48,7 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
     FavoriteButtonComponent,
     ProfileButtonComponent,
     CustomSelectComponent,
+    TagPipe,
   ],
 })
 export class SharedModule {}

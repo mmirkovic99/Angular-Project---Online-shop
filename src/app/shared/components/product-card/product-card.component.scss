@@ -1,4 +1,5 @@
 .product {
+  position: relative;
   cursor: pointer;
   flex-shrink: 0;
   margin: 1rem;
@@ -53,5 +54,44 @@
 
   &:hover > &__img-container > * {
     transform: scale(0.8);
+  }
+
+  &__tag {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.8rem;
+
+    &__icon {
+      margin-right: 1rem;
+    }
+
+    &--popular {
+      background-color: rgb(243, 206, 206);
+
+      & > * {
+        color: rgb(239, 68, 68);
+      }
+    }
+
+    &--new {
+      background-color: rgb(206, 221, 243);
+
+      & > * {
+        color: rgb(27, 58, 121);
+      }
+    }
+
+    &--on-sale {
+      background-color: rgb(206, 243, 221);
+
+      & > * {
+        color: rgb(11, 149, 103);
+      }
+    }
   }
 }
