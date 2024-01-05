@@ -161,6 +161,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(
         (products: ProductInterface[]) => {
           this.productList = products;
+          this.currentPage = 0;
         },
         (error) => console.error(error)
       );
