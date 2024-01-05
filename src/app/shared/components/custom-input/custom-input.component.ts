@@ -10,7 +10,6 @@ export class CustomInputComponent implements OnInit {
   @Input() type!: 'text' | 'password';
   @Input() control: FormControl = new FormControl();
   @Input() error?: boolean;
-  ngOnInit(): void {
-    console.log(this.error);
-  }
+
+  ngOnInit(): void {}
 }
