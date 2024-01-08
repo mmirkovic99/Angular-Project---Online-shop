@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
@@ -20,7 +21,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
 })
-export class ChatBotComponent implements OnInit, AfterViewInit {
+export class ChatBotComponent implements OnInit, AfterViewChecked {
   @ViewChild('messageContainer') messageContainer!: ElementRef;
   messages: MessageInterface[] = [];
   subscription: Subscription[] = [];
@@ -34,8 +35,8 @@ export class ChatBotComponent implements OnInit, AfterViewInit {
     private router: Router
   ) {}
 
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
   }
 
   ngOnInit(): void {
@@ -78,11 +79,17 @@ export class ChatBotComponent implements OnInit, AfterViewInit {
           message.productsInfo = products;
           this.addMessage(message);
         }
+        this.scrollToBottom();
       });
   }
 
   navigateProduct(productId: number) {
     this.router.navigate([`product/${productId}`]);
+  }
+
+  private scrollToBottom(): void {
+    this.messageContainer.nativeElement.scrollTop =
+      this.messageContainer.nativeElement.scrollHeight;
   }
 
   private buildForm() {
