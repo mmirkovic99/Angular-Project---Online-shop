@@ -73,12 +73,12 @@ export class ProductService {
     companies: string[],
     types: number[]
   ): Observable<ProductInterface[]> {
-    const observables: Observable<ProductInterface[]>[] = [
+    const productsObservables: Observable<ProductInterface[]>[] = [
       this.getFilteredProducts('companyName', companies),
       this.getFilteredProducts('type', types),
     ];
 
-    return forkJoin(observables).pipe(
+    return forkJoin(productsObservables).pipe(
       mergeMap((productsArray) => productsArray),
       reduce(
         (acc: ProductInterface[], products: ProductInterface[]) =>
