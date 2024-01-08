@@ -19,13 +19,6 @@ enum Type {
   Kid,
 }
 
-enum SortingOptions {
-  NAME,
-  RATING,
-  PRICEDESC,
-  PRICEASC,
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
