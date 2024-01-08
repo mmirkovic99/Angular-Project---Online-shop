@@ -1,0 +1,156 @@
+<div class="chat-bot">
+  <input
+    type="checkbox"
+    class="chat-bot__checkbox"
+    name="cb_chatbot"
+    id="cb_chatbot"
+  />
+  <div class="chat-bot__dialog">
+    <div class="chat-bot__dialog__message-container">
+      <div
+        class="chat-bot__dialog__message"
+        [ngClass]="
+          message.sender === 'user'
+            ? 'chat-bot__dialog__message--incoming'
+            : 'chat-bot__dialog__message--outcoming'
+        "
+        *ngFor="let message of messages"
+      >
+        <div class="chat-bot__dialog__message__text">{{ message.content }}</div>
+        <div
+          class="chat-bot__dialog__message__products"
+          *ngIf="message.productsInfo && message.productsInfo.length > 0"
+        >
+          <div
+            class="chat-bot__dialog__message__product"
+            *ngFor="let product of message.productsInfo"
+            (click)="navigateProduct(product.id)"
+          >
+            <img
+              [src]="product.images[0]"
+              alt="Shoe image"
+              class="chat-bot__dialog__message__product__image"
+            />
+            <div class="chat-bot__dialog__message__product__info">
+              <div class="chat-bot__dialog__message__product__info__title">
+                {{ product.title }}
+              </div>
+              <div class="chat-bot__dialog__message__product__info__type">
+                {{ product.type | productType }}
+              </div>
+              <div class="chat-bot__dialog__message__product__info__sizes">
+                <div
+                  class="chat-bot__dialog__message__product__info__size"
+                  *ngFor="let size of product.sizes"
+                >
+                  {{ size }}
+                </div>
+              </div>
+              <div class="chat-bot__dialog__message__product__info__price">
+                {{ product.price | currency }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-bot__dialog__message-input">
+      <form
+        class="chat-bot__dialog__message-input__form"
+        [formGroup]="messageForm"
+        *ngIf="messageForm"
+      >
+        <input
+          class="chat-bot__dialog__message-input__input"
+          type="text"
+          placeholder="Type message..."
+          [formControl]="getFormControl('message')"
+        />
+      </form>
+      <custom-button
+        [buttonClass]="'btn--circle btn--blue'"
+        (onClick)="sendMessage()"
+      >
+        <svg
+          height="30px"
+          width="30px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z"
+              stroke="#FFFFFF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </custom-button>
+    </div>
+  </div>
+  <label for="cb_chatbot" class="chat-bot__button">
+    <svg
+      class="chat-bot__button__icon chat-bot__button__icon--open"
+      height="30px"
+      width="30px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M22 6.25V11.35C22 12.62 21.58 13.69 20.83 14.43C20.09 15.18 19.02 15.6 17.75 15.6V17.41C17.75 18.09 16.99 18.5 16.43 18.12L15.46 17.48C15.55 17.17 15.59 16.83 15.59 16.47V12.4C15.59 10.36 14.23 9 12.19 9H5.39999C5.25999 9 5.13 9.01002 5 9.02002V6.25C5 3.7 6.7 2 9.25 2H17.75C20.3 2 22 3.7 22 6.25Z"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M15.59 12.4V16.47C15.59 16.83 15.55 17.17 15.46 17.48C15.09 18.95 13.87 19.87 12.19 19.87H9.47L6.45 21.88C6 22.19 5.39999 21.86 5.39999 21.32V19.87C4.37999 19.87 3.53 19.53 2.94 18.94C2.34 18.34 2 17.49 2 16.47V12.4C2 10.5 3.18 9.19002 5 9.02002C5.13 9.01002 5.25999 9 5.39999 9H12.19C14.23 9 15.59 10.36 15.59 12.4Z"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+    <svg
+      class="chat-bot__button__icon chat-bot__button__icon--close"
+      height="30px"
+      width="30px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
+          fill="#292D32"
+        ></path>
+      </g>
+    </svg>
+  </label>
+</div>

@@ -18,6 +18,8 @@ import { TagPipe } from '../pipes/tag.pipe';
 import { SalePipe } from '../pipes/sale.pipe';
 import { DiscountPipe } from '../pipes/discount.pipe';
 import { SortPipe } from '../pipes/sort.pipe';
+import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
+import { ProductTypePipe } from '../pipes/type.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { SortPipe } from '../pipes/sort.pipe';
     SalePipe,
     DiscountPipe,
     SortPipe,
+    ChatBotComponent,
+    ProductTypePipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -58,6 +62,8 @@ import { SortPipe } from '../pipes/sort.pipe';
     SalePipe,
     DiscountPipe,
     SortPipe,
+    ChatBotComponent,
+    ProductTypePipe,
   ],
 })
 export class SharedModule {}

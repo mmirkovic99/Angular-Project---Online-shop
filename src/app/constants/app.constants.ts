@@ -4,4 +4,5 @@ export const API_ENDPOINTS = {
   USERS: '/users/',
   PRODUCTS: '/products/',
   COMPANIES: '/companies/',
+  CHATBOT: '/chatbot_faq/',
 };

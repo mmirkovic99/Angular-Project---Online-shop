@@ -1,0 +1,148 @@
+.chat-bot {
+  position: fixed;
+  bottom: 7rem;
+  right: 7rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__checkbox:checked + &__dialog {
+    display: inline-block;
+  }
+
+  &__checkbox:checked ~ &__button > *:first-child {
+    display: none;
+  }
+  &__checkbox:checked ~ &__button > *:last-child {
+    display: flex;
+  }
+
+  &__button {
+    cursor: pointer;
+    margin-top: 1rem;
+    height: 5rem;
+    width: 5rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    &__icon {
+      &--close {
+        display: none;
+      }
+    }
+  }
+
+  &__dialog {
+    display: none;
+    width: 40rem;
+    height: 50rem;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 2rem;
+    border-radius: 0.8rem;
+
+    &__message-container {
+      height: 90%;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__message {
+      width: fit-content;
+      max-width: 100%;
+      font-size: 1.6rem;
+      margin: 1rem;
+      padding: 1.5rem;
+      border-radius: 2rem;
+      color: white;
+
+      &--outcoming {
+        background-color: royalblue;
+      }
+
+      &--incoming {
+        align-self: flex-end;
+        background-color: rgb(19, 47, 132);
+      }
+
+      &__product {
+        display: flex;
+        cursor: pointer;
+        padding: 0;
+        background-color: white;
+        margin: 1rem;
+        height: 9rem;
+        position: relative;
+        border-radius: 0.8rem;
+
+        &__image {
+          height: 100%;
+          width: 9rem;
+          object-fit: cover;
+          border-radius: 0.8rem;
+        }
+
+        &__info {
+          padding: 1rem;
+          color: black;
+
+          &__title {
+            font-size: 1.4rem;
+            font-weight: 600;
+          }
+
+          &__type {
+            color: #aeaeae;
+            font-size: 1.2rem;
+          }
+
+          &__sizes {
+            display: flex;
+          }
+
+          &__size {
+            font-size: 1rem;
+            margin-right: 0.3rem;
+          }
+
+          &__price {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: rgb(121, 1, 1);
+          }
+        }
+      }
+    }
+
+    &__message-input {
+      padding: 1rem;
+      height: 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__form {
+        width: 100%;
+      }
+
+      &__input {
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.194);
+        border-radius: 0.8rem;
+        padding: 1rem 2rem;
+        width: 100%;
+      }
+    }
+  }
+}
