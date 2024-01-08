@@ -5,8 +5,8 @@ enum SortingOptions {
   NONE,
   NAME,
   RATING,
-  PRICEDESC,
-  PRICEASC,
+  PRICE_DESC,
+  PRICE_ASC,
 }
 
 @Pipe({
@@ -21,9 +21,9 @@ export class SortPipe implements PipeTransform {
         case 'Rating':
           return SortingOptions.RATING;
         case 'The Highest Price':
-          return SortingOptions.PRICEDESC;
+          return SortingOptions.PRICE_DESC;
         case 'The Lowest Price':
-          return SortingOptions.PRICEASC;
+          return SortingOptions.PRICE_ASC;
         default:
           return SortingOptions.NONE;
       }
@@ -39,7 +39,7 @@ export class SortPipe implements PipeTransform {
           return a.title.localeCompare(b.title);
         case SortingOptions.RATING:
           return b.rating - a.rating;
-        case SortingOptions.PRICEASC:
+        case SortingOptions.PRICE_ASC:
           return a.price - b.price;
         default:
           return b.price - a.price;
