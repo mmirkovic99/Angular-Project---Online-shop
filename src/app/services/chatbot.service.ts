@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { API_BASE_URL, API_ENDPOINTS } from '../constants/app.constants';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ChatbotFAQInterface } from '../models/chatbotFAQ.interface';
 import { Observable, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MessageInterface } from '../models/message.interface';
 
 @Injectable({

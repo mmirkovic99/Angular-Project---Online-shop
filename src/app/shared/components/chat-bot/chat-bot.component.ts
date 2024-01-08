@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription, forkJoin, of } from 'rxjs';
@@ -14,7 +20,8 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
 })
-export class ChatBotComponent implements OnInit {
+export class ChatBotComponent implements OnInit, AfterViewInit {
+  @ViewChild('messageContainer') messageContainer!: ElementRef;
   messages: MessageInterface[] = [];
   subscription: Subscription[] = [];
   messageForm!: FormGroup;
@@ -26,6 +33,10 @@ export class ChatBotComponent implements OnInit {
     private productService: ProductService,
     private router: Router
   ) {}
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+  }
 
   ngOnInit(): void {
     this.messageForm = this.buildForm();
