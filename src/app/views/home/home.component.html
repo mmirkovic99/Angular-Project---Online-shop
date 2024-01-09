@@ -116,6 +116,7 @@
         </div>
         <div class="filter-box__pagination">
           <pagination-controls
+            *ngIf="productList && productList.length > 0"
             (pageChange)="currentPage = $event"
           ></pagination-controls>
         </div>
