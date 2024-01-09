@@ -9,6 +9,5 @@ import { RegistrationComponent } from './registration/registration.component';
 @NgModule({
   declarations: [LoginComponent, RegistrationComponent],
   imports: [CommonModule, AuthRoutingModule, SharedModule, ReactiveFormsModule],
-  providers: [],
 })
 export class AuthModule {}

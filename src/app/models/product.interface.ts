@@ -7,6 +7,7 @@ export interface ProductInterface {
   tag: string;
   rating: number;
   sizes: number[];
+  oldPrice: number;
   price: number;
   images: string[];
 }

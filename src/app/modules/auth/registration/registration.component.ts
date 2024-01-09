@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import * as UserAction from '../../../store/actions/UserActions';
+import { confirmPasswordValidator } from 'src/app/validations/confirm-password.validator';
 
 @Component({
   selector: 'app-registration',
@@ -55,22 +56,25 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   private buildForm(): void {
-    this.registrationForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).+$/
-          ),
+    this.registrationForm = this.formBuilder.group(
+      {
+        name: ['', [Validators.required]],
+        surname: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        username: ['', [Validators.required]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).+$/
+            ),
+          ],
         ],
-      ],
-      confirmPassword: ['', [Validators.required]],
-    });
+        confirmPassword: ['', [Validators.required]],
+      },
+      { validators: [confirmPasswordValidator] }
+    );
   }
 
   private unsubscribe(): void {

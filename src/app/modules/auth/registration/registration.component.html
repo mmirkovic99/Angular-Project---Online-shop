@@ -74,7 +74,8 @@
         type="password"
         [control]="getControl('confirmPassword')"
         [error]="
-          !getControl('confirmPassword').valid &&
+          (!getControl('confirmPassword').valid ||
+            registrationForm.errors?.passwordNoMatch) &&
           (getControl('confirmPassword').dirty ||
             getControl('confirmPassword').touched)
         "

@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterViewChecked,
   Component,
   ElementRef,
@@ -14,27 +15,27 @@ import { Subscription, fromEvent } from 'rxjs';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
 })
-export class SliderComponent implements OnInit {
-  @ViewChild('slider', { static: true }) slider!: ElementRef;
-
-  isDragging: boolean = false;
-
+export class SliderComponent implements OnInit, AfterContentInit {
+  @ViewChild('slider', { static: false }) slider!: ElementRef;
   constructor() {}
+  ngAfterContentInit(): void {
+    this.startSlider();
+  }
 
   ngOnInit(): void {}
 
-  handleMousedown() {
-    this.isDragging = true;
-    console.log('mousedown');
-  }
-
-  handleMousemove() {
-    if (!this.isDragging) return;
-    console.log('mousemove');
-  }
-
-  handleMouseup() {
-    this.isDragging = false;
-    console.log('mouseup');
+  startSlider(): void {
+    setInterval(() => {
+      if (
+        this.slider.nativeElement.scrollLeft ===
+        this.slider.nativeElement.scrollWidth -
+          this.slider.nativeElement.firstChild.firstChild.clientWidth
+      ) {
+        this.slider.nativeElement.scrollLeft = 0;
+      } else {
+        this.slider.nativeElement.scrollLeft +=
+          this.slider.nativeElement.firstChild.firstChild.clientWidth;
+      }
+    }, 3000);
   }
 }
