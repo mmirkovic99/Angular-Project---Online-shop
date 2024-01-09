@@ -19,9 +19,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "40"
-              ],
+              "sizes": ["40"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -38,9 +36,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "43.5"
-              ],
+              "sizes": ["43.5"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-1.jpg",
@@ -63,9 +59,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "40"
-              ],
+              "sizes": ["40"],
               "price": 150,
               "images": [
                 "../../../../assets/nike-black-white-orange-1.jpg",
@@ -88,9 +82,7 @@
               "type": 0,
               "tag": "Popular",
               "rating": 4,
-              "sizes": [
-                "40.5"
-              ],
+              "sizes": ["40.5"],
               "oldPrice": -1,
               "price": 150,
               "images": [
@@ -136,16 +128,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40.5,
-        41,
-        42,
-        43,
-        43.5,
-        44,
-        44.5,
-        45
-      ],
+      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -163,16 +146,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40,
-        41,
-        41.5,
-        42,
-        43,
-        44.5,
-        45.5,
-        46
-      ],
+      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -190,16 +164,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40.5,
-        41,
-        42.5,
-        43,
-        44.5,
-        45,
-        46.5
-      ],
+      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -217,16 +182,7 @@
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        36,
-        36.5,
-        37,
-        37.5,
-        38,
-        38.5,
-        39,
-        40
-      ],
+      "sizes": [36, 36.5, 37, 37.5, 38, 38.5, 39, 40],
       "oldPrice": -1,
       "price": 115,
       "images": [
@@ -244,16 +200,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 130,
       "images": [
@@ -271,16 +218,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -298,16 +236,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -325,16 +254,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -352,16 +272,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -379,16 +290,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -406,16 +308,7 @@
       "type": 1,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -433,16 +326,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -460,16 +344,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -487,16 +362,7 @@
       "type": 0,
       "tag": "On Sale",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": 160,
       "price": 80,
       "images": [
@@ -523,27 +389,14 @@
     {
       "id": 0,
       "tag": "greeting",
-      "phrases": [
-        "Hi there",
-        "Hello",
-        "Hey"
-      ],
-      "responses": [
-        "Hi, how can I help?",
-        "Hello, what can I do for you?"
-      ]
+      "phrases": ["Hi there", "Hello", "Hey"],
+      "responses": ["Hi, how can I help?", "Hello, what can I do for you?"]
     },
     {
       "id": 1,
-      "tag": "product_inquiry",
-      "phrases": [
-        "Tell me about your products",
-        "What shoes do you have?",
-        "Product catalog"
-      ],
-      "responses": [
-        "We offer a wide range of shoes for every occasion. Is there a specific type or brand you're interested in?"
-      ]
+      "tag": "product_selection",
+      "phrases": ["Select product "],
+      "responses": ["You have selected product number "]
     },
     {
       "id": 2,
@@ -566,7 +419,7 @@
         "Ordering process"
       ],
       "responses": [
-        "I am happy that you want to know more about the process of ordering products from our site.\nThe first step is to choose the desired product.\nThen, you can visit the product's page where you can find more information and several pictures.\nYou will notice that on that page, there is a button 'Add to cart.' By clicking on this button, the selected product will be added to the cart. If you want to view the contents of the cart, you can click on the button located in the navigation bar. If you want to add more products to the cart, simply repeat the process. And finally, once you have filled the cart with the desired products, you just need to click on the 'Order' button. It's important to note that ordering is only possible if you are logged in, otherwise, you will be redirected to the login page."
+        "I am happy that you want to know more about the process of ordering products from our site.\nThe first step is to choose the desired product.\nThen, you can visit the product's page where you can find more information and several pictures.\nYou will notice that on that page, there is a button 'Add to cart.'\nBy clicking on this button, the selected product will be added to the cart.\nIf you want to view the contents of the cart, you can click on the button located in the navigation bar. If you want to add more products to the cart, simply repeat the process.\nAnd finally, once you have filled the cart with the desired products, you just need to click on the 'Order' button. It's important to note that ordering is only possible if you are logged in, otherwise, you will be redirected to the login page."
       ]
     },
     {
@@ -584,36 +437,56 @@
     {
       "id": 5,
       "tag": "brand_info",
-      "phrases": [
-        "Nike",
-        "Adidas"
-      ],
-      "responses": [
-        "Could you please provide me with the name of the sneakers you are interested in?"
-      ]
+      "phrases": ["Nike", "Adidas"],
+      "responses": ["In total we have "]
     },
     {
       "id": 6,
       "tag": "product_info",
-      "phrases": [
-        "Nike Dunk Low Retro",
-        "Adidas AVRYN"
-      ],
-      "responses": [
-        "Good choice. The selected shoe is available in "
-      ]
+      "phrases": ["Nike Dunk Low Retro", "Adidas AVRYN"],
+      "responses": ["Good choice. The selected shoe is available in "]
     },
     {
       "id": 7,
       "tag": "appreciation",
-      "phrases": [
-        "Thanks",
-        "Thank you",
-        "Thanks a lot"
-      ],
+      "phrases": ["Thanks", "Thank you", "Thanks a lot"],
       "responses": [
         "You're welcome. If you have any additional questions feel free to ask!"
       ]
+    },
+    {
+      "id": 8,
+      "tag": "add_to_cart",
+      "phrases": ["Add to cart "],
+      "responses": ["Product $ has been added to cart"]
+    },
+    {
+      "id": 9,
+
+      "tag": "product_inquiry",
+      "phrases": [
+        "Tell me about your products",
+        "What shoes do you have?",
+        "Product catalog"
+      ],
+      "responses": [
+        "We offer a wide range of shoes for every occasion. Is there a specific brand you're interested in?"
+      ]
+    },
+    {
+      "id": 10,
+      "tag": "product_size_selection",
+      "phrases": ["Choose size "],
+      "responses": [
+        "You have selected size $",
+        "Unfortunately, size $ is currently unavailable"
+      ]
+    },
+    {
+      "id": 11,
+      "tag": "product_navigation",
+      "phrases": ["Navigate to the product page."],
+      "responses": ["You have been redirected to the product page."]
     }
   ]
 }
