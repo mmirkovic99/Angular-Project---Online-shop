@@ -462,7 +462,6 @@
     },
     {
       "id": 9,
-
       "tag": "product_inquiry",
       "phrases": [
         "Tell me about your products",
@@ -485,7 +484,7 @@
     {
       "id": 11,
       "tag": "product_navigation",
-      "phrases": ["Navigate to the product page."],
+      "phrases": ["Navigate to the product page"],
       "responses": ["You have been redirected to the product page."]
     }
   ]

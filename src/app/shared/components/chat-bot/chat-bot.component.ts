@@ -9,8 +9,8 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, forkJoin } from 'rxjs';
-import { mergeMap, switchMap } from 'rxjs/operators';
+import { Observable, Subscription, forkJoin } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import { ChatbotFAQInterface } from 'src/app/models/chatbotFAQ.interface';
 import { MessageInterface } from 'src/app/models/message.interface';
@@ -18,6 +18,22 @@ import { ProductInterface } from 'src/app/models/product.interface';
 import { ChatbotService } from 'src/app/services/chatbot.service';
 import * as CartAction from '../../../store/actions/CartActions';
 import { ProductService } from 'src/app/services/product.service';
+
+enum Tags {
+  GREETING = 'greeting',
+  PRODUCT_SELECTION = 'product_selection',
+  SIZE_INFORMATION = 'size_information',
+  ORDERING = 'ordering',
+  CUSTOMER_SUPORT = 'customer_support',
+  BRAND_INFO = 'brand_info',
+  PRODUCT_INFO = 'product_info',
+  APPRECIATION = 'appreciation',
+  ADD_TO_CART = 'add_to_cart',
+  PRODUCT_INQUIRY = 'product_inquiry',
+  PRODUCT_SIZE_SELECTION = 'product_size_selection',
+  PRODUCT_NAVIGATION = 'product_navigation',
+  DEFAULT = 'default',
+}
 
 @Component({
   selector: 'chat-bot',
@@ -85,6 +101,22 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.router.navigate([`product/${productId}`]);
   }
 
+  private getTag(): string {
+    return this.tag;
+  }
+
+  private setTag(tag: string) {
+    this.tag = tag;
+  }
+
+  private getSize(): number {
+    return this.size;
+  }
+
+  private setSize(size: number): void {
+    this.size = size;
+  }
+
   private scrollToBottom(): void {
     this.messageContainer.nativeElement.scrollTop =
       this.messageContainer.nativeElement.scrollHeight;
@@ -100,89 +132,147 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.messages.push(message);
   }
 
+  private handleProductInfoTag(
+    message: string
+  ): Observable<[ProductInterface[], MessageInterface]> {
+    return forkJoin([
+      this.productService.getProductByTitle(message),
+      this.chatbotService.getResponseByTag(Tags.PRODUCT_INFO),
+    ]);
+  }
+
+  private handleBrandInfoTag(
+    message: string
+  ): Observable<[ProductInterface[], MessageInterface]> {
+    return forkJoin([
+      this.productService.getProductsByCompany(message),
+      this.chatbotService.getResponseByTag(Tags.BRAND_INFO),
+    ]);
+  }
+
+  private handleProductSelectionTag(
+    products: ProductInterface[] | undefined
+  ): Observable<MessageInterface> {
+    this.setTag(!products ? Tags.DEFAULT : this.tag);
+    return this.chatbotService.getResponseByTag(this.tag);
+  }
+
+  private handleProductSizeSelectionTag(
+    product: ProductInterface | undefined
+  ): Observable<MessageInterface> {
+    if (typeof product === 'undefined') this.setTag(Tags.DEFAULT);
+    const isSizeAvailable = product?.sizes.some(
+      (size: number) => size === this.size
+    );
+    return this.chatbotService.getResponseByTag(this.tag, isSizeAvailable);
+  }
+
+  private handleAddToCartTag(size: number): Observable<MessageInterface> {
+    this.setTag(size === 0 ? Tags.DEFAULT : this.tag);
+    return this.chatbotService.getResponseByTag(this.tag);
+  }
+
+  private handleProductNavigationTag(product: ProductInterface | undefined) {
+    this.setTag(!product ? Tags.DEFAULT : this.tag);
+    return this.chatbotService.getResponseByTag(this.tag);
+  }
+
+  private handleUserMessageTag(message: string) {
+    switch (this.tag) {
+      case Tags.PRODUCT_INFO:
+        return this.handleProductInfoTag(message);
+      case Tags.BRAND_INFO:
+        return this.handleBrandInfoTag(message);
+      case Tags.PRODUCT_SELECTION:
+        return this.handleProductSelectionTag(this.latestDisplayedProducts);
+      case Tags.PRODUCT_SIZE_SELECTION:
+        return this.handleProductSizeSelectionTag(this.selectedProduct);
+      case Tags.ADD_TO_CART:
+        return this.handleAddToCartTag(this.size);
+      case Tags.PRODUCT_NAVIGATION:
+        return this.handleProductNavigationTag(this.selectedProduct);
+      default:
+        return this.chatbotService.getResponseByTag(this.tag);
+    }
+  }
+
+  private handleProductSelectionResponse(
+    message: MessageInterface,
+    product: ProductInterface | undefined
+  ): void {
+    message.content = `${message.content} ${this.productOrdinalNumber}`;
+    this.selectedProduct = product;
+    this.setSize(0);
+  }
+
+  private handleProductSizeSelectionResponse(message: MessageInterface): void {
+    message.content = message.content.replace(/\$/g, `${this.size}`);
+  }
+
+  private handleAddToCartResponse(message: MessageInterface): void {
+    message.content = message.content.replace(
+      /\$/g,
+      `${this.productOrdinalNumber}`
+    );
+
+    let productToAdd = Object.assign({}, this.selectedProduct);
+    productToAdd = { ...productToAdd, sizes: [this.size] };
+    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+  }
+
+  private handleBrandInfoResponse(
+    message: MessageInterface,
+    products: ProductInterface[]
+  ): void {
+    message.content += `${products.length} product${
+      products.length !== 1 ? 's' : ''
+    } with from that brand`;
+  }
+
+  private handleProductInfoResponse(
+    message: MessageInterface,
+    products: ProductInterface[]
+  ): void {
+    message.content += `${products.length} color${
+      products.length !== 1 ? 's' : ''
+    }`;
+  }
+
   private handleChatbotResponse(message: string): Subscription {
     return this.chatbotService
       .getTagByInput(message)
       .pipe(
         mergeMap((tag: string) => {
-          console.log(tag);
-          this.tag = tag;
-          if (this.tag === 'product_info') {
-            return forkJoin([
-              this.productService.getProductByTitle(message),
-              this.chatbotService.getResponseByTag(this.tag),
-            ]);
-          } else if (this.tag === 'brand_info') {
-            return forkJoin([
-              this.productService.getProductsByCompany(message),
-              this.chatbotService.getResponseByTag(this.tag),
-            ]);
-          } else if (this.tag === 'product_selection') {
-            if (!this.latestDisplayedProducts) this.tag = 'default';
-            return this.chatbotService.getResponseByTag(this.tag);
-          } else if (this.tag === 'product_size_selection') {
-            const isSizeAvailable = this.selectedProduct?.sizes.some(
-              (size: number) => size === this.size
-            );
-            if (!isSizeAvailable) this.size = -1;
-            return this.chatbotService.getResponseByTag(
-              this.tag,
-              isSizeAvailable
-            );
-          } else if (this.tag === 'add_to_cart') {
-            if (this.size === 0) this.tag = 'default';
-            return this.chatbotService.getResponseByTag(this.tag);
-          } else if (this.tag === 'product_navigation') {
-            if (!this.selectedProduct) this.tag = 'default';
-            return this.chatbotService.getResponseByTag(this.tag);
-          } else {
-            return this.chatbotService.getResponseByTag(this.tag);
-          }
+          this.setTag(tag);
+          return this.handleUserMessageTag(message);
         })
       )
       .subscribe((result) => {
         if (!Array.isArray(result)) {
           const newMessage = result as MessageInterface;
-          if (this.tag === 'product_selection') {
-            newMessage.content = `${newMessage.content} ${this.productOrdinalNumber}`;
-            this.selectedProduct =
-              this.latestDisplayedProducts?.[this.productOrdinalNumber];
-            console.log(this.selectedProduct);
-            this.size = 0;
-          }
-          if (this.tag === 'product_size_selection') {
-            newMessage.content = newMessage.content.replace(
-              /\$/g,
-              `${this.size}`
+          if (this.tag === Tags.PRODUCT_SELECTION) {
+            this.handleProductSelectionResponse(
+              newMessage,
+              this.latestDisplayedProducts?.[this.productOrdinalNumber]
             );
           }
-          if (this.tag === 'add_to_cart') {
-            newMessage.content = newMessage.content.replace(
-              /\$/g,
-              `${this.productOrdinalNumber}`
-            );
-
-            let productToAdd = Object.assign({}, this.selectedProduct);
-            productToAdd = { ...productToAdd, sizes: [this.size] };
-            this.store.dispatch(
-              CartAction.addToCart({ product: productToAdd })
-            );
+          if (this.tag === Tags.PRODUCT_SIZE_SELECTION) {
+            this.handleProductSizeSelectionResponse(newMessage);
           }
-          if (this.tag === 'product_navigation') {
+          if (this.tag === Tags.ADD_TO_CART) {
+            this.handleAddToCartResponse(newMessage);
+          }
+          if (this.tag === Tags.PRODUCT_NAVIGATION) {
             this.router.navigate([`product/${this.selectedProduct?.id}`]);
           }
           this.addMessage(newMessage);
         } else {
           const [products, message]: [ProductInterface[], MessageInterface] =
             result;
-          if (this.tag === 'brand_info') {
-            message.content += `${products.length} product${
-              products.length !== 1 ? 's' : ''
-            } with from that brand`;
+          if (this.tag === Tags.BRAND_INFO) {
+            this.handleBrandInfoResponse(message, products);
           } else {
-            message.content += `${products.length} color${
-              products.length !== 1 ? 's' : ''
-            }`;
+            this.handleProductInfoResponse(message, products);
           }
 
           message.productsInfo = products;
