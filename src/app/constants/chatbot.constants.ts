@@ -1,0 +1,15 @@
+export enum Tags {
+  GREETING = 'greeting',
+  PRODUCT_SELECTION = 'product_selection',
+  SIZE_INFORMATION = 'size_information',
+  ORDERING = 'ordering',
+  CUSTOMER_SUPORT = 'customer_support',
+  BRAND_INFO = 'brand_info',
+  PRODUCT_INFO = 'product_info',
+  APPRECIATION = 'appreciation',
+  ADD_TO_CART = 'add_to_cart',
+  PRODUCT_INQUIRY = 'product_inquiry',
+  PRODUCT_SIZE_SELECTION = 'product_size_selection',
+  PRODUCT_NAVIGATION = 'product_navigation',
+  DEFAULT = 'default',
+}
