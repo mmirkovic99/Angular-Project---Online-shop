@@ -5,6 +5,7 @@ import { ChatbotInterface } from '../models/chatbot.interface';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MessageInterface } from '../models/message.interface';
+import { Tags } from '../constants/chatbot.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class ChatbotService {
       .get<ChatbotInterface[]>(`${this.url}?phrases_like=${userMessage}`)
       .pipe(
         map((question: ChatbotInterface[]) =>
-          question.length > 0 ? question[0].tag : 'default'
+          question.length > 0 ? question[0].tag : Tags.DEFAULT
         )
       );
   }
@@ -32,11 +33,11 @@ export class ChatbotService {
     tag: string,
     isSizeAvailable?: boolean
   ): Observable<MessageInterface> {
-    return tag !== 'default'
+    return tag !== Tags.DEFAULT
       ? this.http.get<ChatbotInterface[]>(this.url, { params: { tag } }).pipe(
           map((question: ChatbotInterface[]) => {
             let index: number = -1;
-            if (tag === 'product_size_selection') {
+            if (tag === Tags.PRODUCT_SIZE_SELECTION) {
               index = isSizeAvailable ? 0 : 1;
             } else {
               index = Math.floor(Math.random() * question[0].responses.length);
