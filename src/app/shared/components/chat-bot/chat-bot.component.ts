@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription, forkJoin } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { AppStateInterface } from 'src/app/models/appState.interface';
-import { ChatbotFAQInterface } from 'src/app/models/chatbotFAQ.interface';
+import { ChatbotInterface } from 'src/app/models/chatbot.interface';
 import { MessageInterface } from 'src/app/models/message.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
 import { ChatbotService } from 'src/app/services/chatbot.service';
@@ -30,7 +30,7 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   messages: MessageInterface[] = [];
   subscriptions: Subscription[] = [];
   messageForm!: FormGroup;
-  questions!: ChatbotFAQInterface[];
+  questions!: ChatbotInterface[];
   tag!: string;
 
   private productOrdinalNumber: number = -1;

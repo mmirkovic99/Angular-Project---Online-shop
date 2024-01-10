@@ -1,4 +1,4 @@
-export interface ChatbotFAQInterface {
+export interface ChatbotInterface {
   id: number;
   tag: string;
   phrases: string[];
