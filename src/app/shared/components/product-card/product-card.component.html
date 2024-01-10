@@ -1,4 +1,9 @@
-<div class="product" (click)="navigateProduct(product.id)" #productElement>
+<div
+  class="product"
+  *ngIf="product"
+  (click)="navigateProduct(product.id)"
+  #productElement
+>
   <div class="product__img-container">
     <img
       [src]="product.images[0]"
@@ -12,9 +17,21 @@
     <div class="product__container">
       <div class="product__container__type">Men's Shoes</div>
     </div>
-    <ng-container
-      *ngIf="!(product.tag | sale); then normalPrice; else salePrice"
-    ></ng-container>
+    <ng-container *ngIf="!(product.tag | sale); else salePrice">
+      <div class="product__price">
+        {{ product.price | currency }}
+      </div>
+    </ng-container>
+
+    <ng-template #salePrice>
+      <div class="product__price">
+        <div class="product__price__old">{{ product.oldPrice | currency }}</div>
+        <div class="product__price__new">{{ product.price | currency }}</div>
+      </div>
+      <div class="product__discount">
+        {{ product.oldPrice | discount : product.price }}
+      </div>
+    </ng-template>
     <div class="product__tag" [ngClass]="product.tag | tagType">
       <ng-container [ngSwitch]="product.tag">
         <svg
@@ -89,19 +106,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #normalPrice>
-  <div class="product__price">
-    {{ product.price | currency }}
-  </div>
-</ng-template>
-
-<ng-template #salePrice>
-  <div class="product__price">
-    <div class="product__price__old">{{ product.oldPrice | currency }}</div>
-    <div class="product__price__new">{{ product.price | currency }}</div>
-  </div>
-  <div class="product__discount">
-    {{ product.oldPrice | discount : product.price }}
-  </div>
-</ng-template>

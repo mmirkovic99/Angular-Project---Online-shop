@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductInterface } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-product-card',
@@ -15,19 +16,22 @@ import { Router } from '@angular/router';
 })
 export class ProductCardComponent implements OnInit, AfterViewInit {
   private totalSize!: number;
-  @Input() product!: any;
-  @ViewChild('productElement', { static: true }) productElement!: ElementRef;
+  @Input() product: ProductInterface | null = null;
+  @ViewChild('productElement', { static: false }) productElement!: ElementRef;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-  ngAfterViewInit() {
-    const nativeElement = this.productElement.nativeElement;
-    const styles = window.getComputedStyle(nativeElement);
-    const marginLeft = parseInt(styles.marginLeft);
-    const marginRight = parseInt(styles.marginRight);
-    const cardWidth = this.productElement.nativeElement.offsetWidth;
-    this.totalSize = cardWidth + marginLeft + marginRight;
+
+  ngAfterViewInit(): void {
+    if (typeof this.productElement !== 'undefined') {
+      const nativeElement = this.productElement.nativeElement;
+      const styles = window.getComputedStyle(nativeElement);
+      const marginLeft = parseInt(styles.marginLeft);
+      const marginRight = parseInt(styles.marginRight);
+      const cardWidth = this.productElement.nativeElement.offsetWidth;
+      this.totalSize = cardWidth + marginLeft + marginRight;
+    }
   }
 
   getWidth(): number {
