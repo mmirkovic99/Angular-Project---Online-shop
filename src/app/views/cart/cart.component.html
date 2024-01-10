@@ -1,5 +1,5 @@
 <div class="cart">
-  <div class="cart__empty" *ngIf="products.length === 0">
+  <div class="cart__empty" *ngIf="products && products.length === 0">
     <svg
       height="40px"
       viewBox="0 0 24 24"
@@ -70,7 +70,7 @@
       Your cart is empty. Explore our products and start adding items!
     </div>
   </div>
-  <div class="cart__content" *ngIf="products.length !== 0">
+  <div class="cart__content" *ngIf="products && products.length !== 0">
     <div class="cart__content__title">
       My cart
       <span class="cart__content__title__number">({{ products.length }})</span>
