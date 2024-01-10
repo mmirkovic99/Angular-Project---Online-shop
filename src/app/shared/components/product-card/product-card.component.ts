@@ -24,14 +24,12 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    if (typeof this.productElement !== 'undefined') {
-      const nativeElement = this.productElement.nativeElement;
-      const styles = window.getComputedStyle(nativeElement);
-      const marginLeft = parseInt(styles.marginLeft);
-      const marginRight = parseInt(styles.marginRight);
-      const cardWidth = this.productElement.nativeElement.offsetWidth;
-      this.totalSize = cardWidth + marginLeft + marginRight;
-    }
+    const nativeElement = this.productElement.nativeElement;
+    const styles = window.getComputedStyle(nativeElement);
+    const marginLeft = parseInt(styles.marginLeft);
+    const marginRight = parseInt(styles.marginRight);
+    const cardWidth = this.productElement.nativeElement.offsetWidth;
+    this.totalSize = cardWidth + marginLeft + marginRight;
   }
 
   getWidth(): number {
