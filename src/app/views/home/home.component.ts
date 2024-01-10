@@ -4,20 +4,15 @@ import { Subscription } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
-  mergeMap,
   switchMap,
 } from 'rxjs/operators';
+import { Type } from 'src/app/constants/product.constants';
 import { CompanyInterface } from 'src/app/models/company.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
 import { CompanyService } from 'src/app/services/company.service';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
 
-enum Type {
-  Man,
-  Women,
-  Kid,
-}
 
 @Component({
   selector: 'app-home',

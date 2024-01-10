@@ -1,13 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ProductInterface } from '../models/product.interface';
-
-enum SortingOptions {
-  NONE,
-  NAME,
-  RATING,
-  PRICE_DESC,
-  PRICE_ASC,
-}
+import { SortingOptions } from '../constants/sort.constants';
 
 @Pipe({
   name: 'sort',
