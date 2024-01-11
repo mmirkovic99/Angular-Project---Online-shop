@@ -50,6 +50,7 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   ngOnInit(): void {
     this.messageForm = this.buildForm();
+    this.subscriptions.push(this.getInitialMessage());
   }
 
   ngAfterViewChecked(): void {
@@ -117,6 +118,14 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   private addMessage(message: MessageInterface): void {
     this.messages.push(message);
+  }
+
+  private getInitialMessage(): Subscription {
+    return this.chatbotService
+      .getResponseByTag(Tags.GREETING)
+      .subscribe((message: MessageInterface) => {
+        this.addMessage(message);
+      });
   }
 
   private handleProductInfoTag(
