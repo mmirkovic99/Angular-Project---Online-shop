@@ -1,10 +1,14 @@
-<div class="product" #productElement>
+<div
+  class="product"
+  *ngIf="product"
+  (click)="navigateProduct(product.id)"
+  #productElement
+>
   <div class="product__img-container">
     <img
       [src]="product.images[0]"
       alt="Nike"
       class="product__img-container__img"
-      (click)="navigateProduct(product.id)"
     />
   </div>
 
@@ -13,6 +17,43 @@
     <div class="product__container">
       <div class="product__container__type">Men's Shoes</div>
     </div>
-    <div class="product__price">{{ product.price | currency }}</div>
+    <ng-container *ngIf="!(product.tag | sale); else salePrice">
+      <div class="product__price">
+        {{ product.price | currency }}
+      </div>
+    </ng-container>
+
+    <ng-template #salePrice>
+      <div class="product__price">
+        <div class="product__price__old">{{ product.oldPrice | currency }}</div>
+        <div class="product__price__new">{{ product.price | currency }}</div>
+      </div>
+      <div class="product__discount">
+        {{ product.oldPrice | discount : product.price }}
+      </div>
+    </ng-template>
+    <div class="product__tag" [ngClass]="product.tag | tagType">
+      <ng-container [ngSwitch]="product.tag">
+        <svg-icon
+          *ngSwitchCase="'Popular'"
+          class="product__tag__icon"
+          [path]="'../../../../assets/svgs/hot.svg'"
+        ></svg-icon>
+
+        <svg-icon
+          *ngSwitchCase="'New'"
+          class="product__tag__icon"
+          [path]="'../../../../assets/svgs/newShoe.svg'"
+        ></svg-icon>
+        <svg-icon
+          *ngSwitchDefault
+          class="product__tag__icon"
+          [path]="'../../../../assets/svgs/sale.svg'"
+        ></svg-icon>
+      </ng-container>
+      <div class="product__tag__text label label--regular label--bold">
+        {{ product.tag }}
+      </div>
+    </div>
   </div>
 </div>

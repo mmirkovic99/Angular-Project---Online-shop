@@ -6,12 +6,14 @@ import { ProductService } from 'src/app/services/product.service';
 import * as UserAction from '../../store/actions/UserActions';
 import * as CartAction from '../../store/actions/CartActions';
 import { AppStateInterface } from 'src/app/models/appState.interface';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import {
   userFavoritesSelector,
   userIdSelector,
 } from 'src/app/store/selectors/userStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
+import { CartStateInterface } from 'src/app/models/cartState.interface';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -33,7 +35,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private cartService: CartService
   ) {
     this.subscriptions = [];
   }
@@ -67,6 +70,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     let productToAdd = Object.assign({}, this.product);
     productToAdd = { ...productToAdd, sizes: [this.size] };
     this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+
+    // this.cartService.addToCart(productToAdd);
   }
 
   selectSize(event: any) {

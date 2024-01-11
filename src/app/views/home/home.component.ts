@@ -2,24 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Type } from 'src/app/constants/product.constants';
 import { CompanyInterface } from 'src/app/models/company.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
 import { CompanyService } from 'src/app/services/company.service';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
-
-enum Type {
-  Man,
-  Women,
-  Kid,
-}
-
-enum SortingOptions {
-  NAME,
-  RATING,
-  PRICEDESC,
-  PRICEASC,
-}
 
 @Component({
   selector: 'app-home',
@@ -72,7 +60,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onSelectOption(option: string) {
     this.selectedOption = option;
-    this.productList = this.sortProducts(this.selectedOption, this.productList);
   }
 
   private buildFilterForm(): FormGroup {
@@ -97,10 +84,36 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private trackChangesForFilterForm(form: FormGroup): Subscription {
+    const compareInnerFormKeys = (
+      outerKey: string,
+      form1: any,
+      form2: any
+    ): boolean => {
+      const innerFormKeys = Object.keys(form1[outerKey]);
+      let match = true;
+      for (let i = 0; i < innerFormKeys.length; i++) {
+        const innerKey = innerFormKeys[i];
+        if (form1[outerKey][innerKey] !== form2[outerKey][innerKey]) {
+          match = false;
+          break;
+        }
+      }
+      return match;
+    };
+
+    const areFormsEqual = (form1: any, form2: any): boolean => {
+      const outerFormKeys = Object.keys(form1);
+      const typeMatch = compareInnerFormKeys(outerFormKeys[0], form1, form2);
+      const companyMatch = compareInnerFormKeys(outerFormKeys[1], form1, form2);
+      return typeMatch && companyMatch;
+    };
+
     return form.valueChanges
       .pipe(
         debounceTime(1000),
-        distinctUntilChanged((prev, curr) => prev === curr),
+        distinctUntilChanged((prev, curr) => {
+          return areFormsEqual(prev, curr);
+        }),
         switchMap((filters) => {
           const selectedCompanies: string[] = this.getSelectedCompanies(
             filters.company
@@ -130,10 +143,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (products: ProductInterface[]) => {
-          this.productList =
-            this.selectedOption === 'None'
-              ? products
-              : this.sortProducts(this.selectedOption, products);
+          this.productList = products;
+          this.currentPage = 0;
         },
         (error) => console.error(error)
       );
@@ -175,42 +186,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       (products: ProductInterface[]) => (this.popularProducts = products),
       (error) => console.error(error)
     );
-  }
-
-  private sortProducts(
-    option: string,
-    products: ProductInterface[]
-  ): ProductInterface[] {
-    // This funciton is unnecessary ... :)
-    const convertOption = (option: string): SortingOptions => {
-      switch (option) {
-        case 'Name':
-          return SortingOptions.NAME;
-        case 'Rating':
-          return SortingOptions.RATING;
-        case 'The Highest Price':
-          return SortingOptions.PRICEDESC;
-        default:
-          return SortingOptions.PRICEASC;
-      }
-    };
-
-    const sortingOption: SortingOptions = convertOption(option);
-
-    const sortFunction = (a: ProductInterface, b: ProductInterface): number => {
-      switch (sortingOption) {
-        case SortingOptions.NAME:
-          return a.title.localeCompare(b.title);
-        case SortingOptions.RATING:
-          return b.rating - a.rating;
-        case SortingOptions.PRICEASC:
-          return a.price - b.price;
-        default:
-          return b.price - a.price;
-      }
-    };
-
-    return products.slice().sort(sortFunction);
   }
 
   private unsubscribe(): void {

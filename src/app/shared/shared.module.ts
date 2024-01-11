@@ -14,6 +14,13 @@ import { CartButtonComponent } from './components/cart-button/cart-button.compon
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { ProfileButtonComponent } from './components/profile-button/profile-button.component';
 import { CustomSelectComponent } from './components/custom-select/custom-select.component';
+import { TagPipe } from '../pipes/tag.pipe';
+import { SalePipe } from '../pipes/sale.pipe';
+import { DiscountPipe } from '../pipes/discount.pipe';
+import { SortPipe } from '../pipes/sort.pipe';
+import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
+import { ProductTypePipe } from '../pipes/type.pipe';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,13 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
     FavoriteButtonComponent,
     ProfileButtonComponent,
     CustomSelectComponent,
+    TagPipe,
+    SalePipe,
+    DiscountPipe,
+    SortPipe,
+    ChatBotComponent,
+    ProductTypePipe,
+    SvgIconComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -46,6 +60,13 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
     FavoriteButtonComponent,
     ProfileButtonComponent,
     CustomSelectComponent,
+    TagPipe,
+    SalePipe,
+    DiscountPipe,
+    SortPipe,
+    ChatBotComponent,
+    ProductTypePipe,
+    SvgIconComponent,
   ],
 })
 export class SharedModule {}

@@ -106,6 +106,7 @@
           <app-product-card
             *ngFor="
               let product of productList
+                | sort : selectedOption
                 | paginate
                   : { itemsPerPage: itemsPerPage, currentPage: currentPage }
             "
@@ -115,6 +116,7 @@
         </div>
         <div class="filter-box__pagination">
           <pagination-controls
+            *ngIf="productList && productList.length > 0"
             (pageChange)="currentPage = $event"
           ></pagination-controls>
         </div>

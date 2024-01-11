@@ -1,0 +1,89 @@
+<div class="chat-bot">
+  <input
+    type="checkbox"
+    class="chat-bot__checkbox"
+    name="cb_chatbot"
+    id="cb_chatbot"
+  />
+  <div class="chat-bot__dialog">
+    <div class="chat-bot__dialog__message-container" #messageContainer>
+      <div
+        class="chat-bot__dialog__message"
+        [ngClass]="
+          message.sender === 'user'
+            ? 'chat-bot__dialog__message--incoming'
+            : 'chat-bot__dialog__message--outcoming'
+        "
+        *ngFor="let message of messages"
+      >
+        <div class="chat-bot__dialog__message__text">{{ message.content }}</div>
+        <div
+          class="chat-bot__dialog__message__products"
+          *ngIf="message.productsInfo && message.productsInfo.length > 0"
+        >
+          <div
+            class="chat-bot__dialog__message__product"
+            *ngFor="let product of message.productsInfo"
+            (click)="navigateProduct(product.id)"
+          >
+            <img
+              [src]="product.images[0]"
+              alt="Shoe image"
+              class="chat-bot__dialog__message__product__image"
+            />
+            <div class="chat-bot__dialog__message__product__info">
+              <div class="chat-bot__dialog__message__product__info__title">
+                {{ product.title }}
+              </div>
+              <div class="chat-bot__dialog__message__product__info__type">
+                {{ product.type | productType }}
+              </div>
+              <div class="chat-bot__dialog__message__product__info__sizes">
+                <div
+                  class="chat-bot__dialog__message__product__info__size"
+                  *ngFor="let size of product.sizes"
+                >
+                  {{ size }}
+                </div>
+              </div>
+              <div class="chat-bot__dialog__message__product__info__price">
+                {{ product.price | currency }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-bot__dialog__message-input">
+      <form
+        class="chat-bot__dialog__message-input__form"
+        [formGroup]="messageForm"
+        *ngIf="messageForm"
+      >
+        <input
+          class="chat-bot__dialog__message-input__input"
+          type="text"
+          placeholder="Type message..."
+          [formControl]="getFormControl('message')"
+        />
+      </form>
+      <custom-button
+        [buttonClass]="'btn--circle btn--blue'"
+        (onClick)="sendMessage()"
+      >
+        <svg-icon [path]="'../../../../assets/svgs/send.svg'"></svg-icon>
+      </custom-button>
+    </div>
+  </div>
+  <label for="cb_chatbot" class="chat-bot__button">
+    <svg-icon
+      class="chat-bot__button__icon chat-bot__button__icon--open"
+      [path]="'../../../../assets/svgs/messages.svg'"
+    ></svg-icon>
+
+    <svg-icon
+      class="chat-bot__button__icon chat-bot__button__icon--close"
+      [path]="'../../../../assets/svgs/close.svg'"
+    ></svg-icon>
+  </label>
+</div>

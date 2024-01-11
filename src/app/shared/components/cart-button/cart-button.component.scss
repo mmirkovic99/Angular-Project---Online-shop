@@ -1,4 +1,6 @@
 .cart-btn {
+  height: 3rem;
+  width: 3rem;
   position: relative;
   cursor: pointer;
 
@@ -22,7 +24,7 @@
     justify-content: center;
     border-radius: 50%;
     position: absolute;
-    bottom: 0.5rem;
+    bottom: -0.5rem;
     right: 0;
   }
 }
