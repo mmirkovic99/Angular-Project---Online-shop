@@ -9,8 +9,8 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable, Subscription, forkJoin, timer } from 'rxjs';
+import { debounce, debounceTime, delay, mergeMap } from 'rxjs/operators';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import { ChatbotInterface } from 'src/app/models/chatbot.interface';
 import { MessageInterface } from 'src/app/models/message.interface';
@@ -33,6 +33,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   messageForm!: FormGroup;
   questions!: ChatbotInterface[];
   tag!: string;
+
+  isChatbotWriting: boolean = false;
 
   private productOrdinalNumber: number = -1;
   private size: number = 0;
@@ -72,13 +74,27 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.productOrdinalNumber = Number(
         message.slice(message.indexOf('#') + 1)
       );
-      this.addMessage({ sender: 'user', content: message });
+      this.addMessage({
+        sender: 'user',
+        content: message,
+        time: new Date(),
+      });
       message = message.slice(0, message.indexOf('#') - 1);
     } else if (message.includes('Choose size')) {
       this.size = Number(message.slice(message.lastIndexOf(' ')));
-      this.addMessage({ sender: 'user', content: message });
+      this.addMessage({
+        sender: 'user',
+        content: message,
+        time: new Date(),
+      });
       message = message.slice(0, message.indexOf(' ') - 1);
-    } else this.addMessage({ sender: 'user', content: message });
+    } else
+      this.addMessage({
+        sender: 'user',
+        content: message,
+        time: new Date(),
+      });
+    this.isChatbotWriting = true;
 
     this.getFormControl('message').setValue('');
 
@@ -239,12 +255,15 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     return this.chatbotService
       .getTagByInput(message)
       .pipe(
+        delay(2000),
         mergeMap((tag: string) => {
           this.setTag(tag);
           return this.handleUserMessageTag(message);
         })
       )
       .subscribe((result) => {
+        this.isChatbotWriting = false;
+
         if (!Array.isArray(result)) {
           const newMessage = result as MessageInterface;
           if (this.tag === Tags.PRODUCT_SELECTION) {

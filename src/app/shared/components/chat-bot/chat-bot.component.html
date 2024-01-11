@@ -53,6 +53,8 @@
           </div>
         </div>
       </div>
+
+      <typing-indicator *ngIf="isChatbotWriting"></typing-indicator>
     </div>
     <div class="chat-bot__dialog__message-input">
       <form
@@ -80,7 +82,7 @@
       class="chat-bot__button__icon chat-bot__button__icon--open"
       [path]="'../../../../assets/svgs/messages.svg'"
     ></svg-icon>
-
+    <span class="chat-bot__button__red-dot"></span>
     <svg-icon
       class="chat-bot__button__icon chat-bot__button__icon--close"
       [path]="'../../../../assets/svgs/close.svg'"

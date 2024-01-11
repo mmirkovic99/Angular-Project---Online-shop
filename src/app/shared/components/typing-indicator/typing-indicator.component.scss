@@ -1,0 +1,34 @@
+.typing-indicator {
+  background-color: rgb(232, 232, 232);
+  width: fit-content;
+  font-size: 1.6rem;
+  margin: 1rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  animation: show-dialog 0.5s 0.5s backwards;
+
+  &__circle {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: rgb(98, 98, 98);
+    opacity: 0.4;
+
+    &--first {
+      animation: 1s blink infinite ease-in 0.33s;
+    }
+
+    &--second {
+      animation: 1s blink infinite ease-in 0.67s;
+    }
+
+    &--last {
+      animation: 1s blink infinite ease-in 1s;
+    }
+
+    &:not(:first-child) {
+      margin-left: 0.5rem;
+    }
+  }
+}

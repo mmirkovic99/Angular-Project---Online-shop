@@ -4,4 +4,5 @@ export interface MessageInterface {
   sender: string;
   content: string;
   productsInfo?: ProductInterface[];
+  time?: Date;
 }

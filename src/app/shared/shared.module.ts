@@ -21,6 +21,7 @@ import { SortPipe } from '../pipes/sort.pipe';
 import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
 import { ProductTypePipe } from '../pipes/type.pipe';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     ChatBotComponent,
     ProductTypePipe,
     SvgIconComponent,
+    TypingIndicatorComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
