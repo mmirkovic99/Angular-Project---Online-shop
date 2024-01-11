@@ -19,6 +19,7 @@ import { ChatbotService } from 'src/app/services/chatbot.service';
 import * as CartAction from '../../../store/actions/CartActions';
 import { ProductService } from 'src/app/services/product.service';
 import { Tags } from '../../../constants/chatbot.constants';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'chat-bot',
@@ -43,7 +44,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     private chatbotService: ChatbotService,
     private productService: ProductService,
     private router: Router,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -202,7 +204,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     let productToAdd = Object.assign({}, this.selectedProduct);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    // this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    this.cartService.addToCart(productToAdd);
   }
 
   private handleBrandInfoResponse(
