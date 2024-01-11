@@ -77,7 +77,6 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.addMessage({
         sender: 'user',
         content: message,
-        time: new Date(),
       });
       message = message.slice(0, message.indexOf('#') - 1);
     } else if (message.includes('Choose size')) {
@@ -85,14 +84,12 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.addMessage({
         sender: 'user',
         content: message,
-        time: new Date(),
       });
       message = message.slice(0, message.indexOf(' ') - 1);
     } else
       this.addMessage({
         sender: 'user',
         content: message,
-        time: new Date(),
       });
     this.isChatbotWriting = true;
 
@@ -133,6 +130,7 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private addMessage(message: MessageInterface): void {
+    message.time = new Date();
     this.messages.push(message);
   }
 

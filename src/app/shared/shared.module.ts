@@ -22,6 +22,8 @@ import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
 import { ProductTypePipe } from '../pipes/type.pipe';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
+import { MessageSenderPipe } from '../pipes/messageSender.pipe';
+import { FormatTimePipe } from '../pipes/formatTime.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { TypingIndicatorComponent } from './components/typing-indicator/typing-i
     ProductTypePipe,
     SvgIconComponent,
     TypingIndicatorComponent,
+    MessageSenderPipe,
+    FormatTimePipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -69,6 +73,8 @@ import { TypingIndicatorComponent } from './components/typing-indicator/typing-i
     ChatBotComponent,
     ProductTypePipe,
     SvgIconComponent,
+    MessageSenderPipe,
+    FormatTimePipe,
   ],
 })
 export class SharedModule {}

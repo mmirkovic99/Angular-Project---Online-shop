@@ -71,25 +71,64 @@
       flex-direction: column;
     }
 
+    &__message-wrapper {
+      display: flex;
+      justify-content: center;
+
+      flex-direction: column;
+      &--outcoming {
+        & > *:first-child {
+          padding-left: 1rem;
+        }
+        & > *:nth-child(2) {
+          background-color: royalblue;
+          border-radius: 0 2rem 2rem 2rem;
+        }
+      }
+
+      &--incoming {
+        align-items: flex-end;
+        & > *:first-child {
+          flex-direction: row-reverse;
+
+          padding-right: 1rem;
+          & > *:first-child {
+            margin-left: 1rem;
+          }
+        }
+
+        & > *:nth-child(2) {
+          background-color: rgb(19, 47, 132);
+          border-radius: 2rem 0 2rem 2rem;
+        }
+      }
+    }
+
+    &__message-info {
+      display: flex;
+      align-items: center;
+
+      &__time {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        opacity: 0.4;
+      }
+
+      &__sender {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+
     &__message {
       width: fit-content;
       max-width: 100%;
       font-size: 1.6rem;
       margin: 1rem;
       padding: 1.5rem;
-      border-radius: 2rem;
       color: white;
       white-space: break-spaces;
       animation: show-dialog 0.5s;
-
-      &--outcoming {
-        background-color: royalblue;
-      }
-
-      &--incoming {
-        align-self: flex-end;
-        background-color: rgb(19, 47, 132);
-      }
 
       &__product {
         display: flex;
