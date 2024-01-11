@@ -14,18 +14,23 @@ import { productsLengthSelector } from 'src/app/store/selectors/cartStateSelecto
 })
 export class CartButtonComponent implements OnInit, OnDestroy {
   itemsNumber!: number;
-  itemsNumberSubscription!:Subscription
+  itemsNumberSubscription!: Subscription;
 
-  constructor(private store: Store<AppStateInterface>,
-              private router: Router,
-              private cartService: CartService) {
-    // this.store
-    //   .pipe(select(productsLengthSelector))
-    //   .subscribe((data) => (this.itemsNumber = data));
-  }
+  constructor(
+    private store: Store<AppStateInterface>,
+    private router: Router,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.itemsNumberSubscription = this.cartService.getCart().subscribe((cart: CartStateInterface) => this.itemsNumber = cart.products.length);
+    this.store
+      .pipe(select(productsLengthSelector))
+      .subscribe((data) => (this.itemsNumber = data));
+    // this.itemsNumberSubscription = this.cartService
+    //   .getCart()
+    //   .subscribe(
+    //     (cart: CartStateInterface) => (this.itemsNumber = cart.products.length)
+    //   );
   }
 
   ngOnDestroy(): void {

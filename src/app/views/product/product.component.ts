@@ -29,7 +29,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   favorites!: Array<ProductInterface>;
   showError = false;
 
-
   private subscriptions: Subscription[];
 
   constructor(
@@ -37,7 +36,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     private store: Store<AppStateInterface>,
-    private cartService:CartService
+    private cartService: CartService
   ) {
     this.subscriptions = [];
   }
@@ -70,10 +69,9 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.showError = false;
     let productToAdd = Object.assign({}, this.product);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    // this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
 
-    this.cartService.addToCart(productToAdd);
-
+    // this.cartService.addToCart(productToAdd);
   }
 
   selectSize(event: any) {

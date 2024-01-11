@@ -29,13 +29,12 @@ export class CartComponent implements OnInit, OnDestroy {
   userId!: number;
   totalPrica: number;
 
-
   private subscriptions: Subscription[];
 
   constructor(
     private store: Store<AppStateInterface>,
     private router: Router,
-    private cartService:CartService
+    private cartService: CartService
   ) {
     this.totalPrica = 0;
     this.subscriptions = [];
@@ -46,7 +45,7 @@ export class CartComponent implements OnInit, OnDestroy {
       this.setUserId(),
       this.setOrders(),
       this.setProducts(),
-      // this.setTotalPrice()
+      this.setTotalPrice()
     );
   }
 
@@ -55,8 +54,8 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   removeFromCart(index: number) {
-    // this.store.dispatch(CartAction.removeFromCart({ index }));
-    this.cartService.removeFromCart(index);
+    this.store.dispatch(CartAction.removeFromCart({ index }));
+    // this.cartService.removeFromCart(index);
   }
 
   order() {
@@ -94,25 +93,25 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   private setProducts(): Subscription {
-    // return this.store
-    //   .pipe(select(productsSelector))
-    //   .subscribe((products: any[]) => {
-    //     this.products = products.map((product) => product);
-    //   });
+    return this.store
+      .pipe(select(productsSelector))
+      .subscribe((products: any[]) => {
+        this.products = products.map((product) => product);
+      });
 
-    return this.cartService.getCart().subscribe((cart: CartStateInterface) => {
-      this.products = cart.products;
-      this.totalPrica = this.products.reduce((currentPrice, product)=>currentPrice+product.price,0)
-    })
+    // return this.cartService.getCart().subscribe((cart: CartStateInterface) => {
+    //   this.products = cart.products;
+    //   this.totalPrica = this.products.reduce((currentPrice, product)=>currentPrice+product.price,0)
+    // })
   }
 
-  // private setTotalPrice(): Subscription {
-  //   return this.store
-  //     .pipe(select(productsTotalPriceSelector))
-  //     .subscribe((price: number) => {
-  //       this.totalPrica = price;
-  //     });
-  // }
+  private setTotalPrice(): Subscription {
+    return this.store
+      .pipe(select(productsTotalPriceSelector))
+      .subscribe((price: number) => {
+        this.totalPrica = price;
+      });
+  }
 
   private unsubscribe(): void {
     this.subscriptions.forEach((subscription: Subscription) =>

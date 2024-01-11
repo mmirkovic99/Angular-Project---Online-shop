@@ -175,8 +175,9 @@
         margin-right: 1rem;
         background-color: black;
         color: white;
-        &__icon {
-          margin-right: 0.5rem;
+
+        &__text {
+          margin-left: 2.5rem;
         }
       }
 
@@ -189,9 +190,10 @@
     &__free-delivery {
       display: flex;
       margin-top: 2rem;
+      margin-left: 1rem;
 
       &__text {
-        margin-left: 1rem;
+        margin-left: 2.5rem;
         font-weight: 500;
         font-size: 1.2rem;
       }

@@ -204,8 +204,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     let productToAdd = Object.assign({}, this.selectedProduct);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    // this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
-    this.cartService.addToCart(productToAdd);
+    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    // this.cartService.addToCart(productToAdd);
   }
 
   private handleBrandInfoResponse(
