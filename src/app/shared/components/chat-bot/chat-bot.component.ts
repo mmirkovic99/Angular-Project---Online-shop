@@ -34,7 +34,9 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   questions!: ChatbotInterface[];
   tag!: string;
 
+  isDialogOpen: boolean = false;
   isChatbotWriting: boolean = false;
+  isLastMessageSeen: boolean = false;
 
   private productOrdinalNumber: number = -1;
   private size: number = 0;
@@ -64,6 +66,11 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
   getFormControl(name: string): FormControl {
     return this.messageForm.get(name) as FormControl;
+  }
+
+  seeMessages(): void {
+    this.isDialogOpen = !this.isDialogOpen;
+    this.isLastMessageSeen = true;
   }
 
   sendMessage(): void {
@@ -119,8 +126,13 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private scrollToBottom(): void {
-    this.messageContainer.nativeElement.scrollTop =
-      this.messageContainer.nativeElement.scrollHeight;
+    this.messageContainer.nativeElement.scroll({
+      top: this.messageContainer.nativeElement.scrollHeight,
+
+      left: 0,
+
+      behavior: 'smooth',
+    });
   }
 
   private buildForm(): FormGroup {
@@ -261,7 +273,7 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
       )
       .subscribe((result) => {
         this.isChatbotWriting = false;
-
+        this.isLastMessageSeen = this.isDialogOpen ? true : false;
         if (!Array.isArray(result)) {
           const newMessage = result as MessageInterface;
           if (this.tag === Tags.PRODUCT_SELECTION) {
@@ -293,7 +305,6 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
           this.latestDisplayedProducts = products;
           this.addMessage(message);
         }
-        this.scrollToBottom();
       });
   }
 

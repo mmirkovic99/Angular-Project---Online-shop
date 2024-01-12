@@ -89,12 +89,12 @@
       </custom-button>
     </div>
   </div>
-  <label for="cb_chatbot" class="chat-bot__button">
+  <label for="cb_chatbot" class="chat-bot__button" (click)="seeMessages()">
     <svg-icon
       class="chat-bot__button__icon chat-bot__button__icon--open"
       [path]="'../../../../assets/svgs/messages.svg'"
     ></svg-icon>
-    <span class="chat-bot__button__red-dot"></span>
+    <span class="chat-bot__button__red-dot" *ngIf="!isLastMessageSeen"></span>
     <svg-icon
       class="chat-bot__button__icon chat-bot__button__icon--close"
       [path]="'../../../../assets/svgs/close.svg'"

@@ -63,3 +63,9 @@ ul {
     opacity: 1;
   }
 }
+
+@keyframes scale {
+  50% {
+    transform: scale(0.5);
+  }
+}
