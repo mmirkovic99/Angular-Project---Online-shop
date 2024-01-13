@@ -54,8 +54,8 @@ export class CustomInputComponent implements OnInit, DoCheck {
   }
 
   private handleConfirmPassword(control: FormControl, label: string) {
-    console.log('conf pass');
-    if (!control.dirty) this.errorMessage = `${label} is required field.`;
+    if (!control.dirty || control.touched)
+      this.errorMessage = `${label} is required field.`;
     else if (this.passwordNoMatch)
       this.errorMessage = `Password and ${label} fields do not match.`;
   }
