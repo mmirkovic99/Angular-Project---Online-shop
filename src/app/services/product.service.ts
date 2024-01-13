@@ -97,4 +97,8 @@ export class ProductService {
       })
     );
   }
+
+  searchProducts(title: string): Observable<ProductInterface[]> {
+    return this.sendGetRequestWithParameter('title_like', title);
+  }
 }
