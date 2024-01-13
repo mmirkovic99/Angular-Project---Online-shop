@@ -79,6 +79,7 @@
           (getControl('confirmPassword').dirty ||
             getControl('confirmPassword').touched)
         "
+        [passwordNoMatch]="registrationForm.errors?.passwordNoMatch"
       ></custom-input>
     </form>
     <custom-button
