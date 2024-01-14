@@ -53,12 +53,17 @@ export class UserService {
   }
 
   getUserByUsername(username: string): Observable<UserInterface> {
-    return this.http.post<UserInterface>(`${environment.apiUrl}/users`, {
-      username,
-    });
+    return this.http.post<UserInterface>(
+      `${API_BASE_URL}${API_ENDPOINTS.USERS}/users`,
+      {
+        username,
+      }
+    );
   }
 
   getAllUsers(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>(`${environment.apiUrl}/users`);
+    return this.http.get<UserInterface[]>(
+      `${API_BASE_URL}${API_ENDPOINTS.USERS}/users`
+    );
   }
 }

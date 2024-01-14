@@ -15,7 +15,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  sortingOptions: string[] = environment.sortingOptions;
+  sortingOptions: string[] = [
+    'The Highest Price',
+    'The Lowest Price',
+    'Name',
+    'Rating',
+  ];
   selectedOption: string = 'None';
 
   companies!: CompanyInterface[];
