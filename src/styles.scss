@@ -9,7 +9,7 @@
 html {
   font-family: "Poppins", sans-serif;
   font-size: 62.5%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 ul {
@@ -67,5 +67,22 @@ ul {
 @keyframes scale {
   50% {
     transform: scale(0.5);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation-backwards {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

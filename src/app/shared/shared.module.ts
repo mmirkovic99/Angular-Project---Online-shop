@@ -24,6 +24,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
 import { MessageSenderPipe } from '../pipes/messageSender.pipe';
 import { FormatTimePipe } from '../pipes/formatTime.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FormatTimePipe } from '../pipes/formatTime.pipe';
     TypingIndicatorComponent,
     MessageSenderPipe,
     FormatTimePipe,
+    LoaderComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -75,6 +77,7 @@ import { FormatTimePipe } from '../pipes/formatTime.pipe';
     SvgIconComponent,
     MessageSenderPipe,
     FormatTimePipe,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

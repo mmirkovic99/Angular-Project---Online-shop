@@ -1,7 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+} from 'rxjs/operators';
 import { Type } from 'src/app/constants/product.constants';
 import { CompanyInterface } from 'src/app/models/company.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
@@ -30,6 +35,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   currentPage: number = 0;
   itemsPerPage: number = 12;
+
+  isLoadingProducts: boolean = false;
 
   private subscriptions: Subscription[];
 
@@ -115,6 +122,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     return form.valueChanges
       .pipe(
+        map((filters) => {
+          this.isLoadingProducts = true;
+          this.productList = [];
+          return filters;
+        }),
         debounceTime(1000),
         distinctUntilChanged((prev, curr) => {
           return areFormsEqual(prev, curr);
@@ -150,6 +162,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         (products: ProductInterface[]) => {
           this.productList = products;
           this.currentPage = 0;
+          this.isLoadingProducts = false;
         },
         (error) => console.error(error)
       );
