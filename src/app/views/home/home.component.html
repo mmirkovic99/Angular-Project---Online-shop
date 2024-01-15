@@ -120,8 +120,8 @@
             (pageChange)="currentPage = $event"
           ></pagination-controls>
         </div>
-        <div class="filter-box__loader">
-          <loader *ngIf="isLoadingProducts"></loader>
+        <div class="filter-box__loader" *ngIf="isLoadingProducts">
+          <loader></loader>
         </div>
       </div>
     </div>
