@@ -131,6 +131,33 @@
             "../../../../assets/nike-black-white-orange-3.jpg",
             "../../../../assets/nike-black-white-orange-4.jpg"
           ]
+        },
+        {
+          "id": 3,
+          "companyLogo": "../../../../assets/nike-logo.png",
+          "companyName": "Nike",
+          "title": "Nike Dunk Low Retro",
+          "type": 0,
+          "tag": "Popular",
+          "rating": 4,
+          "sizes": [
+            39,
+            40.5,
+            41,
+            42.5,
+            43,
+            44.5,
+            45,
+            46.5
+          ],
+          "oldPrice": -1,
+          "price": 150,
+          "images": [
+            "../../../../assets/nike-black-white-blue-1.jpg",
+            "../../../../assets/nike-black-white-blue-2.jpg",
+            "../../../../assets/nike-black-white-blue-3.jpg",
+            "../../../../assets/nike-black-white-blue-4.jpg"
+          ]
         }
       ]
     },
