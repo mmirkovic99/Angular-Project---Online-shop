@@ -79,6 +79,7 @@
           type="text"
           placeholder="Type message..."
           [formControl]="getFormControl('message')"
+          (keypress)="handleKeypress($event)"
         />
       </form>
       <custom-button

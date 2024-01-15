@@ -105,6 +105,10 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.subscriptions.push(this.handleChatbotResponse(message));
   }
 
+  handleKeypress(event: any): void {
+    if (event.charCode === 13) this.sendMessage();
+  }
+
   navigateProduct(productId: number): void {
     this.router.navigate([`product/${productId}`]);
   }
@@ -175,7 +179,12 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   private handleProductSelectionTag(
     products: ProductInterface[] | undefined
   ): Observable<MessageInterface> {
-    this.setTag(!products ? Tags.DEFAULT : this.tag);
+    console.log(this.productOrdinalNumber);
+    this.setTag(
+      !products || this.productOrdinalNumber >= products.length
+        ? Tags.DEFAULT
+        : this.tag
+    );
     return this.chatbotService.getResponseByTag(this.tag);
   }
 
