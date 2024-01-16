@@ -54,8 +54,6 @@ export class ChatBotComponent
   private selectedProduct: ProductInterface | undefined;
   private latestDisplayedProducts: ProductInterface[] | undefined;
 
-  @Output() messageContainerScroll = new EventEmitter<Event>();
-
   constructor(
     private formBuilder: FormBuilder,
     private chatbotService: ChatbotService,
@@ -128,11 +126,6 @@ export class ChatBotComponent
   navigateProduct(productId: number): void {
     this.router.navigate([`product/${productId}`]);
   }
-
-  handleMessageContainerScroll(event: Event): void {
-    this.messageContainerScroll.emit(event);
-  }
-
   private handleScroll(event: any): void {
     (event as Event).stopPropagation();
   }
