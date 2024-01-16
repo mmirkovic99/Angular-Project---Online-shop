@@ -1,9 +1,16 @@
 import {
   AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
+  DoCheck,
   ElementRef,
+  EventEmitter,
+  OnChanges,
   OnDestroy,
   OnInit,
+  Output,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -26,8 +33,12 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
 })
-export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class ChatBotComponent
+  implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy
+{
   @ViewChild('messageContainer') messageContainer!: ElementRef;
+  private scrollPosition = 0;
+  private isNewMessage = false;
   messages: MessageInterface[] = [];
   subscriptions: Subscription[] = [];
   messageForm!: FormGroup;
@@ -42,6 +53,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   private size: number = 0;
   private selectedProduct: ProductInterface | undefined;
   private latestDisplayedProducts: ProductInterface[] | undefined;
+
+  @Output() messageContainerScroll = new EventEmitter<Event>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,8 +71,10 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked(): void {
-    this.scrollToBottom();
+    if (this.isNewMessage) this.scrollToBottom();
+    console.log((this.messageContainer.nativeElement as HTMLElement).scrollTop);
   }
+  ngAfterViewInit(): void {}
 
   ngOnDestroy(): void {
     this.unsubscribe();
@@ -71,12 +86,14 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   seeMessages(): void {
     this.isDialogOpen = !this.isDialogOpen;
     this.isLastMessageSeen = true;
+    if (this.isDialogOpen) document.body.style.overflowY = 'hidden';
+    else document.body.style.overflowY = 'auto';
   }
 
   sendMessage(): void {
     let message: string = this.getFormControl('message').value;
     if (message.trim() === '') return;
-
+    this.isNewMessage = true;
     if (message.includes('Select product')) {
       this.productOrdinalNumber = Number(
         message.slice(message.indexOf('#') + 1)
@@ -101,7 +118,6 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.isChatbotWriting = true;
 
     this.getFormControl('message').setValue('');
-
     this.subscriptions.push(this.handleChatbotResponse(message));
   }
 
@@ -111,6 +127,14 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   navigateProduct(productId: number): void {
     this.router.navigate([`product/${productId}`]);
+  }
+
+  handleMessageContainerScroll(event: Event): void {
+    this.messageContainerScroll.emit(event);
+  }
+
+  private handleScroll(event: any): void {
+    (event as Event).stopPropagation();
   }
 
   private getTag(): string {
@@ -130,13 +154,9 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private scrollToBottom(): void {
-    this.messageContainer.nativeElement.scroll({
-      top: this.messageContainer.nativeElement.scrollHeight,
-
-      left: 0,
-
-      behavior: 'smooth',
-    });
+    (this.messageContainer.nativeElement as HTMLElement).scrollTop = (
+      this.messageContainer.nativeElement as HTMLElement
+    ).scrollHeight;
   }
 
   private buildForm(): FormGroup {
@@ -313,6 +333,8 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
           message.productsInfo = products;
           this.latestDisplayedProducts = products;
           this.addMessage(message);
+
+          setTimeout(() => (this.isNewMessage = false));
         }
       });
   }

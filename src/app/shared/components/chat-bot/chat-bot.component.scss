@@ -67,7 +67,7 @@
 
     &__message-container {
       height: 90%;
-      overflow-y: scroll;
+      overflow-y: auto;
       scroll-behavior: smooth;
       display: flex;
       flex-direction: column;
