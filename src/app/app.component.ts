@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'capstone';
-
-  handleChatboScroll(event: Event) {
-    console.log('mire');
-    event.stopPropagation();
-  }
 }

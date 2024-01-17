@@ -70,7 +70,6 @@ export class ChatBotComponent
 
   ngAfterViewChecked(): void {
     if (this.isNewMessage) this.scrollToBottom();
-    console.log((this.messageContainer.nativeElement as HTMLElement).scrollTop);
   }
   ngAfterViewInit(): void {}
 
@@ -84,8 +83,6 @@ export class ChatBotComponent
   seeMessages(): void {
     this.isDialogOpen = !this.isDialogOpen;
     this.isLastMessageSeen = true;
-    if (this.isDialogOpen) document.body.style.overflowY = 'hidden';
-    else document.body.style.overflowY = 'auto';
   }
 
   sendMessage(): void {
@@ -192,7 +189,6 @@ export class ChatBotComponent
   private handleProductSelectionTag(
     products: ProductInterface[] | undefined
   ): Observable<MessageInterface> {
-    console.log(this.productOrdinalNumber);
     this.setTag(
       !products || this.productOrdinalNumber >= products.length
         ? Tags.DEFAULT
