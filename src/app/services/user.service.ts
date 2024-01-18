@@ -66,4 +66,8 @@ export class UserService {
       `${API_BASE_URL}${API_ENDPOINTS.USERS}/users`
     );
   }
+
+  updateUserPassword(id: number, password: string): Observable<UserInterface> {
+    return this.sendPatchRequestWithParams(id, { password });
+  }
 }

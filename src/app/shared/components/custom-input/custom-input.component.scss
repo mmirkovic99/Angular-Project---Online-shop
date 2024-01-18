@@ -28,7 +28,7 @@
   }
 
   &__input {
-    width: 95%;
+    width: 100%;
     outline: none;
     border: 1px solid gray;
     border-radius: 0.8rem;
@@ -71,6 +71,7 @@
     margin-left: 1rem;
     padding: 1rem;
     border-radius: 2rem;
+    max-width: 30rem;
   }
 
   &__icon:hover + &__text-wrapper > &__text {

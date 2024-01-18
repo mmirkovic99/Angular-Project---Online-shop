@@ -7,12 +7,12 @@ import { ProductInterface } from '../models/product.interface';
 
 export const initialState: AppStateInterface = {
   user: {
-    id: 0,
-    name: '',
-    surname: '',
-    email: '',
-    username: '',
-    password: '',
+    id: 1,
+    name: 'Miroslav',
+    surname: 'Mirkovic',
+    email: 'mmirkovic@griddynamics.com',
+    username: 'mmirkoivc',
+    password: 'miki31071999',
     orders: [],
     favorites: [],
   },
@@ -42,6 +42,18 @@ export const reducer = createReducer(
   on(UserActions.updateUserFailure, (state: AppStateInterface, data: any) => {
     return { ...state, error: data.error };
   }),
+  on(
+    UserActions.updateUserPasswordSuccess,
+    (state: AppStateInterface, data: any) => {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          password: data.password,
+        },
+      };
+    }
+  ),
   on(
     UserActions.updateUserFavoriteList,
     (state: AppStateInterface, data: any) => {

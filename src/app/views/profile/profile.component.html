@@ -1,30 +1,80 @@
 <div class="profile">
   <div class="heading-1">My Profile</div>
-  <form class="profile__form">
-    <custom-input
-      label="Name"
-      type="text"
-      [control]="getControl('name')"
-    ></custom-input>
-    <custom-input
-      label="Surname"
-      type="text"
-      [control]="getControl('surname')"
-    ></custom-input>
-    <custom-input
-      label="Email"
-      type="text"
-      [control]="getControl('email')"
-    ></custom-input>
-    <custom-input
-      label="Username"
-      type="text"
-      [control]="getControl('username')"
-    ></custom-input>
-  </form>
-  <custom-button
-    buttonText="Update"
-    [buttonClass]="'btn--black btn--big'"
-    (onClick)="updateData()"
-  ></custom-button>
+  <div class="profile__form-wrapper">
+    <form class="profile__form">
+      <custom-input
+        label="Name"
+        type="text"
+        [control]="getControl(profileForm, 'name')"
+        [error]="getControl(profileForm, 'name').errors?.required"
+      ></custom-input>
+      <custom-input
+        label="Surname"
+        type="text"
+        [control]="getControl(profileForm, 'surname')"
+        [error]="getControl(profileForm, 'surname').errors?.required"
+      ></custom-input>
+      <custom-input
+        label="Email"
+        type="text"
+        [control]="getControl(profileForm, 'email')"
+        [error]="getControl(profileForm, 'email').errors?.required"
+      ></custom-input>
+      <custom-input
+        label="Username"
+        type="text"
+        [control]="getControl(profileForm, 'username')"
+        [error]="getControl(profileForm, 'username').errors?.required"
+      ></custom-input>
+    </form>
+  </div>
+  <div class="profile__btn-container">
+    <custom-button
+      buttonText="Update"
+      [buttonClass]="'btn--black btn--big'"
+      (onClick)="updateData()"
+      [disabled]="!profileForm.valid"
+    ></custom-button>
+    <custom-button
+      buttonText="Edit Password"
+      [buttonClass]="'btn--blue btn--big'"
+      (onClick)="editPassword()"
+    ></custom-button>
+  </div>
+  <div class="profile__form-wrapper">
+    <form class="profile__form profile__form--password">
+      <custom-input
+        label="Old Password"
+        type="password"
+        [control]="getControl(passwordForm, 'oldPassword')"
+        [error]="getControl(passwordForm, 'oldPassword').errors?.pattern"
+      ></custom-input>
+      <custom-input
+        label="New Password"
+        type="password"
+        [control]="getControl(passwordForm, 'newPassword')"
+        [error]="
+          !getControl(passwordForm, 'newPassword').valid &&
+          getControl(passwordForm, 'newPassword').dirty &&
+          getControl(passwordForm, 'newPassword').value !== ''
+        "
+      ></custom-input>
+      <custom-input
+        label="Confirm New Password"
+        type="password"
+        [control]="getControl(passwordForm, 'confirmNewPassword')"
+        [error]="
+          getControl(passwordForm, 'confirmNewPassword').dirty &&
+          passwordForm.errors?.passwordNoMatch
+        "
+      >
+      </custom-input>
+    </form>
+    <custom-button
+      buttonText="Save Password"
+      [buttonClass]="'btn--blue btn--big'"
+      (onClick)="savePassword()"
+      [disabled]="!passwordForm.valid"
+    ></custom-button>
+  </div>
 </div>

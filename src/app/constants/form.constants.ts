@@ -5,4 +5,7 @@ export enum FormFields {
   username = 'Username',
   password = 'Password',
   confirmPassword = 'Confirm password',
+  oldPassword = 'Old Password',
+  newPassword = 'New Password',
+  confirmNewPassword = 'Confirm New Password',
 }

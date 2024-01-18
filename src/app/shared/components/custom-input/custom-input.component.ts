@@ -25,6 +25,7 @@ export class CustomInputComponent implements OnInit, DoCheck {
   ngOnInit(): void {}
 
   private showError(label: string) {
+    console.log(label);
     switch (label) {
       case FormFields.name:
       case FormFields.surname:
@@ -37,8 +38,20 @@ export class CustomInputComponent implements OnInit, DoCheck {
       case FormFields.password:
         this.handlePasswordError(this.control, FormFields.password);
         break;
-      default: // Confirm Password
-        this.handleConfirmPassword(this.control, FormFields.confirmPassword);
+      case FormFields.oldPassword:
+        this.handleOldPassword(this.control, FormFields.oldPassword);
+        break;
+      case FormFields.newPassword:
+        this.handleNewPassword(this.control, FormFields.newPassword);
+        break;
+      case FormFields.confirmNewPassword:
+        this.handleConfirmNewPassword(
+          this.control,
+          FormFields.confirmNewPassword
+        );
+        break;
+      default:
+        this.handleConfirmPassword(this.control, this.label);
     }
   }
 
@@ -58,5 +71,19 @@ export class CustomInputComponent implements OnInit, DoCheck {
       this.errorMessage = `${label} is required field.`;
     else if (this.passwordNoMatch)
       this.errorMessage = `Password and ${label} fields do not match.`;
+  }
+
+  private handleOldPassword(control: FormControl, label: string): void {
+    if (!control.valid)
+      this.errorMessage = `${label} is invalid. ${label} must match your current password.`;
+  }
+
+  private handleNewPassword(control: FormControl, label: string) {
+    if (!control.valid)
+      this.errorMessage = `${label} is invalid. ${label} must contain at least one uppercase letter and one special character, and it must be a minimum of 8 characters long.`;
+  }
+
+  private handleConfirmNewPassword(control: FormControl, label: string) {
+    this.errorMessage = `New Password and ${label} fields do not match.`;
   }
 }

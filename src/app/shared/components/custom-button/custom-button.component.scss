@@ -51,4 +51,8 @@
     border-radius: 50%;
     padding: 1rem;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

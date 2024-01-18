@@ -39,6 +39,29 @@ export const updateUserFailure = createAction(
   props<{ error: string }>()
 );
 
+// UPDATE USER PASSWORD
+
+export const updateUserPassword = createAction(
+  '[User] Update User Password',
+  props<{
+    id: number;
+    password: string;
+  }>()
+);
+
+export const updateUserPasswordSuccess = createAction(
+  '[User] Update User Password Success',
+  props<{
+    id: number;
+    password: string;
+  }>()
+);
+
+export const updateUserPasswordFailure = createAction(
+  '[User] Update User Password Failure',
+  props<{ error: string }>()
+);
+
 // UPDATE USER FAVORITES LIST
 
 export const updateUserFavoriteList = createAction(
