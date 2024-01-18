@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         password: this.getControl(this.passwordForm, 'newPassword').value,
       })
     );
-    // this.router.navigate(['auth/login']);
+    this.router.navigate(['auth/login']);
   }
 
   private setUser(): void {

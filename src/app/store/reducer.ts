@@ -7,12 +7,12 @@ import { ProductInterface } from '../models/product.interface';
 
 export const initialState: AppStateInterface = {
   user: {
-    id: 1,
-    name: 'Miroslav',
-    surname: 'Mirkovic',
-    email: 'mmirkovic@griddynamics.com',
-    username: 'mmirkoivc',
-    password: 'miki31071999',
+    id: 0,
+    name: '',
+    surname: '',
+    email: '',
+    username: '',
+    password: '',
     orders: [],
     favorites: [],
   },
