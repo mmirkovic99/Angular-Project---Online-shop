@@ -20,27 +20,23 @@
     </div>
     <form class="login-container__form" [formGroup]="loginForm">
       <custom-input
-        [error]="
-          !getControl('username').valid &&
-          (getControl('username').dirty || getControl('username').touched)
-        "
+        [error]="displayError('username')"
         label="Username"
         type="text"
         [control]="getControl('username')"
+        [formType]="formType"
       ></custom-input>
 
       <custom-input
-        [error]="
-          !getControl('password').valid &&
-          (getControl('password').dirty || getControl('password').touched)
-        "
+        [error]="displayError('password')"
         label="Password"
         type="password"
         [control]="getControl('password')"
+        [formType]="formType"
       ></custom-input>
     </form>
     <custom-button
-      [disabled]="!loginForm.valid"
+      [disabled]="loginForm.invalid"
       buttonText="Login"
       [buttonClass]="'btn--black btn--big'"
       (onClick)="login()"

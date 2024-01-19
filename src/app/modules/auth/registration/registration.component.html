@@ -28,65 +28,51 @@
         label="Name"
         type="text"
         [control]="getControl('name')"
-        [error]="
-          !getControl('name').valid &&
-          (getControl('name').dirty || getControl('name').touched)
-        "
+        [error]="displayError('name')"
       ></custom-input>
       <custom-input
         label="Surname"
         type="text"
         [control]="getControl('surname')"
-        [error]="
-          !getControl('surname').valid &&
-          (getControl('surname').dirty || getControl('surname').touched)
-        "
+        [error]="displayError('surname')"
       ></custom-input>
       <custom-input
         label="Email"
         type="text"
         [control]="getControl('email')"
-        [error]="
-          !getControl('email').valid &&
-          (getControl('email').dirty || getControl('email').touched)
-        "
+        [error]="displayError('email')"
       ></custom-input>
       <custom-input
         label="Username"
         type="text"
         [control]="getControl('username')"
-        [error]="
-          !getControl('username').valid &&
-          (getControl('username').dirty || getControl('username').touched)
-        "
+        [error]="displayError('username')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="Password"
         type="password"
         [control]="getControl('password')"
-        [error]="
-          !getControl('password').valid &&
-          (getControl('password').dirty || getControl('password').touched)
-        "
+        [error]="displayError('password')"
       ></custom-input>
       <custom-input
         label="Confirm password"
         type="password"
         [control]="getControl('confirmPassword')"
-        [error]="
-          (!getControl('confirmPassword').valid ||
-            registrationForm.errors?.passwordNoMatch) &&
-          (getControl('confirmPassword').dirty ||
-            getControl('confirmPassword').touched)
-        "
+        [error]="displayError('confirmPassword')"
         [passwordNoMatch]="registrationForm.errors?.passwordNoMatch"
       ></custom-input>
     </form>
     <custom-button
-      [disabled]="!registrationForm.valid"
       buttonText="Create account"
       [buttonClass]="'btn--black btn--big'"
       (onClick)="registration()"
+      [disabled]="
+        registrationForm.invalid ||
+        !getControl('name').valid ||
+        !getControl('surname').valid ||
+        !getControl('email').valid
+      "
     ></custom-button>
   </div>
 </div>

@@ -6,25 +6,29 @@
         label="Name"
         type="text"
         [control]="getControl(profileForm, 'name')"
-        [error]="getControl(profileForm, 'name').errors?.required"
+        [error]="displayError(profileForm, 'name')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="Surname"
         type="text"
         [control]="getControl(profileForm, 'surname')"
-        [error]="getControl(profileForm, 'surname').errors?.required"
+        [error]="displayError(profileForm, 'surname')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="Email"
         type="text"
         [control]="getControl(profileForm, 'email')"
-        [error]="getControl(profileForm, 'email').errors?.required"
+        [error]="displayError(profileForm, 'email')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="Username"
         type="text"
         [control]="getControl(profileForm, 'username')"
-        [error]="getControl(profileForm, 'username').errors?.required"
+        [error]="displayError(profileForm, 'username')"
+        [formType]="formType"
       ></custom-input>
     </form>
   </div>
@@ -41,32 +45,27 @@
       (onClick)="editPassword()"
     ></custom-button>
   </div>
-  <div class="profile__form-wrapper">
+  <div class="profile__form-wrapper" *ngIf="isChangePassword">
     <form class="profile__form profile__form--password">
       <custom-input
         label="Old Password"
         type="password"
         [control]="getControl(passwordForm, 'oldPassword')"
-        [error]="getControl(passwordForm, 'oldPassword').errors?.pattern"
+        [error]="displayError(passwordForm, 'oldPassword')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="New Password"
         type="password"
         [control]="getControl(passwordForm, 'newPassword')"
-        [error]="
-          !getControl(passwordForm, 'newPassword').valid &&
-          getControl(passwordForm, 'newPassword').dirty &&
-          getControl(passwordForm, 'newPassword').value !== ''
-        "
+        [error]="displayError(passwordForm, 'newPassword')"
+        [formType]="formType"
       ></custom-input>
       <custom-input
         label="Confirm New Password"
         type="password"
         [control]="getControl(passwordForm, 'confirmNewPassword')"
-        [error]="
-          getControl(passwordForm, 'confirmNewPassword').dirty &&
-          passwordForm.errors?.passwordNoMatch
-        "
+        [error]="displayError(passwordForm, 'confirmNewPassword')"
       >
       </custom-input>
     </form>
