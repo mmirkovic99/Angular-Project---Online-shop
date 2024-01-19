@@ -112,8 +112,6 @@ export class CustomInputComponent implements OnInit, DoCheck {
   }
 
   private handleConfirmPassword(control: FormControl, label: string) {
-    console.log(this.passwordNoMatch);
-
     if (!control.dirty && control.touched) this.setErrorRequiredField(label);
     else if (this.passwordNoMatch)
       this.errorMessage = `Password and ${label} fields do not match.`;
