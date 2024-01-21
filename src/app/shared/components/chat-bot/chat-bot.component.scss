@@ -2,10 +2,12 @@
   position: fixed;
   bottom: 7rem;
   right: 7rem;
+  z-index: 3;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
+  animation: scale-in 0.5s;
 
   &__checkbox {
     display: none;
@@ -23,6 +25,7 @@
   }
 
   &__button {
+    position: relative;
     cursor: pointer;
     margin-top: 1rem;
     height: 5rem;
@@ -39,6 +42,17 @@
         display: none;
       }
     }
+
+    &__red-dot {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1rem;
+      height: 15px;
+      width: 15px;
+      background-color: #a52b2b;
+      border-radius: 50%;
+      animation: 2s scale infinite ease-in;
+    }
   }
 
   &__dialog {
@@ -49,13 +63,63 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 2rem;
     border-radius: 0.8rem;
+    animation: show-dialog 0.5s;
 
     &__message-container {
       height: 90%;
-      overflow-y: scroll;
+      overflow-y: auto;
       scroll-behavior: smooth;
       display: flex;
       flex-direction: column;
+    }
+
+    &__message-wrapper {
+      display: flex;
+      justify-content: center;
+
+      flex-direction: column;
+      &--outcoming {
+        & > *:first-child {
+          padding-left: 1rem;
+        }
+        & > *:nth-child(2) {
+          background-color: royalblue;
+          border-radius: 0 2rem 2rem 2rem;
+        }
+      }
+
+      &--incoming {
+        align-items: flex-end;
+        & > *:first-child {
+          flex-direction: row-reverse;
+
+          padding-right: 1rem;
+          & > *:first-child {
+            margin-left: 1rem;
+          }
+        }
+
+        & > *:nth-child(2) {
+          background-color: rgb(19, 47, 132);
+          border-radius: 2rem 0 2rem 2rem;
+        }
+      }
+    }
+
+    &__message-info {
+      display: flex;
+      align-items: center;
+
+      &__time {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        opacity: 0.4;
+      }
+
+      &__sender {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
     }
 
     &__message {
@@ -64,18 +128,9 @@
       font-size: 1.6rem;
       margin: 1rem;
       padding: 1.5rem;
-      border-radius: 2rem;
       color: white;
       white-space: break-spaces;
-
-      &--outcoming {
-        background-color: royalblue;
-      }
-
-      &--incoming {
-        align-self: flex-end;
-        background-color: rgb(19, 47, 132);
-      }
+      animation: show-dialog 0.5s;
 
       &__product {
         display: flex;

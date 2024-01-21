@@ -63,12 +63,13 @@
   }
 
   &__wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
     margin-top: 5rem;
+    width: calc(100% - 10rem);
 
     & > *:last-child {
       padding: 2rem 0;
@@ -79,6 +80,19 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 7rem;
+  }
+
+  &__loader {
+    position: absolute;
+    z-index: 2;
+    top: 2rem;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    & > * {
+      margin-top: 20rem;
+    }
   }
 }

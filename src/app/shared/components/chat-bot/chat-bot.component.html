@@ -8,51 +8,65 @@
   <div class="chat-bot__dialog">
     <div class="chat-bot__dialog__message-container" #messageContainer>
       <div
-        class="chat-bot__dialog__message"
+        class="chat-bot__dialog__message-wrapper"
         [ngClass]="
           message.sender === 'user'
-            ? 'chat-bot__dialog__message--incoming'
-            : 'chat-bot__dialog__message--outcoming'
+            ? 'chat-bot__dialog__message-wrapper--incoming'
+            : 'chat-bot__dialog__message-wrapper--outcoming'
         "
         *ngFor="let message of messages"
       >
-        <div class="chat-bot__dialog__message__text">{{ message.content }}</div>
-        <div
-          class="chat-bot__dialog__message__products"
-          *ngIf="message.productsInfo && message.productsInfo.length > 0"
-        >
+        <div class="chat-bot__dialog__message-info">
+          <div class="chat-bot__dialog__message-info__sender">
+            {{ message.sender | msgSender }}
+          </div>
+          <div class="chat-bot__dialog__message-info__time">
+            {{ message.time | formatTime }}
+          </div>
+        </div>
+        <div class="chat-bot__dialog__message">
+          <div class="chat-bot__dialog__message__text">
+            {{ message.content }}
+          </div>
           <div
-            class="chat-bot__dialog__message__product"
-            *ngFor="let product of message.productsInfo"
-            (click)="navigateProduct(product.id)"
+            class="chat-bot__dialog__message__products"
+            *ngIf="message.productsInfo && message.productsInfo.length > 0"
           >
-            <img
-              [src]="product.images[0]"
-              alt="Shoe image"
-              class="chat-bot__dialog__message__product__image"
-            />
-            <div class="chat-bot__dialog__message__product__info">
-              <div class="chat-bot__dialog__message__product__info__title">
-                {{ product.title }}
-              </div>
-              <div class="chat-bot__dialog__message__product__info__type">
-                {{ product.type | productType }}
-              </div>
-              <div class="chat-bot__dialog__message__product__info__sizes">
-                <div
-                  class="chat-bot__dialog__message__product__info__size"
-                  *ngFor="let size of product.sizes"
-                >
-                  {{ size }}
+            <div
+              class="chat-bot__dialog__message__product"
+              *ngFor="let product of message.productsInfo"
+              (click)="navigateProduct(product.id)"
+            >
+              <img
+                [src]="product.images[0]"
+                alt="Shoe image"
+                class="chat-bot__dialog__message__product__image"
+              />
+              <div class="chat-bot__dialog__message__product__info">
+                <div class="chat-bot__dialog__message__product__info__title">
+                  {{ product.title }}
                 </div>
-              </div>
-              <div class="chat-bot__dialog__message__product__info__price">
-                {{ product.price | currency }}
+                <div class="chat-bot__dialog__message__product__info__type">
+                  {{ product.type | productType }}
+                </div>
+                <div class="chat-bot__dialog__message__product__info__sizes">
+                  <div
+                    class="chat-bot__dialog__message__product__info__size"
+                    *ngFor="let size of product.sizes"
+                  >
+                    {{ size }}
+                  </div>
+                </div>
+                <div class="chat-bot__dialog__message__product__info__price">
+                  {{ product.price | currency }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <typing-indicator *ngIf="isChatbotWriting"></typing-indicator>
     </div>
     <div class="chat-bot__dialog__message-input">
       <form
@@ -65,6 +79,7 @@
           type="text"
           placeholder="Type message..."
           [formControl]="getFormControl('message')"
+          (keypress)="handleKeypress($event)"
         />
       </form>
       <custom-button
@@ -75,12 +90,12 @@
       </custom-button>
     </div>
   </div>
-  <label for="cb_chatbot" class="chat-bot__button">
+  <label for="cb_chatbot" class="chat-bot__button" (click)="seeMessages()">
     <svg-icon
       class="chat-bot__button__icon chat-bot__button__icon--open"
       [path]="'../../../../assets/svgs/messages.svg'"
     ></svg-icon>
-
+    <span class="chat-bot__button__red-dot" *ngIf="!isLastMessageSeen"></span>
     <svg-icon
       class="chat-bot__button__icon chat-bot__button__icon--close"
       [path]="'../../../../assets/svgs/close.svg'"

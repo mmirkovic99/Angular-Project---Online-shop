@@ -2,7 +2,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, from, of } from 'rxjs';
 import { ProductInterface } from '../models/product.interface';
-import { concatMap, mergeMap, reduce, toArray } from 'rxjs/operators';
+import {
+  concatMap,
+  filter,
+  map,
+  mergeMap,
+  reduce,
+  toArray,
+} from 'rxjs/operators';
 import { API_BASE_URL, API_ENDPOINTS } from '../constants/app.constants';
 
 @Injectable({
@@ -95,6 +102,16 @@ export class ProductService {
 
         return of(duplicates);
       })
+    );
+  }
+
+  searchProducts(searchTerm: string): Observable<ProductInterface[]> {
+    return this.getProducts().pipe(
+      map((products: ProductInterface[]) =>
+        products.filter((product: ProductInterface) =>
+          product.title.includes(searchTerm)
+        )
+      )
     );
   }
 }

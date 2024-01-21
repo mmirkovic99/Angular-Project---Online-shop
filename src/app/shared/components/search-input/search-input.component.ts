@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription, interval } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {
   switchMap,
   debounce,
@@ -51,11 +51,15 @@ export class SearchInputComponent implements OnInit, OnDestroy {
         distinctUntilChanged((prev, curr) => prev === curr),
         debounceTime(1000),
         switchMap((title: string) => {
-          return this.productService.getProductByTitle(title);
+          return this.productService.searchProducts(title);
         })
       )
       .subscribe((searchResults: ProductInterface[]) => {
-        if (searchResults.length === 0) this.searchResults = null;
+        if (
+          searchResults.length === 0 ||
+          this.getFormControl('searchTerm').value.trim() === ''
+        )
+          this.searchResults = null;
         else this.searchResults = searchResults;
       });
   }
@@ -63,5 +67,9 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   showProductPage(id: number) {
     this.searchResults = null;
     this.router.navigate([`/product/${id}`]);
+  }
+
+  private getFormControl(name: string): FormControl {
+    return this.searchForm.get(name) as FormControl;
   }
 }

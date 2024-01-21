@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { ProductInterface } from '../models/product.interface';
 import { OrderInterface } from '../models/order.interface';
 import { UserInterface } from '../models/user.interface';
-import { environment } from 'src/environments/environment';
 import { API_BASE_URL, API_ENDPOINTS } from '../constants/app.constants';
+import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -53,12 +53,30 @@ export class UserService {
   }
 
   getUserByUsername(username: string): Observable<UserInterface> {
-    return this.http.post<UserInterface>(`${environment.apiUrl}/users`, {
-      username,
-    });
+    return this.http.post<UserInterface>(
+      `${API_BASE_URL}${API_ENDPOINTS.USERS}/users`,
+      {
+        username,
+      }
+    );
   }
 
   getAllUsers(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>(`${environment.apiUrl}/users`);
+    return this.http.get<UserInterface[]>(
+      `${API_BASE_URL}${API_ENDPOINTS.USERS}/users`
+    );
+  }
+
+  updateUserPassword(id: number, password: string): Observable<UserInterface> {
+    return this.sendPatchRequestWithParams(id, { password });
+  }
+
+  checkIfUsernameExists(username: string): Observable<UserInterface> {
+    return this.http
+      .get<UserInterface[]>(`${API_BASE_URL}${API_ENDPOINTS.USERS}`)
+      .pipe(
+        mergeMap((userArray: UserInterface[]) => from(userArray)),
+        filter((user: UserInterface) => user.username === username)
+      );
   }
 }

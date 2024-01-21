@@ -1,16 +1,23 @@
 import {
   AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
+  DoCheck,
   ElementRef,
+  EventEmitter,
+  OnChanges,
   OnDestroy,
   OnInit,
+  Output,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable, Subscription, forkJoin, timer } from 'rxjs';
+import { debounce, debounceTime, delay, mergeMap } from 'rxjs/operators';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import { ChatbotInterface } from 'src/app/models/chatbot.interface';
 import { MessageInterface } from 'src/app/models/message.interface';
@@ -26,13 +33,21 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
 })
-export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class ChatBotComponent
+  implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy
+{
   @ViewChild('messageContainer') messageContainer!: ElementRef;
+  private scrollPosition = 0;
+  private isNewMessage = false;
   messages: MessageInterface[] = [];
   subscriptions: Subscription[] = [];
   messageForm!: FormGroup;
   questions!: ChatbotInterface[];
   tag!: string;
+
+  isDialogOpen: boolean = false;
+  isChatbotWriting: boolean = false;
+  isLastMessageSeen: boolean = false;
 
   private productOrdinalNumber: number = -1;
   private size: number = 0;
@@ -50,11 +65,13 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   ngOnInit(): void {
     this.messageForm = this.buildForm();
+    this.subscriptions.push(this.getInitialMessage());
   }
 
   ngAfterViewChecked(): void {
-    this.scrollToBottom();
+    if (this.isNewMessage) this.scrollToBottom();
   }
+  ngAfterViewInit(): void {}
 
   ngOnDestroy(): void {
     this.unsubscribe();
@@ -63,29 +80,51 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     return this.messageForm.get(name) as FormControl;
   }
 
+  seeMessages(): void {
+    this.isDialogOpen = !this.isDialogOpen;
+    this.isLastMessageSeen = true;
+  }
+
   sendMessage(): void {
     let message: string = this.getFormControl('message').value;
     if (message.trim() === '') return;
-
+    this.isNewMessage = true;
     if (message.includes('Select product')) {
       this.productOrdinalNumber = Number(
         message.slice(message.indexOf('#') + 1)
       );
-      this.addMessage({ sender: 'user', content: message });
+      this.addMessage({
+        sender: 'user',
+        content: message,
+      });
       message = message.slice(0, message.indexOf('#') - 1);
     } else if (message.includes('Choose size')) {
       this.size = Number(message.slice(message.lastIndexOf(' ')));
-      this.addMessage({ sender: 'user', content: message });
+      this.addMessage({
+        sender: 'user',
+        content: message,
+      });
       message = message.slice(0, message.indexOf(' ') - 1);
-    } else this.addMessage({ sender: 'user', content: message });
+    } else
+      this.addMessage({
+        sender: 'user',
+        content: message,
+      });
+    this.isChatbotWriting = true;
 
     this.getFormControl('message').setValue('');
-
     this.subscriptions.push(this.handleChatbotResponse(message));
+  }
+
+  handleKeypress(event: any): void {
+    if (event.charCode === 13) this.sendMessage();
   }
 
   navigateProduct(productId: number): void {
     this.router.navigate([`product/${productId}`]);
+  }
+  private handleScroll(event: any): void {
+    (event as Event).stopPropagation();
   }
 
   private getTag(): string {
@@ -105,8 +144,9 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private scrollToBottom(): void {
-    this.messageContainer.nativeElement.scrollTop =
-      this.messageContainer.nativeElement.scrollHeight;
+    (this.messageContainer.nativeElement as HTMLElement).scrollTop = (
+      this.messageContainer.nativeElement as HTMLElement
+    ).scrollHeight;
   }
 
   private buildForm(): FormGroup {
@@ -116,7 +156,16 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private addMessage(message: MessageInterface): void {
+    message.time = new Date();
     this.messages.push(message);
+  }
+
+  private getInitialMessage(): Subscription {
+    return this.chatbotService
+      .getResponseByTag(Tags.GREETING)
+      .subscribe((message: MessageInterface) => {
+        this.addMessage(message);
+      });
   }
 
   private handleProductInfoTag(
@@ -140,7 +189,11 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
   private handleProductSelectionTag(
     products: ProductInterface[] | undefined
   ): Observable<MessageInterface> {
-    this.setTag(!products ? Tags.DEFAULT : this.tag);
+    this.setTag(
+      !products || this.productOrdinalNumber >= products.length
+        ? Tags.DEFAULT
+        : this.tag
+    );
     return this.chatbotService.getResponseByTag(this.tag);
   }
 
@@ -230,12 +283,15 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
     return this.chatbotService
       .getTagByInput(message)
       .pipe(
+        delay(2000),
         mergeMap((tag: string) => {
           this.setTag(tag);
           return this.handleUserMessageTag(message);
         })
       )
       .subscribe((result) => {
+        this.isChatbotWriting = false;
+        this.isLastMessageSeen = this.isDialogOpen ? true : false;
         if (!Array.isArray(result)) {
           const newMessage = result as MessageInterface;
           if (this.tag === Tags.PRODUCT_SELECTION) {
@@ -266,8 +322,9 @@ export class ChatBotComponent implements OnInit, AfterViewChecked, OnDestroy {
           message.productsInfo = products;
           this.latestDisplayedProducts = products;
           this.addMessage(message);
+
+          setTimeout(() => (this.isNewMessage = false));
         }
-        this.scrollToBottom();
       });
   }
 

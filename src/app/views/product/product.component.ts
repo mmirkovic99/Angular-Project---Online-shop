@@ -78,14 +78,49 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.size = event.target.value;
   }
 
-  addToFavorites(): void {
+  changeFavoritesList(): void {
     if (this.userId === 0) this.router.navigate(['/auth/login']);
-    this.store.dispatch(
-      UserAction.updateUserFavoriteList({
-        id: this.userId,
-        favorites: [...this.favorites, this.product],
-      })
+    const addItem = (
+      userId: number,
+      favorites: ProductInterface[],
+      product: ProductInterface
+    ) => {
+      this.store.dispatch(
+        UserAction.updateUserFavoriteList({
+          id: userId,
+          favorites: [...favorites, product],
+        })
+      );
+    };
+
+    const removeItem = (
+      userId: number,
+      favorites: ProductInterface[],
+      productId: number
+    ) => {
+      this.store.dispatch(
+        UserAction.updateUserFavoriteList({
+          id: userId,
+          favorites: favorites.filter(
+            (product: ProductInterface) => product.id !== productId
+          ),
+        })
+      );
+    };
+
+    const isInFavoritesList = this.checkFavoritesList(
+      this.product.id,
+      this.favorites
     );
+    if (!isInFavoritesList) addItem(this.userId, this.favorites, this.product);
+    else removeItem(this.userId, this.favorites, this.product.id);
+  }
+
+  private checkFavoritesList(id: number, products: ProductInterface[]) {
+    const isInFavoritesList = products.some(
+      (product: ProductInterface) => product.id === id
+    );
+    return isInFavoritesList;
   }
 
   private getProductIdFromURL(): Subscription {

@@ -44,6 +44,29 @@ export class UserEffects {
     )
   );
 
+  updateUserPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserAction.updateUserPassword),
+      mergeMap((action: any) =>
+        this.userService.updateUserPassword(action.id, action.password).pipe(
+          map((user: UserInterface) =>
+            UserAction.updateUserPasswordSuccess({
+              id: user.id,
+              password: user.password,
+            })
+          ),
+          catchError((error) =>
+            of(
+              UserAction.updateUserPasswordFailure({
+                error: error.message,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   updateUserFavoritesList$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserAction.updateUserFavoriteList),

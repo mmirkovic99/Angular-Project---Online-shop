@@ -18,6 +18,9 @@ import { Subscription } from 'rxjs';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { UserInterface } from 'src/app/models/user.interface';
+import { FormFields, FormType } from 'src/app/constants/form.constants';
+import { UserService } from 'src/app/services/user.service';
+import { accountCheckValidator } from 'src/app/validations/account-check.validator';
 
 @Component({
   selector: 'login',
@@ -25,8 +28,14 @@ import { UserInterface } from 'src/app/models/user.interface';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
+  formType: FormType = FormType.LOGIN;
+
   loginForm: FormGroup = this.fb.group({
-    username: ['', Validators.required],
+    username: [
+      '',
+      [Validators.required],
+      [accountCheckValidator(this.userService)],
+    ],
     password: ['', Validators.required],
   });
 
@@ -37,7 +46,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
     private authService: AuthorizationService,
     private router: Router,
     private changeDetector: ChangeDetectorRef,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private userService: UserService
   ) {}
   ngOnDestroy(): void {
     this.loginSubscription?.unsubscribe();
@@ -67,6 +77,23 @@ export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
           this.store.dispatch(UserAction.addUser({ user }));
         }
       });
+  }
+
+  displayError(fieldName: string): boolean {
+    const control = this.getControl(fieldName);
+
+    const isValid = control.valid;
+    const isDirty = control.dirty;
+    const isTouched = control.touched;
+
+    if (fieldName === FormFields.USERNAME.toLowerCase()) {
+      // Username error
+      const usernameNotFound = control.errors?.usernameExists;
+      return !isValid && (isDirty || isTouched) && !usernameNotFound;
+    } else {
+      // Passowrd error
+      return !isValid && (isDirty || isTouched);
+    }
   }
 
   navigateRegistration() {

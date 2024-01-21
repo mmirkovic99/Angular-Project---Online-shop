@@ -15,18 +15,20 @@ export class ChatbotService {
 
   constructor(private http: HttpClient) {}
 
-  getAllChatbotFAQ(): Observable<ChatbotInterface[]> {
+  private getAllChatbotFAQ(): Observable<ChatbotInterface[]> {
     return this.http.get<ChatbotInterface[]>(this.url);
   }
 
   getTagByInput(userMessage: string): Observable<string> {
-    return this.http
-      .get<ChatbotInterface[]>(`${this.url}?phrases_like=${userMessage}`)
-      .pipe(
-        map((question: ChatbotInterface[]) =>
-          question.length > 0 ? question[0].tag : Tags.DEFAULT
-        )
-      );
+    return this.getAllChatbotFAQ().pipe(
+      map((questions: ChatbotInterface[]) => {
+        const question: ChatbotInterface | undefined = questions.find(
+          (question: ChatbotInterface) =>
+            question.phrases.find((phrase: string) => phrase === userMessage)
+        );
+        return typeof question !== 'undefined' ? question.tag : Tags.DEFAULT;
+      })
+    );
   }
 
   getResponseByTag(

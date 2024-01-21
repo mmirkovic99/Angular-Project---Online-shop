@@ -1,3 +1,6 @@
+.input-wrapper {
+  position: relative;
+}
 .input-container {
   margin: 2rem 0;
   position: relative;
@@ -5,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &__label {
     position: absolute;
@@ -19,12 +23,12 @@
     pointer-events: none;
 
     &--error {
-      color: red;
+      color: #a52b2b;
     }
   }
 
   &__input {
-    width: 95%;
+    width: 100%;
     outline: none;
     border: 1px solid gray;
     border-radius: 0.8rem;
@@ -38,7 +42,46 @@
     }
 
     &--error {
-      border: 1px solid red;
+      border: 1px solid #a52b2b;
     }
+  }
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.2rem);
+  transform: translateY(-50%);
+  width: 100%;
+
+  &__icon {
+    cursor: pointer;
+    animation: scale-in 0.5s;
+  }
+
+  &__text {
+    display: none;
+    background-color: #eb8080;
+    color: #a52b2b;
+    font-weight: 600;
+    font-size: 1.4rem;
+    position: absolute;
+    margin-left: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    max-width: 30rem;
+  }
+
+  &__icon:hover + &__text-wrapper > &__text {
+    display: inline-block;
+  }
+
+  &__text-wrapper {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
   }
 }

@@ -1,0 +1,44 @@
+.loader-wrapper {
+  position: relative;
+  height: 70px;
+  width: 70px;
+}
+
+.loader {
+  position: absolute;
+  border: 5px solid #fff;
+
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+
+  &--inner {
+    border-left-color: rgba(182, 181, 181, 0.433);
+    border-right-color: rgba(182, 181, 181, 0.433);
+    left: 25%;
+    top: 25%;
+    width: 34px;
+    height: 34px;
+    animation: rotation 1.5s linear infinite;
+  }
+
+  &--normal {
+    border-bottom-color: black;
+    border-top-color: black;
+    left: 15%;
+    top: 15%;
+    width: 48px;
+    height: 48px;
+    animation: rotation-backwards 1.5s linear infinite;
+  }
+
+  &--outer {
+    border-left-color: #a52b2b;
+    border-right-color: #a52b2b;
+    left: 5%;
+    top: 5%;
+    width: 62px;
+    height: 62px;
+    animation: rotation 1.5s linear infinite;
+  }
+}

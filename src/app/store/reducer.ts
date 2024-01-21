@@ -43,6 +43,18 @@ export const reducer = createReducer(
     return { ...state, error: data.error };
   }),
   on(
+    UserActions.updateUserPasswordSuccess,
+    (state: AppStateInterface, data: any) => {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          password: data.password,
+        },
+      };
+    }
+  ),
+  on(
     UserActions.updateUserFavoriteList,
     (state: AppStateInterface, data: any) => {
       return { ...state, user: { ...state.user, favorites: data.favorites } };

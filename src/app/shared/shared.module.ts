@@ -21,6 +21,10 @@ import { SortPipe } from '../pipes/sort.pipe';
 import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
 import { ProductTypePipe } from '../pipes/type.pipe';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
+import { MessageSenderPipe } from '../pipes/messageSender.pipe';
+import { FormatTimePipe } from '../pipes/formatTime.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     ChatBotComponent,
     ProductTypePipe,
     SvgIconComponent,
+    TypingIndicatorComponent,
+    MessageSenderPipe,
+    FormatTimePipe,
+    LoaderComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -67,6 +75,9 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     ChatBotComponent,
     ProductTypePipe,
     SvgIconComponent,
+    MessageSenderPipe,
+    FormatTimePipe,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}
