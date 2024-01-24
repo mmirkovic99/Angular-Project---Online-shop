@@ -95,3 +95,7 @@ export const updateUserOrdesFailure = createAction(
   '[User] Update User Orders Failure',
   props<{ error: string }>()
 );
+
+// LOGOUT
+
+export const userLogout = createAction('[User] User Logout');
