@@ -1,9 +1,10 @@
 import { createAction, props } from '@ngrx/store';
+import { ProductInCartInterface } from 'src/app/models/cartState.interface';
 import { ProductInterface } from 'src/app/models/product.interface';
 
 export const addToCart = createAction(
   '[Cart] Add To Cart',
-  props<{ product: ProductInterface }>()
+  props<{ product: ProductInCartInterface }>()
 );
 
 export const removeFromCart = createAction(

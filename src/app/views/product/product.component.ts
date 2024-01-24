@@ -12,7 +12,10 @@ import {
   userIdSelector,
 } from 'src/app/store/selectors/userStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
-import { CartStateInterface } from 'src/app/models/cartState.interface';
+import {
+  CartStateInterface,
+  ProductInCartInterface,
+} from 'src/app/models/cartState.interface';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -69,7 +72,11 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.showError = false;
     let productToAdd = Object.assign({}, this.product);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    const productToOrder: ProductInCartInterface = {
+      product: productToAdd,
+      quantity: 1,
+    };
+    this.store.dispatch(CartAction.addToCart({ product: productToOrder }));
 
     // this.cartService.addToCart(productToAdd);
   }

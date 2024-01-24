@@ -1,6 +1,9 @@
 import { createSelector } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/models/appState.interface';
-import { CartStateInterface } from 'src/app/models/cartState.interface';
+import {
+  CartStateInterface,
+  ProductInCartInterface,
+} from 'src/app/models/cartState.interface';
 import { appStateSelect } from '../selectors/appStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
 
@@ -16,14 +19,15 @@ export const productsSelector = createSelector(
 
 export const productsLengthSelector = createSelector(
   productsSelector,
-  (cartProducts: Array<ProductInterface>) => cartProducts.length
+  (cartProducts: Array<ProductInCartInterface>) => cartProducts.length
 );
 
 export const productsTotalPriceSelector = createSelector(
   productsSelector,
-  (cartProducts: Array<ProductInterface>) =>
+  (cartProducts: Array<ProductInCartInterface>) =>
     cartProducts.reduce(
-      (previouseValue: number, product) => previouseValue + product.price,
+      (previouseValue: number, productInCart) =>
+        previouseValue + productInCart.product.price * productInCart.quantity,
       0
     )
 );

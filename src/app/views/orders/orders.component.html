@@ -1,0 +1,11 @@
+<div class="orders">
+  <ag-grid-angular
+    class="ag-theme-alpine-dark"
+    style="width: 100%; height: 100%"
+    [rowData]="products$ | async"
+    [columnDefs]="colDef"
+    [frameworkComponents]="components"
+    [getRowHeight]="getRowHeight"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</div>

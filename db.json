@@ -12,88 +12,183 @@
           "id": 1,
           "products": [
             {
-              "id": 2,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["40"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-orange-1.jpg",
-                "../../../../assets/nike-black-white-orange-2.jpg",
-                "../../../../assets/nike-black-white-orange-3.jpg",
-                "../../../../assets/nike-black-white-orange-4.jpg"
-              ]
+              "product": {
+                "id": 1,
+                "companyLogo": "../../../../assets/nike-logo.png",
+                "companyName": "Nike",
+                "title": "Nike Dunk Low Retro",
+                "type": 0,
+                "tag": "Popular",
+                "rating": 4,
+                "sizes": [
+                  "41"
+                ],
+                "oldPrice": -1,
+                "price": 150,
+                "images": [
+                  "../../../../assets/nike-black-white-1.jpg",
+                  "../../../../assets/nike-black-white-2.jpg",
+                  "../../../../assets/nike-black-white-3.jpg",
+                  "../../../../assets/nike-black-white-4.jpg"
+                ]
+              },
+              "quantity": 1
             },
             {
-              "id": 1,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["43.5"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-1.jpg",
-                "../../../../assets/nike-black-white-2.jpg",
-                "../../../../assets/nike-black-white-3.jpg",
-                "../../../../assets/nike-black-white-4.jpg"
-              ]
+              "product": {
+                "id": 2,
+                "companyLogo": "../../../../assets/nike-logo.png",
+                "companyName": "Nike",
+                "title": "Nike Dunk Low Retro",
+                "type": 0,
+                "tag": "Popular",
+                "rating": 4,
+                "sizes": [
+                  "40"
+                ],
+                "oldPrice": -1,
+                "price": 150,
+                "images": [
+                  "../../../../assets/nike-black-white-orange-1.jpg",
+                  "../../../../assets/nike-black-white-orange-2.jpg",
+                  "../../../../assets/nike-black-white-orange-3.jpg",
+                  "../../../../assets/nike-black-white-orange-4.jpg"
+                ]
+              },
+              "quantity": 1
+            },
+            {
+              "product": {
+                "id": 8,
+                "companyLogo": "../../../../assets/adidas-logo.png",
+                "companyName": "Adidas",
+                "title": "Adidas 4DFWD 2",
+                "type": 0,
+                "tag": "New",
+                "rating": 4,
+                "sizes": [
+                  "46"
+                ],
+                "oldPrice": -1,
+                "price": 160,
+                "images": [
+                  "../../../../assets/adidas-4DFWD-2-orange-white-1.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-2.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-3.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-4.jpg"
+                ]
+              },
+              "quantity": 1
+            },
+            {
+              "product": {
+                "id": 12,
+                "companyLogo": "../../../../assets/adidas-logo.png",
+                "companyName": "Adidas",
+                "title": "Adidas Terrex Soulstride",
+                "type": 0,
+                "tag": "New",
+                "rating": 4,
+                "sizes": [
+                  "42"
+                ],
+                "oldPrice": -1,
+                "price": 160,
+                "images": [
+                  "../../../../assets/adidas-terrex-soulstride-1.jpg",
+                  "../../../../assets/adidas-terrex-soulstride-2.jpg",
+                  "../../../../assets/adidas-terrex-soulstride-3.jpg",
+                  "../../../../assets/adidas-terrex-soulstride-4.jpg"
+                ]
+              },
+              "quantity": 4
+            },
+            {
+              "product": {
+                "id": 4,
+                "companyLogo": "../../../../assets/nike-logo.png",
+                "companyName": "Nike",
+                "title": "Nike Air Force 1 '07",
+                "type": 1,
+                "tag": "Popular",
+                "rating": 4,
+                "sizes": [
+                  "36"
+                ],
+                "oldPrice": -1,
+                "price": 115,
+                "images": [
+                  "../../../../assets/nike-air-force-1-07-1.jpg",
+                  "../../../../assets/nike-air-force-1-07-2.jpg",
+                  "../../../../assets/nike-air-force-1-07-3.jpg",
+                  "../../../../assets/nike-air-force-1-07-4.jpg"
+                ]
+              },
+              "quantity": 1
             }
           ],
-          "totalPrice": 300
+          "totalPrice": 735,
+          "time": "2024-01-23T20:23:24.360Z"
         },
         {
           "id": 2,
           "products": [
             {
-              "id": 2,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["40"],
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-orange-1.jpg",
-                "../../../../assets/nike-black-white-orange-2.jpg",
-                "../../../../assets/nike-black-white-orange-3.jpg",
-                "../../../../assets/nike-black-white-orange-4.jpg"
-              ]
+              "product": {
+                "id": 14,
+                "companyLogo": "../../../../assets/adidas-logo.png",
+                "companyName": "Adidas",
+                "title": "Adidas Ultraboost Light",
+                "type": 0,
+                "tag": "On Sale",
+                "rating": 4,
+                "sizes": [
+                  "39"
+                ],
+                "oldPrice": 160,
+                "price": 80,
+                "images": [
+                  "../../../../assets/adidas-ultraboost-light-1.jpg",
+                  "../../../../assets/adidas-ultraboost-light-2.jpg",
+                  "../../../../assets/adidas-ultraboost-light-3.jpg",
+                  "../../../../assets/adidas-ultraboost-light-4.jpg"
+                ]
+              },
+              "quantity": 1
             }
           ],
-          "totalPrice": 150
+          "totalPrice": 80,
+          "time": "2024-01-23T21:54:14.781Z"
         },
         {
           "id": 3,
           "products": [
             {
-              "id": 1,
-              "companyLogo": "../../../../assets/nike-logo.png",
-              "companyName": "Nike",
-              "title": "Nike Dunk Low Retro",
-              "type": 0,
-              "tag": "Popular",
-              "rating": 4,
-              "sizes": ["40.5"],
-              "oldPrice": -1,
-              "price": 150,
-              "images": [
-                "../../../../assets/nike-black-white-1.jpg",
-                "../../../../assets/nike-black-white-2.jpg",
-                "../../../../assets/nike-black-white-3.jpg",
-                "../../../../assets/nike-black-white-4.jpg"
-              ]
+              "product": {
+                "id": 6,
+                "companyLogo": "../../../../assets/adidas-logo.png",
+                "companyName": "Adidas",
+                "title": "Adidas 4DFWD 2",
+                "type": 0,
+                "tag": "New",
+                "rating": 4,
+                "sizes": [
+                  "44"
+                ],
+                "oldPrice": -1,
+                "price": 160,
+                "images": [
+                  "../../../../assets/adidas-4DFWD-2-black-1.jpg",
+                  "../../../../assets/adidas-4DFWD-2-black-2.jpg",
+                  "../../../../assets/adidas-4DFWD-2-black-3.jpg",
+                  "../../../../assets/adidas-4DFWD-2-black-4.jpg"
+                ]
+              },
+              "quantity": 1
             }
           ],
-          "totalPrice": 150
+          "totalPrice": 160,
+          "time": "2024-01-24T08:44:32.178Z"
         }
       ],
       "favorites": [
@@ -105,7 +200,16 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+          "sizes": [
+            40,
+            41,
+            41.5,
+            42,
+            43,
+            44.5,
+            45.5,
+            46
+          ],
           "oldPrice": -1,
           "price": 150,
           "images": [
@@ -123,7 +227,16 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
+          "sizes": [
+            39,
+            40.5,
+            41,
+            42.5,
+            43,
+            44.5,
+            45,
+            46.5
+          ],
           "oldPrice": -1,
           "price": 150,
           "images": [
@@ -155,7 +268,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
+      "sizes": [
+        40.5,
+        41,
+        42,
+        43,
+        43.5,
+        44,
+        44.5,
+        45
+      ],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -173,7 +295,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
+      "sizes": [
+        40,
+        41,
+        41.5,
+        42,
+        43,
+        44.5,
+        45.5,
+        46
+      ],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -191,7 +322,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
+      "sizes": [
+        39,
+        40.5,
+        41,
+        42.5,
+        43,
+        44.5,
+        45,
+        46.5
+      ],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -209,7 +349,16 @@
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [36, 36.5, 37, 37.5, 38, 38.5, 39, 40],
+      "sizes": [
+        36,
+        36.5,
+        37,
+        37.5,
+        38,
+        38.5,
+        39,
+        40
+      ],
       "oldPrice": -1,
       "price": 115,
       "images": [
@@ -227,7 +376,16 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 130,
       "images": [
@@ -245,7 +403,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -263,7 +430,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -281,7 +457,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -299,7 +484,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -317,7 +511,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -335,7 +538,16 @@
       "type": 1,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -353,7 +565,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -371,7 +592,16 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -389,7 +619,16 @@
       "type": 0,
       "tag": "On Sale",
       "rating": 4,
-      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
+      "sizes": [
+        39,
+        40,
+        41.5,
+        42,
+        43.5,
+        44,
+        45,
+        46
+      ],
       "oldPrice": 160,
       "price": 80,
       "images": [
@@ -416,14 +655,26 @@
     {
       "id": 0,
       "tag": "greeting",
-      "phrases": ["Hi there", "Hello", "Hey", "Hi"],
-      "responses": ["Hi, how can I help?", "Hello, what can I do for you?"]
+      "phrases": [
+        "Hi there",
+        "Hello",
+        "Hey",
+        "Hi"
+      ],
+      "responses": [
+        "Hi, how can I help?",
+        "Hello, what can I do for you?"
+      ]
     },
     {
       "id": 1,
       "tag": "product_selection",
-      "phrases": ["Select product"],
-      "responses": ["You have selected product number "]
+      "phrases": [
+        "Select product"
+      ],
+      "responses": [
+        "You have selected product number "
+      ]
     },
     {
       "id": 2,
@@ -464,19 +715,33 @@
     {
       "id": 5,
       "tag": "brand_info",
-      "phrases": ["Nike", "Adidas"],
-      "responses": ["In total we have "]
+      "phrases": [
+        "Nike",
+        "Adidas"
+      ],
+      "responses": [
+        "In total we have "
+      ]
     },
     {
       "id": 6,
       "tag": "product_info",
-      "phrases": ["Nike Dunk Low Retro", "Adidas AVRYN"],
-      "responses": ["Good choice. The selected shoe is available in "]
+      "phrases": [
+        "Nike Dunk Low Retro",
+        "Adidas AVRYN"
+      ],
+      "responses": [
+        "Good choice. The selected shoe is available in "
+      ]
     },
     {
       "id": 7,
       "tag": "appreciation",
-      "phrases": ["Thanks", "Thank you", "Thanks a lot"],
+      "phrases": [
+        "Thanks",
+        "Thank you",
+        "Thanks a lot"
+      ],
       "responses": [
         "You're welcome. If you have any additional questions feel free to ask!"
       ]
@@ -484,8 +749,12 @@
     {
       "id": 8,
       "tag": "add_to_cart",
-      "phrases": ["Add to cart "],
-      "responses": ["Product $ has been added to cart"]
+      "phrases": [
+        "Add to cart "
+      ],
+      "responses": [
+        "Product $ has been added to cart"
+      ]
     },
     {
       "id": 9,
@@ -502,7 +771,9 @@
     {
       "id": 10,
       "tag": "product_size_selection",
-      "phrases": ["Choose size "],
+      "phrases": [
+        "Choose size "
+      ],
       "responses": [
         "You have selected size $",
         "Unfortunately, size $ is currently unavailable"
@@ -511,8 +782,12 @@
     {
       "id": 11,
       "tag": "product_navigation",
-      "phrases": ["Navigate to the product page"],
-      "responses": ["You have been redirected to the product page."]
+      "phrases": [
+        "Navigate to the product page"
+      ],
+      "responses": [
+        "You have been redirected to the product page."
+      ]
     }
   ]
 }

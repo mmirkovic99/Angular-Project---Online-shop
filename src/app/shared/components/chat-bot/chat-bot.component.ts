@@ -27,6 +27,7 @@ import * as CartAction from '../../../store/actions/CartActions';
 import { ProductService } from 'src/app/services/product.service';
 import { Tags } from '../../../constants/chatbot.constants';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductInCartInterface } from 'src/app/models/cartState.interface';
 
 @Component({
   selector: 'chat-bot',
@@ -257,7 +258,11 @@ export class ChatBotComponent
 
     let productToAdd = Object.assign({}, this.selectedProduct);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    const productToOrder: ProductInCartInterface = {
+      product: productToAdd,
+      quantity: 1,
+    };
+    this.store.dispatch(CartAction.addToCart({ product: productToOrder }));
     // this.cartService.addToCart(productToAdd);
   }
 
