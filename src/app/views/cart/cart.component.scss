@@ -166,6 +166,21 @@
           font-size: 2.4rem;
           padding: 1rem 2rem;
         }
+
+        &__quantity {
+          position: absolute;
+          left: 1rem;
+          top: 1rem;
+          font-size: 1.6rem;
+          background-color: #a10c0c;
+          color: white;
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
     }
   }

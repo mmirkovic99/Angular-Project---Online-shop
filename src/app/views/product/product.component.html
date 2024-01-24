@@ -113,6 +113,33 @@
         >
       </div>
     </div>
+    <div class="product-container__data__quantity">
+      <form
+        [formGroup]="quantityForm"
+        class="product-container__data__quantity__form"
+      >
+        <input
+          type="text"
+          class="product-container__data__quantity__input"
+          [formControl]="getControl('quantity')"
+          [disabled]="false"
+        />
+      </form>
+      <div class="product-container__data__quantity__btn-container">
+        <button
+          class="product-container__data__quantity__btn product-container__data__quantity__btn__minus"
+          (click)="decreaseProductNumber()"
+        >
+          -
+        </button>
+        <button
+          class="product-container__data__quantity__btn product-container__data__quantity__btn__plus"
+          (click)="increaseProductNumber()"
+        >
+          +
+        </button>
+      </div>
+    </div>
     <div class="product-container__data__btn-container">
       <button
         class="product-container__data__btn-container__cart"

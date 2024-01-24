@@ -189,36 +189,92 @@
           ],
           "totalPrice": 160,
           "time": "2024-01-24T08:44:32.178Z"
+        },
+        {
+          "id": 4,
+          "products": [
+            {
+              "product": {
+                "id": 5,
+                "companyLogo": "../../../../assets/nike-logo.png",
+                "companyName": "Nike",
+                "title": "Nike Air Max 90",
+                "type": 0,
+                "tag": "Popular",
+                "rating": 4,
+                "sizes": [
+                  "45"
+                ],
+                "oldPrice": -1,
+                "price": 130,
+                "images": [
+                  "../../../../assets/Nike-Air-Max-90-dark-blue-1.jpg",
+                  "../../../../assets/Nike-Air-Max-90-dark-blue-2.jpg",
+                  "../../../../assets/Nike-Air-Max-90-dark-blue-3.jpg",
+                  "../../../../assets/Nike-Air-Max-90-dark-blue-4.jpg"
+                ]
+              },
+              "quantity": 2
+            }
+          ],
+          "totalPrice": 260,
+          "time": "2024-01-24T17:27:31.208Z"
+        },
+        {
+          "id": 5,
+          "products": [
+            {
+              "product": {
+                "id": 3,
+                "companyLogo": "../../../../assets/nike-logo.png",
+                "companyName": "Nike",
+                "title": "Nike Dunk Low Retro",
+                "type": 0,
+                "tag": "Popular",
+                "rating": 4,
+                "sizes": [
+                  "39"
+                ],
+                "oldPrice": -1,
+                "price": 150,
+                "images": [
+                  "../../../../assets/nike-black-white-blue-1.jpg",
+                  "../../../../assets/nike-black-white-blue-2.jpg",
+                  "../../../../assets/nike-black-white-blue-3.jpg",
+                  "../../../../assets/nike-black-white-blue-4.jpg"
+                ]
+              },
+              "quantity": 1
+            },
+            {
+              "product": {
+                "id": 8,
+                "companyLogo": "../../../../assets/adidas-logo.png",
+                "companyName": "Adidas",
+                "title": "Adidas 4DFWD 2",
+                "type": 0,
+                "tag": "New",
+                "rating": 4,
+                "sizes": [
+                  "41.5"
+                ],
+                "oldPrice": -1,
+                "price": 160,
+                "images": [
+                  "../../../../assets/adidas-4DFWD-2-orange-white-1.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-2.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-3.jpg",
+                  "../../../../assets/adidas-4DFWD-2-orange-white-4.jpg"
+                ]
+              },
+              "quantity": 3
+            }
+          ],
+          "totalPrice": 630,
+          "time": "2024-01-24T17:44:55.187Z"
         }
       ],
       "favorites": [
-        {
-          "id": 2,
-          "companyLogo": "../../../../assets/nike-logo.png",
-          "companyName": "Nike",
-          "title": "Nike Dunk Low Retro",
-          "type": 0,
-          "tag": "Popular",
-          "rating": 4,
-          "sizes": [
-            40,
-            41,
-            41.5,
-            42,
-            43,
-            44.5,
-            45.5,
-            46
-          ],
-          "oldPrice": -1,
-          "price": 150,
-          "images": [
-            "../../../../assets/nike-black-white-orange-1.jpg",
-            "../../../../assets/nike-black-white-orange-2.jpg",
-            "../../../../assets/nike-black-white-orange-3.jpg",
-            "../../../../assets/nike-black-white-orange-4.jpg"
-          ]
-        },
         {
           "id": 3,
           "companyLogo": "../../../../assets/nike-logo.png",
