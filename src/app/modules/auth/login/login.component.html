@@ -35,6 +35,11 @@
         [formType]="formType"
       ></custom-input>
     </form>
+
+    <div class="login-container__form__error-message" *ngIf="showPasswordError">
+      • Password is invalid.
+    </div>
+
     <custom-button
       [disabled]="loginForm.invalid"
       buttonText="Login"
