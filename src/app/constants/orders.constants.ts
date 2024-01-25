@@ -11,6 +11,7 @@ interface TableColumn {
   cellRendererFramework?: any;
   cellRendererParams?: (params: any) => any;
   width?: number;
+  sort?: string;
 }
 
 export const ITEM_NUMBER_COLUMN: TableColumn = {
@@ -46,6 +47,7 @@ export const TIME_COLUMN: TableColumn = {
   headerName: 'Time',
   field: 'time',
   cellRendererFramework: ProductTimeComponent,
+  sort: 'desc',
 };
 
 export const PRICE_PER_ITEM_COLUMN: TableColumn = {
