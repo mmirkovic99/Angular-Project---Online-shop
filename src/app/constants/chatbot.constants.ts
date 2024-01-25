@@ -11,5 +11,6 @@ export enum Tags {
   PRODUCT_INQUIRY = 'product_inquiry',
   PRODUCT_SIZE_SELECTION = 'product_size_selection',
   PRODUCT_NAVIGATION = 'product_navigation',
+  PRODUCT_QUANTITY = 'product_quantity',
   DEFAULT = 'default',
 }

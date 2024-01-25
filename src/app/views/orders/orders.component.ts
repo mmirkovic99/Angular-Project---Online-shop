@@ -8,6 +8,7 @@ import {
   OrderProductRow,
 } from 'src/app/models/order.interface';
 import * as UserAction from '../../store/actions/UserActions';
+import * as TableColumn from '../../constants/orders.constants';
 import {
   userOrdersSelector,
   userSelector,
@@ -29,7 +30,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   gridApi: any;
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(private store: Store<AppStateInterface>) {
+    this.colDef = this.createColumns();
+  }
+
   ngOnDestroy(): void {
     this.unsubscribe();
   }
@@ -45,39 +49,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     productTotalPrice: ProductTotalPriceComponent,
   };
 
-  colDef: ColDef[] = [
-    { headerName: 'Order ID', field: 'orderID', width: 120 },
-    {
-      headerName: 'Product Image',
-      field: 'productInCart.product.images',
-      cellRendererFramework: ProductImageComponent,
-      width: 140,
-    },
-    {
-      headerName: 'Product Name',
-      field: 'productInCart.product.title',
-      cellRendererFramework: ProductLinkComponent,
-      cellRendererParams: (params: any) => ({
-        data: params.data,
-      }),
-    },
-    {
-      headerName: 'Time',
-      field: 'time',
-      cellRendererFramework: ProductTimeComponent,
-    },
-    {
-      headerName: 'Price Per Item',
-      field: 'productInCart.product.price',
-      cellRendererFramework: ProductTotalPriceComponent,
-    },
-    { headerName: 'Quantity', field: 'productInCart.quantity' },
-    {
-      headerName: 'Total Price',
-      field: 'totalPrice',
-      cellRendererFramework: ProductTotalPriceComponent,
-    },
-  ];
+  colDef!: ColDef[];
 
   getRowHeight(): number {
     return 100;
@@ -143,6 +115,19 @@ export class OrdersComponent implements OnInit, OnDestroy {
       )
     );
   }
+
+  private createColumns(): ColDef[] {
+    return [
+      TableColumn.ITEM_NUMBER_COLUMN,
+      TableColumn.PRODUCT_IMAGE_COLUMN,
+      TableColumn.PRODUCT_NAME_COLUMN,
+      TableColumn.TIME_COLUMN,
+      TableColumn.PRICE_PER_ITEM_COLUMN,
+      TableColumn.QUANTITY_COLUMN,
+      TableColumn.TOTAL_PRICE_COLUMN,
+    ];
+  }
+
   private unsubscribe() {
     this.subscriptions.forEach((subscription: Subscription) =>
       subscription.unsubscribe()

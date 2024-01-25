@@ -20,9 +20,7 @@
                 "type": 0,
                 "tag": "Popular",
                 "rating": 4,
-                "sizes": [
-                  "41"
-                ],
+                "sizes": ["41"],
                 "oldPrice": -1,
                 "price": 150,
                 "images": [
@@ -43,9 +41,7 @@
                 "type": 0,
                 "tag": "Popular",
                 "rating": 4,
-                "sizes": [
-                  "40"
-                ],
+                "sizes": ["40"],
                 "oldPrice": -1,
                 "price": 150,
                 "images": [
@@ -66,9 +62,7 @@
                 "type": 0,
                 "tag": "New",
                 "rating": 4,
-                "sizes": [
-                  "46"
-                ],
+                "sizes": ["46"],
                 "oldPrice": -1,
                 "price": 160,
                 "images": [
@@ -89,9 +83,7 @@
                 "type": 0,
                 "tag": "New",
                 "rating": 4,
-                "sizes": [
-                  "42"
-                ],
+                "sizes": ["42"],
                 "oldPrice": -1,
                 "price": 160,
                 "images": [
@@ -112,9 +104,7 @@
                 "type": 1,
                 "tag": "Popular",
                 "rating": 4,
-                "sizes": [
-                  "36"
-                ],
+                "sizes": ["36"],
                 "oldPrice": -1,
                 "price": 115,
                 "images": [
@@ -142,9 +132,7 @@
                 "type": 0,
                 "tag": "On Sale",
                 "rating": 4,
-                "sizes": [
-                  "39"
-                ],
+                "sizes": ["39"],
                 "oldPrice": 160,
                 "price": 80,
                 "images": [
@@ -172,9 +160,7 @@
                 "type": 0,
                 "tag": "New",
                 "rating": 4,
-                "sizes": [
-                  "44"
-                ],
+                "sizes": ["44"],
                 "oldPrice": -1,
                 "price": 160,
                 "images": [
@@ -202,9 +188,7 @@
                 "type": 0,
                 "tag": "Popular",
                 "rating": 4,
-                "sizes": [
-                  "45"
-                ],
+                "sizes": ["45"],
                 "oldPrice": -1,
                 "price": 130,
                 "images": [
@@ -232,9 +216,7 @@
                 "type": 0,
                 "tag": "Popular",
                 "rating": 4,
-                "sizes": [
-                  "39"
-                ],
+                "sizes": ["39"],
                 "oldPrice": -1,
                 "price": 150,
                 "images": [
@@ -255,9 +237,7 @@
                 "type": 0,
                 "tag": "New",
                 "rating": 4,
-                "sizes": [
-                  "41.5"
-                ],
+                "sizes": ["41.5"],
                 "oldPrice": -1,
                 "price": 160,
                 "images": [
@@ -283,16 +263,7 @@
           "type": 0,
           "tag": "Popular",
           "rating": 4,
-          "sizes": [
-            39,
-            40.5,
-            41,
-            42.5,
-            43,
-            44.5,
-            45,
-            46.5
-          ],
+          "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
           "oldPrice": -1,
           "price": 150,
           "images": [
@@ -324,16 +295,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40.5,
-        41,
-        42,
-        43,
-        43.5,
-        44,
-        44.5,
-        45
-      ],
+      "sizes": [40.5, 41, 42, 43, 43.5, 44, 44.5, 45],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -351,16 +313,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        40,
-        41,
-        41.5,
-        42,
-        43,
-        44.5,
-        45.5,
-        46
-      ],
+      "sizes": [40, 41, 41.5, 42, 43, 44.5, 45.5, 46],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -378,16 +331,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40.5,
-        41,
-        42.5,
-        43,
-        44.5,
-        45,
-        46.5
-      ],
+      "sizes": [39, 40.5, 41, 42.5, 43, 44.5, 45, 46.5],
       "oldPrice": -1,
       "price": 150,
       "images": [
@@ -405,16 +349,7 @@
       "type": 1,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        36,
-        36.5,
-        37,
-        37.5,
-        38,
-        38.5,
-        39,
-        40
-      ],
+      "sizes": [36, 36.5, 37, 37.5, 38, 38.5, 39, 40],
       "oldPrice": -1,
       "price": 115,
       "images": [
@@ -432,16 +367,7 @@
       "type": 0,
       "tag": "Popular",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 130,
       "images": [
@@ -459,16 +385,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -486,16 +403,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -513,16 +421,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -540,16 +439,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -567,16 +457,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -594,16 +475,7 @@
       "type": 1,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -621,16 +493,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -648,16 +511,7 @@
       "type": 0,
       "tag": "New",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": -1,
       "price": 160,
       "images": [
@@ -675,16 +529,7 @@
       "type": 0,
       "tag": "On Sale",
       "rating": 4,
-      "sizes": [
-        39,
-        40,
-        41.5,
-        42,
-        43.5,
-        44,
-        45,
-        46
-      ],
+      "sizes": [39, 40, 41.5, 42, 43.5, 44, 45, 46],
       "oldPrice": 160,
       "price": 80,
       "images": [
@@ -711,26 +556,14 @@
     {
       "id": 0,
       "tag": "greeting",
-      "phrases": [
-        "Hi there",
-        "Hello",
-        "Hey",
-        "Hi"
-      ],
-      "responses": [
-        "Hi, how can I help?",
-        "Hello, what can I do for you?"
-      ]
+      "phrases": ["Hi there", "Hello", "Hey", "Hi"],
+      "responses": ["Hi, how can I help?", "Hello, what can I do for you?"]
     },
     {
       "id": 1,
       "tag": "product_selection",
-      "phrases": [
-        "Select product"
-      ],
-      "responses": [
-        "You have selected product number "
-      ]
+      "phrases": ["Select product"],
+      "responses": ["You have selected product number "]
     },
     {
       "id": 2,
@@ -771,33 +604,19 @@
     {
       "id": 5,
       "tag": "brand_info",
-      "phrases": [
-        "Nike",
-        "Adidas"
-      ],
-      "responses": [
-        "In total we have "
-      ]
+      "phrases": ["Nike", "Adidas"],
+      "responses": ["In total we have "]
     },
     {
       "id": 6,
       "tag": "product_info",
-      "phrases": [
-        "Nike Dunk Low Retro",
-        "Adidas AVRYN"
-      ],
-      "responses": [
-        "Good choice. The selected shoe is available in "
-      ]
+      "phrases": ["Nike Dunk Low Retro", "Adidas AVRYN"],
+      "responses": ["Good choice. The selected shoe is available in "]
     },
     {
       "id": 7,
       "tag": "appreciation",
-      "phrases": [
-        "Thanks",
-        "Thank you",
-        "Thanks a lot"
-      ],
+      "phrases": ["Thanks", "Thank you", "Thanks a lot"],
       "responses": [
         "You're welcome. If you have any additional questions feel free to ask!"
       ]
@@ -805,12 +624,8 @@
     {
       "id": 8,
       "tag": "add_to_cart",
-      "phrases": [
-        "Add to cart "
-      ],
-      "responses": [
-        "Product $ has been added to cart"
-      ]
+      "phrases": ["Add to cart "],
+      "responses": ["Product $ has been added to cart"]
     },
     {
       "id": 9,
@@ -827,9 +642,7 @@
     {
       "id": 10,
       "tag": "product_size_selection",
-      "phrases": [
-        "Choose size "
-      ],
+      "phrases": ["Choose size "],
       "responses": [
         "You have selected size $",
         "Unfortunately, size $ is currently unavailable"
@@ -838,12 +651,14 @@
     {
       "id": 11,
       "tag": "product_navigation",
-      "phrases": [
-        "Navigate to the product page"
-      ],
-      "responses": [
-        "You have been redirected to the product page."
-      ]
+      "phrases": ["Navigate to the product page"],
+      "responses": ["You have been redirected to the product page."]
+    },
+    {
+      "id": 12,
+      "tag": "product_quantity",
+      "phrases": ["Select product quantity "],
+      "responses": ["You have selected $ pair."]
     }
   ]
 }

@@ -30,6 +30,8 @@ import { ProductLinkComponent } from './ag-grid/product-link/product-link.compon
 import { ProductImageComponent } from './ag-grid/product-image/product-image.component';
 import { ProductTimeComponent } from './ag-grid/product-time/product-time.component';
 import { ProductTotalPriceComponent } from './ag-grid/product-total-price/product-total-price.component';
+import { ProductNumberComponent } from './ag-grid/product-number/product-number.component';
+import { ProductQuantityComponent } from './ag-grid/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { ProductTotalPriceComponent } from './ag-grid/product-total-price/produc
     ProductImageComponent,
     ProductTimeComponent,
     ProductTotalPriceComponent,
+    ProductNumberComponent,
+    ProductQuantityComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -92,6 +96,7 @@ import { ProductTotalPriceComponent } from './ag-grid/product-total-price/produc
     ProductImageComponent,
     ProductTimeComponent,
     ProductTotalPriceComponent,
+    ProductNumberComponent,
   ],
 })
 export class SharedModule {}
