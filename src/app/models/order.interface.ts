@@ -9,6 +9,7 @@ export interface OrderInterface {
 }
 
 export type OrderProductRow = {
+  itemNumber: number;
   orderID: number;
   productInCart: ProductInCartInterface;
   time: Date;

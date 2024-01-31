@@ -7,24 +7,20 @@ import { ProductTotalPriceComponent } from '../shared/ag-grid/product-total-pric
 
 interface TableColumn {
   headerName: string;
-  field: string;
+  field?: string;
   cellRendererFramework?: any;
   cellRendererParams?: (params: any) => any;
   width?: number;
+  sortable?: boolean;
+  filter?: string;
   sort?: string;
+  valueGetter?: string;
 }
 
 export const ITEM_NUMBER_COLUMN: TableColumn = {
-  headerName: 'Item Number',
-  field: '',
-  cellRendererFramework: ProductNumberComponent,
-  width: 120,
-};
-
-export const PPRODUCT_NUMBER: TableColumn = {
-  headerName: 'Item Number',
-  field: 'productInCart.product.images',
-  cellRendererFramework: ProductImageComponent,
+  headerName: '#',
+  field: 'itemNumber',
+  width: 50,
 };
 
 export const PRODUCT_IMAGE_COLUMN: TableColumn = {
@@ -47,18 +43,19 @@ export const TIME_COLUMN: TableColumn = {
   headerName: 'Time',
   field: 'time',
   cellRendererFramework: ProductTimeComponent,
-  sort: 'desc',
 };
 
 export const PRICE_PER_ITEM_COLUMN: TableColumn = {
   headerName: 'Price Per Item',
   field: 'productInCart.product.price',
+  sortable: true,
   cellRendererFramework: ProductTotalPriceComponent,
 };
 
 export const QUANTITY_COLUMN: TableColumn = {
   headerName: 'Quantity',
   field: 'productInCart.quantity',
+  sortable: true,
   cellRendererFramework: ProductQuantityComponent,
 };
 
@@ -66,4 +63,5 @@ export const TOTAL_PRICE_COLUMN: TableColumn = {
   headerName: 'Total Price',
   field: 'totalPrice',
   cellRendererFramework: ProductTotalPriceComponent,
+  sortable: true,
 };

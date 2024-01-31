@@ -97,10 +97,11 @@ export class OrdersComponent implements OnInit, OnDestroy {
   private createProductsObserveble(): Observable<OrderProductRow[]> {
     return this.store.pipe(
       select(userOrdersSelector),
-      concatMap((orders: OrderInterface[]) =>
-        from(orders).pipe(
+      concatMap((orders: OrderInterface[]) => {
+        return from(orders).pipe(
           map((order: OrderInterface) =>
             order.products.map((productInCart: ProductInCartInterface) => ({
+              itemNumber: -1,
               orderID: order.id,
               productInCart: productInCart,
               time: order.time,
@@ -110,9 +111,15 @@ export class OrdersComponent implements OnInit, OnDestroy {
           reduce(
             (acc, productRows) => acc.concat(productRows),
             [] as OrderProductRow[]
-          )
-        )
-      )
+          ),
+          map((products: OrderProductRow[]) => {
+            let counter = 0;
+            return products.reverse().map((product: OrderProductRow) => {
+              return { ...product, itemNumber: ++counter };
+            });
+          })
+        );
+      })
     );
   }
 
