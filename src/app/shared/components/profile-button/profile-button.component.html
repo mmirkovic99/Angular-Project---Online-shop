@@ -1,7 +1,28 @@
 <div class="user-button">
-  <svg-icon
-    (click)="navigate()"
-    class="user-button__icon"
-    [path]="'../../../../assets/svgs/user.svg'"
-  ></svg-icon>
+  <input
+    type="checkbox"
+    name="user-button__cb"
+    id="user-button__cb"
+    class="user-button__cb"
+    #checkbox
+  />
+  <label for="user-button__cb">
+    <svg-icon
+      class="user-button__icon"
+      [path]="'../../../../assets/svgs/user.svg'"
+    ></svg-icon
+  ></label>
+  <ul class="user-button__menu" *ngIf="isLogin">
+    <li class="user-button__menu__item" (click)="navigateToLogin()">Login</li>
+    <li class="user-button__menu__item" (click)="navigateToSignup()">
+      Sign up
+    </li>
+  </ul>
+
+  <ul class="user-button__menu" *ngIf="!isLogin">
+    <li class="user-button__menu__item" (click)="navigateToProfile()">
+      Profile
+    </li>
+    <li class="user-button__menu__item" (click)="logout()">Logout</li>
+  </ul>
 </div>

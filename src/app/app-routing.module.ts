@@ -7,11 +7,17 @@ import { CartComponent } from './views/cart/cart.component';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { OrdersComponent } from './views/orders/orders.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'cart', component: CartComponent },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [AuthGuardService],
+  },
   {
     path: 'favorites',
     component: FavoritesComponent,

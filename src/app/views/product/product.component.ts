@@ -12,8 +12,17 @@ import {
   userIdSelector,
 } from 'src/app/store/selectors/userStateSelectors';
 import { ProductInterface } from 'src/app/models/product.interface';
-import { CartStateInterface } from 'src/app/models/cartState.interface';
+import {
+  CartStateInterface,
+  ProductInCartInterface,
+} from 'src/app/models/cartState.interface';
 import { CartService } from 'src/app/services/cart.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +37,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   userId!: number;
   favorites!: Array<ProductInterface>;
   showError = false;
+  quantityForm!: FormGroup;
 
   private subscriptions: Subscription[];
 
@@ -36,12 +46,14 @@ export class ProductComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     private store: Store<AppStateInterface>,
-    private cartService: CartService
+    private cartService: CartService,
+    private formBuilder: FormBuilder
   ) {
     this.subscriptions = [];
   }
 
   ngOnInit(): void {
+    this.quantityForm = this.createForm();
     this.subscriptions.push(
       this.getProductIdFromURL(),
       this.setFavorites(),
@@ -69,9 +81,25 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.showError = false;
     let productToAdd = Object.assign({}, this.product);
     productToAdd = { ...productToAdd, sizes: [this.size] };
-    this.store.dispatch(CartAction.addToCart({ product: productToAdd }));
+    const productToOrder: ProductInCartInterface = {
+      product: productToAdd,
+      quantity: this.getControl('quantity').value,
+    };
+    this.store.dispatch(CartAction.addToCart({ product: productToOrder }));
 
     // this.cartService.addToCart(productToAdd);
+  }
+
+  increaseProductNumber() {
+    const quantityControl = this.getControl('quantity');
+    const quantityValue = quantityControl.value;
+    quantityControl.setValue(quantityValue + 1);
+  }
+
+  decreaseProductNumber() {
+    const quantityControl = this.getControl('quantity');
+    const quantityValue = quantityControl.value;
+    if (quantityValue >= 2) quantityControl.setValue(quantityValue - 1);
   }
 
   selectSize(event: any) {
@@ -155,6 +183,16 @@ export class ProductComponent implements OnInit, OnDestroy {
       .subscribe(
         (products: Array<ProductInterface>) => (this.allProducts = products)
       );
+  }
+
+  private createForm(): FormGroup {
+    return this.formBuilder.group({
+      quantity: [1, Validators.required],
+    });
+  }
+
+  getControl(name: string): FormControl {
+    return this.quantityForm.get(name) as FormControl;
   }
 
   private unsubscribe(): void {

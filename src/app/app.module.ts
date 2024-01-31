@@ -19,6 +19,10 @@ import { FavoritesComponent } from './views/favorites/favorites.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OrdersComponent } from './views/orders/orders.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { ProductImageComponent } from './shared/ag-grid/product-image/product-image.component';
+import { ProductLinkComponent } from './shared/ag-grid/product-link/product-link.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CartComponent,
     FavoritesComponent,
     ProfileComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EffectsModule.forRoot([UserEffects]),
     ReactiveFormsModule,
     NgxPaginationModule,
+    AgGridModule,
+    AgGridModule.withComponents([ProductLinkComponent, ProductImageComponent]),
   ],
   providers: [],
   bootstrap: [AppComponent],

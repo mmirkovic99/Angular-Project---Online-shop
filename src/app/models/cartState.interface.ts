@@ -1,5 +1,10 @@
 import { ProductInterface } from './product.interface';
 
 export interface CartStateInterface {
-  products: ProductInterface[];
+  products: ProductInCartInterface[];
+}
+
+export interface ProductInCartInterface {
+  product: ProductInterface;
+  quantity: number;
 }

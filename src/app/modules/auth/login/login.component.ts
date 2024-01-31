@@ -29,6 +29,7 @@ import { accountCheckValidator } from 'src/app/validations/account-check.validat
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
   formType: FormType = FormType.LOGIN;
+  showPasswordError: boolean = false;
 
   loginForm: FormGroup = this.fb.group({
     username: [
@@ -72,6 +73,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterContentChecked {
             user.username === this.loginForm.value.username &&
             user.password === this.loginForm.value.password
         );
+        this.showPasswordError = user ? false : true;
         if (user) {
           this.router.navigate(['']);
           this.store.dispatch(UserAction.addUser({ user }));

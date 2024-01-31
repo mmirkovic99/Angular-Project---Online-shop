@@ -62,5 +62,13 @@
   &__form {
     margin: 1rem 0;
     width: 80%;
+
+    &__error-message {
+      width: 80%;
+      margin-top: -2rem;
+      padding-bottom: 1rem;
+      font-size: 1.4rem;
+      color: #a52b2b;
+    }
   }
 }

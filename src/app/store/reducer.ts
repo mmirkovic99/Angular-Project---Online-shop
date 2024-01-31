@@ -24,6 +24,7 @@ export const initialState: AppStateInterface = {
 
 export const reducer = createReducer(
   initialState,
+  on(UserActions.userLogout, () => initialState),
   on(UserActions.addUser, (state: AppStateInterface, data: any) => {
     return { ...state, user: data.user };
   }),

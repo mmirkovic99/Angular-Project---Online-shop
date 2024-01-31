@@ -25,6 +25,13 @@ import { TypingIndicatorComponent } from './components/typing-indicator/typing-i
 import { MessageSenderPipe } from '../pipes/messageSender.pipe';
 import { FormatTimePipe } from '../pipes/formatTime.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
+import { OrdersButtonComponent } from './components/orders-button/orders-button.component';
+import { ProductLinkComponent } from './ag-grid/product-link/product-link.component';
+import { ProductImageComponent } from './ag-grid/product-image/product-image.component';
+import { ProductTimeComponent } from './ag-grid/product-time/product-time.component';
+import { ProductTotalPriceComponent } from './ag-grid/product-total-price/product-total-price.component';
+import { ProductNumberComponent } from './ag-grid/product-number/product-number.component';
+import { ProductQuantityComponent } from './ag-grid/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +59,13 @@ import { LoaderComponent } from './components/loader/loader.component';
     MessageSenderPipe,
     FormatTimePipe,
     LoaderComponent,
+    OrdersButtonComponent,
+    ProductLinkComponent,
+    ProductImageComponent,
+    ProductTimeComponent,
+    ProductTotalPriceComponent,
+    ProductNumberComponent,
+    ProductQuantityComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -78,6 +92,11 @@ import { LoaderComponent } from './components/loader/loader.component';
     MessageSenderPipe,
     FormatTimePipe,
     LoaderComponent,
+    ProductLinkComponent,
+    ProductImageComponent,
+    ProductTimeComponent,
+    ProductTotalPriceComponent,
+    ProductNumberComponent,
   ],
 })
 export class SharedModule {}

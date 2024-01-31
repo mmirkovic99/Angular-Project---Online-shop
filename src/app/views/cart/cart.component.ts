@@ -15,7 +15,10 @@ import {
 import { OrderInterface } from 'src/app/models/order.interface';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { CartStateInterface } from 'src/app/models/cartState.interface';
+import {
+  CartStateInterface,
+  ProductInCartInterface,
+} from 'src/app/models/cartState.interface';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -25,6 +28,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit, OnDestroy {
   orders!: OrderInterface[];
+  productsInCart!: ProductInCartInterface[];
   products!: ProductInterface[];
   userId!: number;
   totalPrica: number;
@@ -61,6 +65,7 @@ export class CartComponent implements OnInit, OnDestroy {
   order() {
     if (this.userId === 0) this.router.navigate(['auth/login']);
     else {
+      console.log(this.productsInCart);
       this.store.dispatch(
         UserAction.updateUserOrdes({
           id: this.userId,
@@ -68,8 +73,9 @@ export class CartComponent implements OnInit, OnDestroy {
             ...this.orders,
             {
               id: this.orders.length + 1,
-              products: this.products,
+              products: this.productsInCart,
               totalPrice: this.totalPrica,
+              time: new Date(),
             },
           ],
         })
@@ -95,8 +101,11 @@ export class CartComponent implements OnInit, OnDestroy {
   private setProducts(): Subscription {
     return this.store
       .pipe(select(productsSelector))
-      .subscribe((products: any[]) => {
-        this.products = products.map((product) => product);
+      .subscribe((productsInCart: ProductInCartInterface[]) => {
+        this.productsInCart = productsInCart;
+        this.products = productsInCart.map(
+          (productInCart: ProductInCartInterface) => productInCart.product
+        );
       });
 
     // return this.cartService.getCart().subscribe((cart: CartStateInterface) => {

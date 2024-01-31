@@ -115,6 +115,7 @@
               • Kid's shoes
             </p>
           </ng-container>
+
           <p class="cart__content__product__data__size">
             • {{ product.sizes[0] }} size
           </p>
@@ -124,7 +125,12 @@
           >
             Remove
           </button>
-          <div class="cart__content__product__data__price">$150</div>
+          <div class="cart__content__product__data__quantity">
+            x{{ productsInCart[i].quantity }}
+          </div>
+          <div class="cart__content__product__data__price">
+            {{ product.price * productsInCart[i].quantity | currency }}
+          </div>
         </div>
       </div>
     </div>
